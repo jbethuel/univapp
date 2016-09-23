@@ -1,51 +1,55 @@
 <template name="register">
-  <div class="padding">
+  {{#ionView}}
+    {{#ionContent class="home_login"}}
+      <div class="padding">
 
-    <div class="register-form">
+        <div class="register-form">
 
-      {{#animate type="pulse" delay="200"}}
-        <h1 class="home-banner"><u>Register</u></h1>
-      {{/animate}}
+          {{#animate type="pulse" delay="200"}}
+            <h1 class="home-banner"><u>Register</u></h1>
+          {{/animate}}
 
-      <div class="list">
-        <label class="item item-input">
-          <i class="icon fa fa-user placeholder-icon"></i>
-          <input type="number" class="reg_id" placeholder="Student/Employee ID">
-        </label>
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon fa fa-user placeholder-icon"></i>
+              <input type="number" class="reg_id" placeholder="Student/Employee ID">
+            </label>
+          </div>
+
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon fa fa-server placeholder-icon"></i>
+              <input type="text" class="reg_fullname" placeholder="Full Name">
+            </label>
+          </div>
+
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon fa fa-unlock-alt placeholder-icon"></i>
+              <input type="password" class="reg_pw" placeholder="Password">
+            </label>
+          </div>
+
+          <div class="list">
+            <label class="item item-input">
+              <i class="icon fa fa-unlock-alt placeholder-icon"></i>
+              <input type="password" class="reg_conf_pw" placeholder="Confirm Password">
+            </label>
+          </div>
+
+          <button class="button button-block button-balanced btn_student_reg">
+            Register As Student
+          </button>
+
+          <button class="button button-block button-positive btn_teacher_reg">
+            Register As Teacher
+          </button>
+
+          <span class="home-signup">Already have an account? <a href="{{pathFor 'login'}}" class="signup-link">Login.</a></span>
+
+        </div>
+
       </div>
-
-      <div class="list">
-        <label class="item item-input">
-          <i class="icon fa fa-server placeholder-icon"></i>
-          <input type="text" class="reg_fullname" placeholder="Full Name">
-        </label>
-      </div>
-
-      <div class="list">
-        <label class="item item-input">
-          <i class="icon fa fa-unlock-alt placeholder-icon"></i>
-          <input type="password" class="reg_pw" placeholder="Password">
-        </label>
-      </div>
-
-      <div class="list">
-        <label class="item item-input">
-          <i class="icon fa fa-unlock-alt placeholder-icon"></i>
-          <input type="password" class="reg_conf_pw" placeholder="Confirm Password">
-        </label>
-      </div>
-
-      <button class="button button-block button-balanced btn_student_reg">
-        Register As Student
-      </button>
-
-      <button class="button button-block button-positive btn_teacher_reg">
-        Register As Teacher
-      </button>
-
-      <span class="home-signup">Already have an account? <a href="{{pathFor 'login'}}" class="signup-link">Login.</a></span>
-
-    </div>
-
-  </div>
+    {{/ionContent}}
+  {{/ionView}}
 </template>
