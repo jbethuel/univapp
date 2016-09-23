@@ -1,0 +1,11 @@
+<template name="dashboard">
+  {{#if isInRole 'admin'}}
+    {{admin}}
+  {{/if}}
+  {{#if isInRole 'teacher'}}
+    {{teacher}}
+  {{/if}}
+  {{#if isInRole 'student'}}
+    {{student}}
+  {{/if}}
+</template>

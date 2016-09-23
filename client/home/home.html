@@ -1,0 +1,46 @@
+<head>
+  <title>BukSU App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</head>
+
+<body>
+</body>
+
+<template name="login">
+
+  <div class="padding">
+
+      <div class="item-image">
+        <div class="space"></div>
+        {{#animate type="pulse" delay="200"}}
+          <img src="buksu_logo.png" class="buksu_logo">
+        {{/animate}}
+        <h1 class="home-banner">BukSU APP</h1>
+        <span class="home-signup">BETA</span>
+      </div>
+
+      <div class="home-form">
+
+        <div class="list list-inset">
+          <label class="item item-input">
+            <i class="icon fa fa-user placeholder-icon"></i>
+            <input type="text" class="home_id" placeholder="Student ID">
+          </label>
+          <label class="item item-input">
+            <i class="icon fa fa-key placeholder-icon"></i>
+            <input type="password" class="home_pw" placeholder="Password">
+          </label>
+        </div>
+
+        <button class="button button-block button-positive home_btn">
+          Log In
+        </button>
+
+        <span class="home-signup">Don't have an account yet? <a href="{{pathFor 'register'}}" class="signup-link">Sign up.</a></span>
+
+     </div>
+
+  </div>
+
+</template>

@@ -1,0 +1,102 @@
+$positive: #0059CF;
+$loading-font-size: 22px;
+
+@import 'meteoric_ionic-sass/_ionic';
+@import 'meteoric_ionicons-sass/_ionicons';
+
+// login page start
+
+.home_login{
+  background-color: #31435B;
+}
+
+.home-banner{
+  font-family: 'Lobster', cursive;
+  color: #FAFAFA;
+}
+
+.home-form{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.home-signup{
+  color: #BDBDBD;
+}
+
+.signup-link{
+  color: #FAFAFA;
+}
+
+@media screen and (orientation:portrait) {
+  .space{
+    margin-bottom: 10%;
+  }
+  .buksu_logo{
+    @include transition(0.4s);
+    width:50%;
+    height:50%;
+  }
+}
+@media screen and (orientation:landscape) {
+  .space{
+    margin-bottom: 3%;
+  }
+  .buksu_logo{
+    @include transition(0.4s);
+    width:20%;
+    height:20%;
+  }
+}
+
+// login page end
+
+//register page
+
+.register-form{
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 26px;
+}
+
+//register page end
+
+//popups text align
+.title_prompt{
+  text-align: center;
+}
+//popups text align end
+
+.ionic-body.platform-android {
+  font-family: "Roboto", sans-serif;
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .tab-item {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.ion-slide {
+  text-align: center;
+  padding-top: 200px;
+
+  &.dark-bg {
+    h3 {
+      color: #fff;
+    }
+  }
+}
+
+.popover {
+  height: auto;
+}
+
+.item-button-left, .item-button-right {
+  button {
+    top: 16px !important;
+  }
+}
