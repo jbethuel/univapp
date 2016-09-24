@@ -5,10 +5,6 @@
       {{#ionSideMenus}}
         {{#ionSideMenu}}
 
-        {{#unless connected}}
-          {{notify}}
-        {{/unless}}
-
         <!-- <div class="bar bar-header bar-positive">
           <h1 class="title">Main Menu</h1>
         </div> -->
@@ -17,57 +13,68 @@
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="../user.png">
-                <h2 class="sidebar_name">{{currentUser.username}}</h2>
-                <h3 class="sidebar_name">ADMIN</h3>
+                <h2 class="sidebar_name">Joseph Bethuel</h2>
+                <h2 class="sidebar_name">ADMIN</h2>
               </a>
-              <div class="item item-icon-left" id="sideHome" data-ion-menu-close>
+
+              <li class="item">
+                <small class="sidebar_subtitle"><b>Main Menu</b></small>
+              </li>
+
+              <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'adminDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Home
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-home" class="positive"}}
+                  {{> ionIcon icon="android-home" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-home" class="positive"}}
                 {{/if}}
               </div>
-              <div class="item item-icon-left" id="sideNews" data-ion-menu-close>
+
+              <div class="item item-icon-left" id="sideNews" style="{{#if isActiveRoute 'adminDashboardPost'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Post News
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-star" class="positive"}}
+                  {{> ionIcon icon="android-star" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-star" class="positive"}}
                 {{/if}}
               </div>
-              <div class="item item-icon-left" id="sideGenerateT" data-ion-menu-close>
+
+              <div class="item item-icon-left" id="sideGenerateT" style="{{#if isActiveRoute 'adminDashboardTokenTeacher'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Generate Token Teacher
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-add" class="positive"}}
+                  {{> ionIcon icon="android-add-circle" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-plus-outline" class="positive"}}
                 {{/if}}
               </div>
-              <div class="item item-icon-left" id="sideGenerateS" data-ion-menu-close>
+
+              <div class="item item-icon-left" id="sideGenerateS" style="{{#if isActiveRoute 'adminDashboardTokenStudent'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Generate Token Student
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-add-circle" class="positive"}}
+                  {{> ionIcon icon="android-add-circle" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-plus" class="positive"}}
                 {{/if}}
               </div>
-              <div class="item item-icon-left" id="sideSettings" data-ion-menu-close>
+
+              <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'adminDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Settings
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-settings" class="positive"}}
+                  {{> ionIcon icon="android-settings" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-settings" class="positive"}}
                 {{/if}}
               </div>
-              <div class="item item-icon-left" id="sideAbout" data-ion-menu-close>
+
+              <div class="item item-icon-left" id="sideAbout" style="{{#if isActiveRoute 'adminDashboardAbout'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 About
                 {{#if isAndroid}}
-                  {{> ionIcon icon="ios-information" class="positive"}}
+                  {{> ionIcon icon="android-alert" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-information" class="positive"}}
                 {{/if}}
               </div>
+
             </div>
           </div>
 
@@ -91,7 +98,7 @@
       {{/ionSideMenus}}
       {{#ionSideMenuContent}}
 
-        {{> ionNavBar class="bar-positive"}}
+        {{> ionNavBar class="bar-royal"}}
 
         {{#ionNavView}}
           {{> yield}}

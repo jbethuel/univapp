@@ -1,4 +1,6 @@
 $positive: #0059CF;
+$energized: #0A9A8D;
+$royal: #424242;
 $loading-font-size: 22px;
 
 @import 'meteoric_ionic-sass/_ionic';
@@ -70,14 +72,23 @@ $loading-font-size: 22px;
 // dashboard sidebar avatar
 .sidebar_avatar{
   height: 100px;
-  background-image: url('blur.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  border-bottom-width: 0.5px;
+  margin-bottom: 1px;
   border-top: hidden;
+  border-left: hidden;
+  border-right: hidden;
 }
 
 .sidebar_name{
-  color: white;
+  color: #424242;
+}
+
+.sidebar_subtitle{
+  color: #616161;
+}
+
+.item-icon-left{
+  border: hidden;
 }
 
 .ionic-body.platform-android {
