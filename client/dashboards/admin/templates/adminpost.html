@@ -1,0 +1,62 @@
+<template name="adminDashboardPost">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    {{#if isAndroid}}
+      <h1 class="title">Admin Post News</h1>
+    {{else}}
+      <h1 class="title" style="text-align:center;">Admin Home</h1>
+    {{/if}}
+    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='more'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+
+        <div class="list card">
+
+          <a href="#" class="item item-icon-right">
+            <div class="item-text-wrap">
+              <p>Sends news to teachers & students.</p>
+            </div>
+            {{> ionIcon icon="android-alert" class="assertive"}}
+          </a>
+
+        </div>
+
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" class="txtTitle" placeholder="News Title">
+          </label>
+          <label class="item item-input">
+            <textarea class="txtContent" placeholder="Content"></textarea>
+          </label>
+        </div>
+
+        <div class="row">
+
+          <div class="col">
+            <a class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</a>
+          </div>
+
+          <div class="col">
+            <a class="button button-block icon-right ion-android-send button-balanced btn_send">Send</a>
+          </div>
+
+        </div>
+
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

@@ -1,4 +1,4 @@
-<template name="adminDashboardHome">
+<template name="adminDashboardSettings">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
       {{> ionIcon icon='navicon'}}
@@ -7,7 +7,7 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Admin Home</h1>
+      <h1 class="title">Admin Settings</h1>
     {{else}}
       <h1 class="title" style="text-align:center;">Admin Home</h1>
     {{/if}}
@@ -23,6 +23,33 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
+
+        <div class="list">
+
+            <a class="item item-thumbnail-left" href="#">
+              <img src="../user.png">
+              <h2>ADMIN</h2>
+              <p>Upload/Change your avatar</p>
+              <p><input type="file"></p>
+            </a>
+
+        </div>
+
+        <ul class="list">
+            <li class="item">
+              ...
+            </li>
+        </ul>
+        <ul class="list">
+            <li class="item">
+              ...
+            </li>
+        </ul>
+        <ul class="list">
+            <li class="item">
+              ...
+            </li>
+        </ul>
 
       </div>
     {{/ionContent}}

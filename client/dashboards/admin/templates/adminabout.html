@@ -1,0 +1,40 @@
+<template name="adminDashboardAbout">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    {{#if isAndroid}}
+      <h1 class="title">Admin About</h1>
+    {{else}}
+      <h1 class="title" style="text-align:center;">Admin Home</h1>
+    {{/if}}
+    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='more'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+        {{#ionSlideBox}}
+          {{#ionSlide class="light-bg"}}
+            <h3>Slide 1</h3>
+          {{/ionSlide}}
+          {{#ionSlide class="dark-bg"}}
+            <h3>Slide 2</h3>
+          {{/ionSlide}}
+          {{#ionSlide class="positive-bg"}}
+            <h3>Slide 3</h3>
+          {{/ionSlide}}
+        {{/ionSlideBox}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

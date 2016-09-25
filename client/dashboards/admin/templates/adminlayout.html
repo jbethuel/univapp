@@ -5,10 +5,6 @@
       {{#ionSideMenus}}
         {{#ionSideMenu}}
 
-        <!-- <div class="bar bar-header bar-positive">
-          <h1 class="title">Main Menu</h1>
-        </div> -->
-
           <div class="content">
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
@@ -17,9 +13,9 @@
                 <h2 class="sidebar_name">ADMIN</h2>
               </a>
 
-              <li class="item">
-                <small class="sidebar_subtitle"><b>Main Menu</b></small>
-              </li>
+              <div class="item item-divider sidebar_subtitle sidebar-item-divider">
+                Main Menu
+              </div>
 
               <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'adminDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Home
@@ -30,7 +26,7 @@
                 {{/if}}
               </div>
 
-              <div class="item item-icon-left" id="sideNews" style="{{#if isActiveRoute 'adminDashboardPost'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+              <div class="item item-icon-left" id="sidePost" style="{{#if isActiveRoute 'adminDashboardPost'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Post News
                 {{#if isAndroid}}
                   {{> ionIcon icon="android-star" class="energized"}}
@@ -39,7 +35,7 @@
                 {{/if}}
               </div>
 
-              <div class="item item-icon-left" id="sideGenerateT" style="{{#if isActiveRoute 'adminDashboardTokenTeacher'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+              <div class="item item-icon-left" id="sideGenerateTeacher" style="{{#if isActiveRoute 'adminDashboardTokenTeacher'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Generate Token Teacher
                 {{#if isAndroid}}
                   {{> ionIcon icon="android-add-circle" class="energized"}}
@@ -48,7 +44,7 @@
                 {{/if}}
               </div>
 
-              <div class="item item-icon-left" id="sideGenerateS" style="{{#if isActiveRoute 'adminDashboardTokenStudent'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+              <div class="item item-icon-left" id="sideGenerateStudent" style="{{#if isActiveRoute 'adminDashboardTokenStudent'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Generate Token Student
                 {{#if isAndroid}}
                   {{> ionIcon icon="android-add-circle" class="energized"}}

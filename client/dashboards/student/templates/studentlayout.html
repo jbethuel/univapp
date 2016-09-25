@@ -1,13 +1,9 @@
 <template name="studentDashboardLayout">
-  {{#if isInRole 'student'}}
+ {{#if isInRole 'student'}}
   {{#ionBody}}
     {{#ionSideMenuContainer}}
       {{#ionSideMenus}}
         {{#ionSideMenu}}
-
-        {{#unless connected}}
-          {{notify}}
-        {{/unless}}
 
         <!-- <div class="bar bar-header bar-positive">
           <h1 class="title">Main Menu</h1>

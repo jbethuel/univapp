@@ -1,0 +1,82 @@
+<template name="adminDashboardHome">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    {{#if isAndroid}}
+      <h1 class="title">Admin Home</h1>
+    {{else}}
+      <h1 class="title" style="text-align:center;">Admin Home</h1>
+    {{/if}}
+    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
+      {{#if isAndroid}}
+        {{> ionIcon icon='android-more-vertical'}}
+      {{else}}
+        {{> ionIcon icon='more'}}
+      {{/if}}
+    </button>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+
+        <div class="row">
+
+          <div class="col col-50">
+            <div class="card">
+              <div class="item item-divider">
+                Admin <br> Announcements
+              </div>
+              <div class="item item-text-wrap">
+                <h1><div class="text_center">{{announcements}}</div></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-50">
+            <div class="card">
+              <div class="item item-divider">
+                Tokens <br> Used
+              </div>
+              <div class="item item-text-wrap">
+                <h1><div class="text_center">{{tokens}}/{{tokensUsed}}</div></h1>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col col-50">
+            <div class="card">
+              <div class="item item-divider">
+                Student <br> Accounts
+              </div>
+              <div class="item item-text-wrap">
+                <h1><div class="text_center">{{students}}</div></h1>
+              </div>
+            </div>
+          </div>
+
+          <div class="col col-50">
+            <div class="card">
+              <div class="item item-divider">
+                Teacher <br> Accounts
+              </div>
+              <div class="item item-text-wrap">
+                <h1><div class="text_center">{{teachers}}</div></h1>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>
