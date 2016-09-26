@@ -1,4 +1,4 @@
-<template name="studentDashboardHome">
+<template name="studentDashboardSchedules">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
       {{> ionIcon icon='navicon'}}
@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Student Home</h1>
+      <h1 class="title">Student Schedules</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Student Home</h1>
+      <h1 class="title" style="text-align:center;">Student Schedules</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -23,15 +23,6 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-
-        <div class="card">
-          <div class="item item-divider">
-            I'm a Header in a Card!
-          </div>
-          <div class="item item-text-wrap">
-            This is a basic Card with some text.
-          </div>
-        </div>
 
       </div>
     {{/ionContent}}

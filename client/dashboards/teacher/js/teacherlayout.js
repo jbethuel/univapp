@@ -1,0 +1,27 @@
+Template.teacherDashboardLayout.events({
+  "click #sideHome": function(event){
+    event.preventDefault();
+
+    Router.go('teacherDashboardHome');
+  },
+  "click #sideMessenger": function(event){
+    event.preventDefault();
+
+    Router.go('teacherDashboardMessenger');
+  },
+  "click #sideCreate": function(event){
+    event.preventDefault();
+
+    Router.go('teacherDashboardCreate');
+  },
+  "click #sideClass": function(event){
+    event.preventDefault();
+
+    Router.go('teacherDashboardClass');
+  },
+  "click #sideAbout": function(event){
+    event.preventDefault();
+
+    Router.go('teacherDashboardAbout');
+  }
+});

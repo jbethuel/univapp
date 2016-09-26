@@ -109,7 +109,7 @@ Template.register.events({
                     type: "button button-balanced",
                     onTap: function() {
                       IonPopup.close();
-                      Router.go('home');
+                      Router.go('login');
                     }
                   }]
                 });
