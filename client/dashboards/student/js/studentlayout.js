@@ -28,5 +28,11 @@ Template.studentDashboardLayout.events({
     event.preventDefault();
 
     Router.go('studentDashboardAbout');
+  },
+  "click #sideLogout": function(event){
+    event.preventDefault();
+
+    Meteor.logout();
+    Router.go('login');
   }
 });

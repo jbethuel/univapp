@@ -23,5 +23,11 @@ Template.teacherDashboardLayout.events({
     event.preventDefault();
 
     Router.go('teacherDashboardAbout');
+  },
+  "click #sideLogout": function(event){
+    event.preventDefault();
+
+    Meteor.logout();
+    Router.go('login');
   }
 });

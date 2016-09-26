@@ -22,5 +22,10 @@ Template.adminDashboardLayout.events({
   "click #sideAbout": function(event){
     event.preventDefault();
     Router.go('adminDashboardAbout');
-  }
+  },
+  "click #sideLogout": function(event){
+    event.preventDefault();
+    Meteor.logout();
+    Router.go('login');
+  },
 });
