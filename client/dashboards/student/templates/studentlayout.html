@@ -6,6 +6,11 @@
         {{#ionSideMenu}}
 
           <div class="content">
+
+            {{#if connected}}
+              {{connected}}
+            {{/if}}
+
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="../user.png">

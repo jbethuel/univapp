@@ -29,3 +29,5 @@ accounts-password
 alanning:roles
 zimme:active-route
 xvendo:clipboardjs
+session
+ryanwu:meteor-notifyjs

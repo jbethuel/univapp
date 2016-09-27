@@ -13,6 +13,20 @@ if(Meteor.isCordova){
 	}
 }
 
+Meteor.autorun(function () {
+    var stat;
+    if (Meteor.status().status === "connected") {
+        stat = 'connected'
+    }
+    else if (Meteor.status().status === "connecting") {
+        stat = 'connecting'
+    }
+    else {
+        stat = 'disconnected';
+    }
+    Session.set('status',stat);
+});
+
 Template.login.events({
   "click .home_btn": function(event){
 
@@ -51,12 +65,23 @@ Template.login.events({
 
           }
         }else{
-
           Router.go('dashboard');
-
         }
       });
 
     }
   }
+});
+
+Template.login.helpers({
+	connected: function(){
+		status = Session.get('status');
+		if(status == "connecting"){
+			$.notify("Connecting", "warn");
+		}else if(status == "disconnected"){
+			$.notify("Disconnected", "error");
+		}else{
+			$.notify("Connected", "success");
+		}
+	}
 });

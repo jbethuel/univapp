@@ -13,6 +13,10 @@
 
       <div class="padding">
 
+        {{#if connected}}
+          {{connected}}
+        {{/if}}
+
           <div class="item-image">
             <div class="space"></div>
             {{#animate type="pulse" delay="200"}}
