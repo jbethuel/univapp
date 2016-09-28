@@ -6,6 +6,11 @@
         {{#ionSideMenu}}
 
           <div class="content">
+
+            {{#if connected}}
+              {{connected}}
+            {{/if}}
+
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="../user.png">
@@ -50,6 +55,15 @@
                   {{> ionIcon icon="android-list" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-list" class="positive"}}
+                {{/if}}
+              </div>
+
+              <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'teacherDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+                Settings
+                {{#if isAndroid}}
+                  {{> ionIcon icon="android-settings" class="energized"}}
+                {{else}}
+                  {{> ionIcon icon="ios-settings" class="positive"}}
                 {{/if}}
               </div>
 

@@ -37,7 +37,6 @@ Template.adminDashboardPost.events({
         }]
       });
     }else{
-
       IonPopup.confirm({
         title: 'The news will be sent',
         template: '<div class="title_prompt">Are you sure?</div>',
@@ -54,9 +53,6 @@ Template.adminDashboardPost.events({
         onCancel: function() {
         }
       });
-
     }
-
-
   }
 });

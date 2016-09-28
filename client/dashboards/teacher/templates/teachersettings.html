@@ -1,4 +1,4 @@
-<template name="teacherDashboardClass">
+<template name="teacherDashboardSettings">
   {{#contentFor "headerButtonLeft"}}
     <button class="button button-clear pull-left" data-ion-menu-toggle="left">
       {{> ionIcon icon='navicon'}}
@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Teacher Class</h1>
+      <h1 class="title">Teacher Settings</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Class</h1>
+      <h1 class="title" style="text-align:center;">Teacher Settings</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -24,28 +24,32 @@
     {{#ionContent}}
       <div class="padding">
 
-        <div class="list list-inset">
-          <label class="item item-input">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search">
-          </label>
-        </div>
-
         <div class="list">
 
-          <a class="item item-avatar" href="#">
+          <a class="item item-thumbnail-left" href="#">
             <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
-          </a>
-
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
+            <h2>STUDENT</h2>
+            <p>Upload/Change your avatar</p>
+            <p><input type="file"></p>
           </a>
 
         </div>
+
+        <ul class="list">
+          <li class="item">
+            ...
+          </li>
+        </ul>
+        <ul class="list">
+          <li class="item">
+            ...
+          </li>
+        </ul>
+        <ul class="list">
+          <li class="item">
+            ...
+          </li>
+        </ul>
 
       </div>
     {{/ionContent}}

@@ -24,34 +24,30 @@
     {{#ionContent}}
       <div class="padding">
 
-        <div class="padding">
+        <div class="list card">
 
-          <div class="list card">
-
-            <a href="#" class="item item-icon-right">
-              <div class="item-text-wrap">
-                <p>Generate tokens for student.</p>
-              </div>
-              {{> ionIcon icon="android-alert" class="royal"}}
-            </a>
-
-          </div>
-
-          <button class="button button-block button-balanced btn_token">
-            Generate Token
-            {{> ionIcon icon="android-add-circle"}}
-          </button>
-
-          <ul class="list">
-            {{#each tokens}}
-              <li class="item">
-                <span>{{token}}</span>
-                <button class="button button-icon icon ion-ios-copy pull-right" data-clipboard-text="{{token}}"></button>
-              </li>
-            {{/each}}
-          </ul>
+          <a href="#" class="item item-icon-right">
+            <div class="item-text-wrap">
+              <p>Generate tokens for student.</p>
+            </div>
+            {{> ionIcon icon="android-alert" class="royal"}}
+          </a>
 
         </div>
+
+        <button class="button button-block button-balanced btn_token">
+          Generate Token
+          {{> ionIcon icon="android-add-circle"}}
+        </button>
+
+        <ul class="list">
+          {{#each tokens}}
+            <li class="item">
+              <span>{{token}}</span>
+              <button class="button button-icon icon ion-ios-copy pull-right" data-clipboard-text="{{token}}"></button>
+            </li>
+          {{/each}}
+        </ul>
 
       </div>
     {{/ionContent}}

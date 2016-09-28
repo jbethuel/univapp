@@ -16,13 +16,7 @@ Meteor.methods({
   },
 
   addTokensTeacher: function(token){
-    var rand = function() {
-        return Math.random().toString(36).substr(2);
-    };
-    var token = function() {
-        return rand();
-    };
-    var token = token();
+    var token = Random.id(8);
     var auth = Meteor.user().roles[0];
       if(auth != 'admin'){
         throw new Meteor.Error("Access Denied");
@@ -36,13 +30,7 @@ Meteor.methods({
       }
   },
   addTokensStudent: function(token){
-    var rand = function() {
-        return Math.random().toString(36).substr(2);
-    };
-    var token = function() {
-        return rand();
-    };
-    var token = token();
+    var token = Random.id(8);
     var auth = Meteor.user().roles[0];
       if(auth != 'admin'){
         throw new Meteor.Error("Access Denied");
