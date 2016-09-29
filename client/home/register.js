@@ -1,16 +1,4 @@
-function dialog(title, template, button){
-  IonPopup.show({
-    title: title,
-    template: template,
-    buttons: [{
-      text: 'OK',
-      type: button,
-      onTap: function() {
-        IonPopup.close();
-      }
-    }]
-  });
-};
+
 
 Template.register.helpers({
 	connected: function(){
@@ -34,16 +22,16 @@ Template.register.events({
     pw = $('.reg_pw').val();
     conf_pw = $('.reg_conf_pw').val();
 
-    if(stud_id == "" || fullname == "" || pw == "" || conf_pw == ""){
+    if(Meteor.Validation.CheckBlankSpace(stud_id) || Meteor.Validation.CheckBlankSpace(fullname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
       title = "ERROR";
       button = "button button-assertive";
       template = "<div class='title_prompt'>Please complete all the fields.</div>";
-      dialog(title, template, button);
+      Meteor.Messages.dialog(title, template, button);
     }else if(pw != conf_pw){
       title = "ERROR";
       button = "button button-assertive";
       template = "<div class='title_prompt'>Password does not match.</div>";
-      dialog(title, template, button);
+      Meteor.Messages.dialog(title, template, button);
     }else{
       IonPopup.prompt({
         title: 'Security Token',
@@ -86,17 +74,17 @@ Template.register.events({
     pw = $('.reg_pw').val();
     conf_pw = $('.reg_conf_pw').val();
 
-    if(teach_id == "" || fullname == "" || pw == "" || conf_pw == "" ){
+    if(Meteor.Validation.CheckBlankSpace(teach_id) || Meteor.Validation.CheckBlankSpace(fullname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
       title = "ERROR";
       button = "button button-assertive";
       template = "<div class='title_prompt'>Please complete all the fields.</div>";
-      dialog(title, template, button);
+      Meteor.Messages.dialog(title, template, button);
 
     }else if(pw != conf_pw){
       title = "ERROR";
       button = "button button-assertive";
       template = "<div class='title_prompt'>Password does not match.</div>";
-      dialog(title, template, button);
+      Meteor.Messages.dialog(title, template, button);
 
     }else{
       IonPopup.prompt({
