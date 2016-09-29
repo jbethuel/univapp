@@ -27,6 +27,10 @@ Meteor.autorun(function () {
     Session.set('status',stat);
 });
 
+Template.login.onCreated(function(){
+	
+});
+
 Template.login.events({
   "click .home_btn": function(event){
 

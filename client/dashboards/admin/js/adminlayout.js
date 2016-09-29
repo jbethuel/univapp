@@ -27,7 +27,7 @@ Template.adminDashboardLayout.events({
     event.preventDefault();
     Meteor.logout();
     Router.go('login');
-  },
+  }
 });
 
 Template.adminDashboardLayout.helpers({

@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Student Search</h1>
+      <h1 class="title">Class Search</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Student Search</h1>
+      <h1 class="title" style="text-align:center;">Class Search</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -20,27 +20,37 @@
     </button>
   {{/contentFor}}
 
+  {{#ionSubheaderBar class="item-input-inset"}}
+
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Search">
+    </label>
+
+  {{/ionSubheaderBar}}
+
   {{#ionView}}
     {{#ionContent}}
-      <div class="padding">
 
-        <div class="list list-inset">
-          <label class="item item-input">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search">
-          </label>
-        </div>
+      <div class="padding has-subheader">
 
-        <a class="item item-avatar" href="#">
-          <img src="../user.png">
-          <h2>Venkman</h2>
-          <p>Back off, man. I'm a scientist.</p>
+        <a class="item item-thumbnail-left" href="#">
+          <img src="../class.png">
+          <h3><strong>System Analysis Design</strong></h3>
+          <h3><strong>SAD</strong></h3>
+          <h3><strong>AS123</strong></h3>
+          <h3><strong>MWF - [7:30am - 9:00am]</strong></h3>
+          <h3><strong>1st Sem - [2015-2016]</strong></h3>
+          <h3><strong>Tr. Mam Way Ligo</strong></h3>
         </a>
 
-        <a class="item item-avatar" href="#">
-          <img src="../user.png">
-          <h2>Venkman</h2>
-          <p>Back off, man. I'm a scientist.</p>
+        <a class="item item-thumbnail-left" href="#">
+          <img src="../class.png">
+          <h3><strong>System Analysis Design</strong></h3>
+          <h3><strong>SAD</strong></h3>
+          <h3><strong>AS123</strong></h3>
+          <h3><strong>MWF - [7:30am - 9:00am]</strong></h3>
+          <h3><strong>1st Sem - [2015-2016]</strong></h3>
+          <h3><strong>Tr. Mam Way Ligo</strong></h3>
         </a>
 
       </div>

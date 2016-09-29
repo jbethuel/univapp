@@ -1,6 +1,6 @@
 Meteor.methods({
   AddClass:function(description, sec_code, subj_code, sched, time_start, time_end, sem, school_yr){
-    var passkey = Math.random().toString(36).substr(2); // remove `0.`
+    var passkey = Random.id(8);
 
      classindex.insert({
        teachId:this.userId,

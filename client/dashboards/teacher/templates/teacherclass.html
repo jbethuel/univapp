@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Teacher Class</h1>
+      <h1 class="title">My Class</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Class</h1>
+      <h1 class="title" style="text-align:center;">My Class</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -24,25 +24,14 @@
     {{#ionContent}}
     <div class="padding">
       <div class="list">
-        <div class="item item-input-inset">
-          <label class="item-input-wrapper">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" id="txtSearchDescription" placeholder="Description">
-          </label>
-          <button class="button button-small" data-ion-modal="filter">
-            Filter
-          </button>
-        </div>
-      </div>
-      <div class="list">
         {{#each classes}}
-        <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
-          <i class="icon ion-person-stalker"></i>
-            <h3>Subject:{{description}}</h3>
-            <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
-            <p><b>Passkey:</b>{{passkey}}</p>
-          <i class="icon ion-android-open" ></i>
-        </a>
+          <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
+            <i class="icon ion-person-stalker"></i>
+              <h3>Subject:{{description}}</h3>
+              <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
+              <p><b>Passkey:</b>{{passkey}}</p>
+            <i class="icon ion-android-open" ></i>
+          </a>
         {{/each}}
       </div>
     </div>

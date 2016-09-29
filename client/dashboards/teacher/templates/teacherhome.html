@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Teacher Home</h1>
+      <h1 class="title">Home</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Teacher Home</h1>
+      <h1 class="title" style="text-align:center;">Home</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -24,14 +24,20 @@
     {{#ionContent}}
       <div class="padding">
 
-        <div class="card">
-          <div class="item item-divider">
-            I'm a Header in a Card!
+        <h4><strong>ANNOUNCEMENTS:</strong></h4>
+        {{#each news}}
+          <div class="card">
+            <div class="item item-divider">
+              {{title}} <strong>by: {{author}}</strong>
+            </div>
+            <div class="item item-text-wrap">
+              {{content}}
+            </div>
+            <div class="item item-divider">
+              {{livestamp createdAt}}
+            </div>
           </div>
-          <div class="item item-text-wrap">
-            This is a basic Card with some text.
-          </div>
-        </div>
+        {{/each}}
 
       </div>
     {{/ionContent}}

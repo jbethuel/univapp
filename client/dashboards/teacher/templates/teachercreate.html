@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Teacher Create</h1>
+      <h1 class="title"> Create Class</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Teacher Create</h1>
+      <h1 class="title" style="text-align:center;"> Create Class</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -28,17 +28,17 @@
 
           <label class="item item-input">
             <span class="input-label">Description</span>
-            <input type="text" id="txtAddDescription" placeholder="Subject Description">
+            <input type="text" id="txtAddDescription">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Section Code</span>
-            <input type="text" id="txtAddSectionCode" placeholder="Section Code">
+            <input type="text" id="txtAddSectionCode">
           </label>
 
           <label class="item item-input">
             <span class="input-label">Subject Code</span>
-            <input type="text" id="txtAddSubjectCode" placeholder="Subject Code">
+            <input type="text" id="txtAddSubjectCode">
           </label>
 
           <label class="item item-input item-select">
@@ -87,7 +87,7 @@
             <div class="input-label">
               School Year
             </div>
-            <select id="txtAddYear" >
+            <select id="txtAddYear">
               <option value="2015-2016" selected>2015-2016</option>
               <option value="2016-2017">2016-2017</option>
               <option value="2017-2018">2017-2018</option>
@@ -99,6 +99,7 @@
         </div>
         <button class="button button-block button-balanced" id="btnAddClass">
           Add Class
+          {{> ionIcon icon="checkmark-circled" class="stable"}}
         </button>
 
       </div>
