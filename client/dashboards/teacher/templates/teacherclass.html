@@ -22,32 +22,30 @@
 
   {{#ionView}}
     {{#ionContent}}
-      <div class="padding">
-
-        <div class="list list-inset">
-          <label class="item item-input">
+    <div class="padding">
+      <div class="list">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search">
+            <input type="text" id="txtSearchDescription" placeholder="Description">
           </label>
+          <button class="button button-small" data-ion-modal="filter">
+            Filter
+          </button>
         </div>
-
-        <div class="list">
-
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
-          </a>
-
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
-          </a>
-
-        </div>
-
       </div>
+      <div class="list">
+        {{#each classes}}
+        <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
+          <i class="icon ion-person-stalker"></i>
+            <h3>Subject:{{description}}</h3>
+            <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
+            <p><b>Passkey:</b>{{passkey}}</p>
+          <i class="icon ion-android-open" ></i>
+        </a>
+        {{/each}}
+      </div>
+    </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

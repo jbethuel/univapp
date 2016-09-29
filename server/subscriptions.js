@@ -17,3 +17,7 @@ Meteor.publish('contacts', function() {
 Meteor.publish("news", function(){
   return news.find({});
 });
+
+Meteor.publish("classindex",function(){
+  return classindex.find({});
+});
