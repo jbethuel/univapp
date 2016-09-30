@@ -2,7 +2,7 @@ Template.adminDashboardHome.onCreated(function(){
   this.subscribe('tokens');
   this.subscribe('contacts');
   this.subscribe('news');
-  this.subscribe('contacts');
+  this.subscribe('appusers');
 });
 
 Template.adminDashboardHome.helpers({

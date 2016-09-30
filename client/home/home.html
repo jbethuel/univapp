@@ -5,6 +5,9 @@
 </head>
 
 <body>
+  {{#if connected}}
+    {{connected}}
+  {{/if}}
 </body>
 
 <template name="login">
@@ -13,16 +16,12 @@
 
       <div class="padding">
 
-        {{#if connected}}
-          {{connected}}
-        {{/if}}
-
           <div class="item-image">
             <div class="space"></div>
             {{#animate type="pulse" delay="200"}}
               <img src="buksu_logo.png" class="buksu_logo">
             {{/animate}}
-            <h1 class="home-banner">BukSU APP</h1>
+            <h1 class="home-banner">BukSU App</h1>
             <span class="home-signup">BETA</span>
           </div>
 
@@ -33,6 +32,8 @@
                 <i class="icon fa fa-user placeholder-icon"></i>
                 <input type="number" class="home_id" placeholder="Student ID">
               </label>
+            </div>
+            <div class="list list-inset">
               <label class="item item-input">
                 <i class="icon fa fa-key placeholder-icon"></i>
                 <input type="password" class="home_pw" placeholder="Password">

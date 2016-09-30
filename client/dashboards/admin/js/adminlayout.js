@@ -7,13 +7,13 @@ Template.adminDashboardLayout.events({
     event.preventDefault();
     Router.go('adminDashboardPost');
   },
-  "click #sideGenerateTeacher": function(event){
-    event.preventDefault();
-    Router.go('adminDashboardTokenTeacher')
-  },
   "click #sideGenerateStudent": function(event){
     event.preventDefault();
     Router.go('adminDashboardTokenStudent');
+  },
+  "click #sideGenerateTeacher": function(event){
+    event.preventDefault();
+    Router.go('adminDashboardTokenTeacher')
   },
   "click #sideSettings": function(event){
     event.preventDefault();
@@ -28,17 +28,4 @@ Template.adminDashboardLayout.events({
     Meteor.logout();
     Router.go('login');
   }
-});
-
-Template.adminDashboardLayout.helpers({
-	connected: function(){
-		status = Session.get('status');
-		if(status == "connecting"){
-			$.notify("Connecting", "warn");
-		}else if(status == "disconnected"){
-			$.notify("Disconnected", "error");
-		}else{
-			$.notify("Connected", "success");
-		}
-	}
 });

@@ -27,10 +27,6 @@ Meteor.autorun(function () {
     Session.set('status',stat);
 });
 
-Template.login.onCreated(function(){
-	
-});
-
 Template.login.events({
   "click .home_btn": function(event){
 
@@ -77,7 +73,7 @@ Template.login.events({
   }
 });
 
-Template.login.helpers({
+Template.body.helpers({
 	connected: function(){
 		status = Session.get('status');
 		if(status == "connecting"){

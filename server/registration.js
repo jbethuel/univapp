@@ -13,7 +13,7 @@ Meteor.methods({
       }
       id = Accounts.createUser(studentDetails);
       Roles.addUsersToRoles(id, 'student');
-      tokens.update({token: token}, {$set: {used: "true"}});
+      tokens.update({token: token}, {$set: {used: true}});
     }else{
       throw new Meteor.Error("invalid", "Invalid Token.");
     }
@@ -31,7 +31,7 @@ Meteor.methods({
       }
         id = Accounts.createUser(regDetails);
         Roles.addUsersToRoles(id, 'teacher');
-        tokens.update({token: token}, {$set: {used: "true"}});
+        tokens.update({token: token}, {$set: {used: true}});
     }else{
       throw new Meteor.Error("invalid", "Invalid Token.");
     }

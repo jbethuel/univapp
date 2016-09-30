@@ -1,18 +1,3 @@
-
-
-Template.register.helpers({
-	connected: function(){
-		status = Session.get('status');
-		if(status == "connecting"){
-			$.notify("Connecting", "warn");
-		}else if(status == "disconnected"){
-			$.notify("Disconnected", "error");
-		}else{
-			$.notify("Connected", "success");
-		}
-	}
-});
-
 Template.register.events({
   "click .btn_student_reg": function(event){
 

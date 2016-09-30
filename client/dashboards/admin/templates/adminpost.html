@@ -7,9 +7,9 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Admin Post News</h1>
+      <h1 class="title"> Post News</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Home</h1>
+      <h1 class="title" style="text-align:center;"> Post News</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
       {{#if isAndroid}}
@@ -25,14 +25,12 @@
       <div class="padding">
 
         <div class="list card">
-
           <a href="#" class="item item-icon-right">
             <div class="item-text-wrap">
               <p>Sends news to teachers & students.</p>
             </div>
-            {{> ionIcon icon="android-alert" class="assertive"}}
+            {{> ionIcon icon="android-alert" class="positive"}}
           </a>
-
         </div>
 
         <div class="list">
@@ -45,7 +43,6 @@
         </div>
 
         <div class="row">
-
           <div class="col">
             <a class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</a>
           </div>
@@ -53,7 +50,6 @@
           <div class="col">
             <a class="button button-block icon-right ion-android-send button-balanced btn_send">Send</a>
           </div>
-
         </div>
 
       </div>
