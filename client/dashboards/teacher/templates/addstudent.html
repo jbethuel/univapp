@@ -1,0 +1,26 @@
+<template name="teacheraddstudent">
+  {{#ionModal customTemplate=true title="AddStudent"}}
+    <div class="bar bar-header bar-energized">
+      <h2 class="title">Add Student</h2>
+      <button data-dismiss="modal" class="button button-icon"><i class="icon ion-ios-close-empty"></i></button>
+    </div>
+     <div class="padding">
+       <div class="list list-inset">
+         <label class="item item-input">
+           <i class="icon ion-search placeholder-icon"></i>
+           <input type="text" placeholder="Search" id="txtSearchStud">
+         </label>
+       </div>
+
+       <div class="list">
+         {{outputinfo}}
+         {{#each studentInfos}}
+             <a class="item item-avatar" id="btnAddStud"  data-dismiss="modal" href="#">
+                 <img src="{{#with asd}} {{url}} {{/with}}">
+               <h3 style="color:black">{{profile.fullname}}</h3>
+             </a>
+         {{/each}}
+       </div>
+     </div>
+  {{/ionModal}}
+</template>

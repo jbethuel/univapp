@@ -1,0 +1,13 @@
+<template name="teacherSeatplanLayout">
+  {{#if isInRole 'teacher'}}
+  {{#ionBody}}
+        {{> ionNavBar class="bar-royal"}}
+        {{#ionNavView}}
+          {{> yield}}
+        {{/ionNavView}}
+  {{/ionBody}}
+
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
+</template>

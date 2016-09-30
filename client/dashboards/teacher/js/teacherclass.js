@@ -60,7 +60,7 @@ Template.teacherDashboardClass.events({
 
         if (index == 0) {
           console.log(classIndexId);
-          Router.go('teacherCurrentClass', {
+          Router.go('teacherDashboardSeatplan', {
             class_id: classIndexId
           });
         }

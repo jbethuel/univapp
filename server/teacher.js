@@ -17,5 +17,11 @@ Meteor.methods({
        cols: 0,
        passkey: passkey
      });
+  },
+    deleteClass:function(indexId){
+    classindex.remove({_id:indexId});
+  },
+    addstudent:function(studDetails){
+      students.insert(studDetails);
   }
 });
