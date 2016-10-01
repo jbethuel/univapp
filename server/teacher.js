@@ -23,5 +23,23 @@ Meteor.methods({
   },
     addstudent:function(studDetails){
       students.insert(studDetails);
-  }
+  },
+  EditClass:function(ClassId,Row,Col){
+    classindex.update({_id:ClassId},{$set:{rows:Row,cols:Col}});
+  },
+  SwapExe:function(classId,swapinfo,swap1,swap2){
+    console.log(swap1);
+    console.log(swap2);
+    console.log(swapinfo);
+    if(swap1 == ""){
+      students.update({classId:classId,studId:swap2},{$set:{seatnum:swapinfo[0].seatnum}});
+    }
+    if(swap2 == ""){
+      students.update({classId:classId,studId:swap1},{$set:{seatnum:swapinfo[1].seatnum}});
+    }else {
+      students.update({classId:classId,studId:swap1},{$set:{seatnum:swapinfo[1].seatnum}});
+      students.update({classId:classId,studId:swap2},{$set:{seatnum:swapinfo[0].seatnum}});
+    }
+
+  },
 });

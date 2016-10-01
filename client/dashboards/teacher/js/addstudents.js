@@ -4,14 +4,32 @@ Meteor.subscribe("classindex");
 Meteor.subscribe("appusers");
 });
 
+Template.teacheraddstudent.onDestroyed(function(){
+  Session.set("searchstud",null);
+});
+
 Template.teacheraddstudent.helpers({
   //Output Students Info
   studentInfos:function(){
     var keyword  = Session.get("searchstud");
-    return Meteor.users.find({$or: [{"username": {'$regex' : '.*' + keyword + '.*',$options: 'i'}},{"profile.fullname": {'$regex' : '.*' + keyword + '.*',$options: 'i'}}],roles:["student"]}).fetch();
+    if(keyword == ""){
+      return [];
+    }else{
+      return Meteor.users.find({$or: [{"username": {'$regex' : '.*' + keyword + '.*',$options: 'i'}},{"profile.fullname": {'$regex' : '.*' + keyword + '.*',$options: 'i'}}],roles:["student"]}).fetch();
+    }
   },
   outputinfo:function(){
     return Session.get("selectedSeat") + Session.get("currentClassId");
+  },
+  IsNotInClass:function(id){
+    var notInClass = students.find({classId:Session.get("currentClassId"),studId:id}).count();
+      console.log(notInClass);
+      console.log(Session.get("currentClassId"));
+      if(notInClass == 0){
+        return true;
+      }else{
+        return false;
+      }
   }
 
 });

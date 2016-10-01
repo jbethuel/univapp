@@ -1,4 +1,4 @@
-<template name="teacherDashboardSeatplan">
+<template style="background-color:grey;" name="teacherDashboardSeatplan">
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton path="teacherDashboardClass"}}
   {{/contentFor}} {{#contentFor "headerTitle"}}
@@ -7,17 +7,110 @@
   </button>
   {{/contentFor}} {{#ionView}} {{#ionContent}}
 {{#each classinfo}}
-  {{this.cols}}:{{this.rows}}
-  <div  >
+  <div>
+    <ul class="list">
+      <li class="item item-toggle">
+        {{#if isEditChecked}}
+          Edit on
+        {{else}}
+          Edit off
+        {{/if}}
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" name="editSeatplan" class="editSeatplan">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+      </li>
+    </ul>
+    {{#if isEditChecked}}
+
+    <ul class="list">
+      <li class="item item-toggle">
+        {{#if isSwapChecked}}
+          Swap on
+        {{else}}
+          Swap off
+        {{/if}}
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" name="swapSeatplan" class="swapSeatplan">
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+      </li>
+    </ul>
+
+    <h4><b>Edit Seatplan Dimension</b></h4>
+
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Columns : {{this.cols}}
+        </div>
+        <select id="editcolumns">
+          <option selected>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Rows : {{this.rows}}
+        </div>
+        <select id="editrows">
+          <option selected>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+      </label>
+    </div>
+
+    <button class="button button-block button-balanced" id="btnSeatplanDimension">Save</button>
+    {{/if}}
+  </div>
+
+  <div>
     <div style="top:0px; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: scroll">
     <table>
       {{#each loopcol}}
       <tr>
         {{#each looprow column ../rows}}
           {{#if isTaken ./col row}}
-            <td style="padding:10px">{{>takenSeat}}</td>
+            {{#if isSwapSeatnum ./col row}}
+              <td style="padding:10px">{{>swapreadySeat}}</td>
+            {{else}}
+              <td style="padding:10px">{{>takenSeat}}</td>
+            {{/if}}
+
           {{else}}
-            <td style="padding:10px">{{>vacantSeat}}</td>
+              {{#if isEditChecked}}
+                {{#if isSwapChecked}}
+                  {{#if isSwapReady}}
+                    <td style="padding:10px">{{>swapvacantSeat}}</td>
+                  {{else}}
+                      <td style="padding:10px">{{>blankSeat}}</td>
+                  {{/if}}
+                {{else}}
+                  <td style="padding:10px">{{>vacantSeat}}</td>
+                {{/if}}
+              {{else}}
+                <td style="padding:10px">{{>blankSeat}}</td>
+              {{/if}}
           {{/if}}
         {{/each}}
       </tr>
@@ -30,11 +123,44 @@
 </template>
 
 <!-- ======================================================================================================= -->
-
+<!--this will show template if the seat is already taken--->
 <template name="takenSeat">
+  <div class="card selectSeat" value="12" style="position:relative;width:110px; height:175px;border:solid 3px white">
+    <div class="item item-text-wrap">
+      <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent white transparent transparent;">
+      </div>
+      <img src="/tick.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
+      <div style="position:absolute;top:10px;left:10px">
+        <img src="/test.jpg" style="width:85px;height:100px">
+        <h3><b>{{name}}</b></h3>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--this will show template if the student is present--->
+<template name="presentSeat">
   <div class="card selectSeat" value="12" style="position:relative;width:110px; height:175px;border:solid 3px green">
+
     <div class="item item-text-wrap">
       <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent green transparent transparent;">
+      </div>
+      <img src="/tick.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
+      <div style="position:absolute;top:10px;left:10px">
+        <img src="/test.jpg" style="width:85px;height:100px">
+        <h3><b>Cervantes</b></h3>
+        <h5><b>Nino Paul</b></h5>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<!--this will show template if the student is absent--->
+<template name="absentSeat">
+  <div class="card selectSeat" value="12" style="position:relative;width:110px; height:175px;border:solid 3px red">
+    <div class="item item-text-wrap">
+      <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent red transparent transparent;">
       </div>
       <img src="/tick.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
       <div style="position:absolute;top:10px;left:10px">
@@ -46,10 +172,61 @@
   </div>
 </template>
 
+<!--this will show template if the student is late--->
+<template name="lateSeat">
+  <div class="card selectSeat" value="12" style="position:relative;width:110px; height:175px;border:solid 3px orange">
+    <div class="item item-text-wrap">
+      <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent orange transparent transparent;">
+      </div>
+      <img src="/tick.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
+      <div style="position:absolute;top:10px;left:10px">
+        <img src="/test.jpg" style="width:85px;height:100px">
+        <h3><b>Cervantes</b></h3>
+        <h5><b>Nino Paul</b></h5>
+      </div>
+    </div>
+  </div>
+</template>
+
+<!--this will show template if swap is on--->
+<template name="swapreadySeat">
+  <div class="card selectswapSeat" value="12" style="position:relative;width:110px; height:175px;border:solid 3px #0362B4">
+
+    <div class="item item-text-wrap">
+      <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent #0362B4 transparent transparent;">
+      </div>
+      <img src="/swapready.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
+      <div style="position:absolute;top:10px;left:10px">
+        <img src="/test.jpg" style="width:85px;height:100px">
+        <h3><b>{{name}}</b></h3>
+      </div>
+    </div>
+
+  </div>
+</template>
+
+<!--this will show template if the edit is enabled and nobody is assigned--->
 <template name="vacantSeat">
   <div class="card selectSeat" data-ion-modal="teacheraddstudent" style="position:relative;width:110px; height:175px;border:solid 3px #EFEFEF;background-color:#EFEFEF">
     <div class="item item-text-wrap" style="background-color:#EFEFEF">
       <img src="/add.png" style="position:absolute;width:73px;height:73px;top:40px">
+    </div>
+  </div>
+</template>
+
+<!--this will show template if nobody is seated and the edit is disabled, this will show a blank--->
+<template name="blankSeat">
+  <div class="card" style="position:relative;width:110px; height:175px;border:solid 3px white;background-color:white;">
+    <div class="item item-text-wrap" style="background-color:white">
+    </div>
+  </div>
+</template>
+
+<!--this will show template if seat is vacant for swap--->
+<template name="swapvacantSeat">
+  <div class="card takeSwap" style="position:relative;width:110px; height:175px;border:solid 3px #EFEFEF;background-color:#EFEFEF">
+    <div class="item item-text-wrap" style="background-color:#EFEFEF">
+      <img src="/swap.png" style="position:absolute;width:73px;height:73px;top:40px">
     </div>
   </div>
 </template>
