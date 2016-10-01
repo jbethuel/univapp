@@ -7,33 +7,25 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Admin Token Teacher</h1>
+      <h1 class="title"> Teacher Token</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Home</h1>
+      <h1 class="title" style="text-align:center;"> Teacher Token</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
 
-        <div class="list card">
-
-          <a href="#" class="item item-icon-right">
-            <div class="item-text-wrap">
-              <p>Generate tokens for teachers.</p>
-            </div>
-            {{> ionIcon icon="android-alert" class="royal"}}
-          </a>
-
-        </div>
+        <li class="item item-toggle">
+          {{#if available}}available{{else}}unavailable{{/if}}
+         <label class="toggle toggle-balanced">
+           <input type="checkbox" class="available">
+           <div class="track">
+             <div class="handle"></div>
+           </div>
+         </label>
+        </li>
 
         <button class="button button-block button-balanced btn_token">
           Generate Token
@@ -44,7 +36,9 @@
           {{#each tokens}}
             <li class="item">
               <span>{{token}}</span>
+              {{#if available}}
               <button class="button button-icon icon ion-ios-copy pull-right btn_copy" data-clipboard-text="{{token}}"></button>
+              {{/if}}
             </li>
           {{/each}}
         </ul>

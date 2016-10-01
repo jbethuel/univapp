@@ -11,32 +11,13 @@
     {{else}}
       <h1 class="title" style="text-align:center;"> Student Token</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
 
-        <!-- <div class="list card">
-
-          <a href="#" class="item item-icon-right">
-            <div class="item-text-wrap">
-              <p>Generate tokens for student.</p>
-            </div>
-            {{> ionIcon icon="android-alert" class="royal"}}
-          </a>
-
-        </div> -->
-
         <ul class="list">
-
           <li class="item item-toggle">
             {{#if available}}available{{else}}unavailable{{/if}}
            <label class="toggle toggle-balanced">
@@ -46,7 +27,6 @@
              </div>
            </label>
           </li>
-
         </ul>
 
         <button class="button button-block button-balanced btn_token">
@@ -58,7 +38,9 @@
           {{#each tokens}}
             <li class="item">
               <span>{{token}}</span>
+              {{#if available}}
               <button class="button button-icon icon ion-ios-copy pull-right btn_copy" data-clipboard-text="{{token}}"></button>
+              {{/if}}
             </li>
           {{/each}}
         </ul>

@@ -1,6 +1,6 @@
 Template.adminDashboardTokenStudent.onCreated(function(){
   this.subscribe('tokensStudent');
-  Session.setDefault("available", "available");
+  Session.setDefault("available", "unavailable");
   new Clipboard('button');
 });
 

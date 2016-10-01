@@ -7,17 +7,10 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Admin Settings</h1>
+      <h1 class="title"> Settings</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Home</h1>
+      <h1 class="title" style="text-align:center;"> Settings</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}
@@ -25,31 +18,13 @@
       <div class="padding">
 
         <div class="list">
-
           <a class="item item-thumbnail-left" href="#">
             <img src="../user.png">
             <h2>ADMIN</h2>
             <p>Upload/Change your avatar</p>
             <p><input type="file"></p>
           </a>
-
         </div>
-
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
 
       </div>
     {{/ionContent}}

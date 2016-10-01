@@ -13,7 +13,7 @@ Template.adminDashboardHome.helpers({
     return tokens.find({}).count();
   },
   tokensUsed: function(){
-    return tokens.find({used: "true"}).count();
+    return tokens.find({used: true}).count();
   },
   students: function(){
     return Meteor.users.find({roles: "student"}).count();

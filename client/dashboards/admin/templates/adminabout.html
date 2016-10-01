@@ -7,17 +7,10 @@
 
   {{#contentFor "headerTitle"}}
     {{#if isAndroid}}
-      <h1 class="title">Admin About</h1>
+      <h1 class="title">About The App</h1>
     {{else}}
-      <h1 class="title" style="text-align:center;">Admin Home</h1>
+      <h1 class="title" style="text-align:center;">About The App</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}

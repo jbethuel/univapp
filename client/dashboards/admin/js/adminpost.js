@@ -16,6 +16,7 @@ Template.adminDashboardPost.events({
         }
       }]
     });
+
   },
   "click .btn_send": function(event){
     event.preventDefault();
@@ -25,17 +26,10 @@ Template.adminDashboardPost.events({
 
     if(title == "" || content == ""){
 
-      IonPopup.show({
-        title: "ERROR!",
-        template: "<div class='title_prompt'>Title and content should not be empty.</div>",
-        buttons: [{
-          text: 'OK',
-          type: 'button-assertive',
-          onTap: function() {
-            IonPopup.close();
-          }
-        }]
-      });
+      title = "ERROR!";
+      template = "<div class='title_prompt'>Title and content should not be empty.</div>";
+      button = "button-assertive";
+      Meteor.Messages.dialog(title, template, button);
 
     }else{
 
