@@ -1,0 +1,63 @@
+<template name="teacherDashboardAttendance">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="teacherDashboardClass"}}
+  {{/contentFor}} {{#contentFor "headerTitle"}}
+  <button class="button button-clear pull-right" data-ion-menu-toggle="right">
+    {{#if isAndroid}} {{> ionIcon icon='android-more-vertical'}} {{else}} {{> ionIcon icon='navicon'}} {{/if}}
+  </button>
+  {{/contentFor}} {{#ionView}} {{#ionContent}}
+{{#each classinfo}}
+  <div class="list">
+    <label class="item item-input">
+      <span class="input-label"></span>
+      <input type="date" style="font-size:20px" value="{{dateToday}}" id="date_selected">
+    </label>
+  </div>
+<ul class="list">
+  <li class="item item-toggle">
+    {{#if isCheckedOn}}
+      Checking : On
+    {{else}}
+      Checking : Off
+    {{/if}}
+   <label class="toggle toggle-balanced">
+     <input type="checkbox" id="checkAttendance" >
+     <div class="track">
+       <div class="handle"></div>
+     </div>
+   </label>
+  </li>
+</ul>
+  <div>
+    <div style="top:0px; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: scroll">
+    <table>
+      {{#each loopcol}}
+      <tr>
+        {{#each looprow column ../rows}}
+          {{#if isTaken ./col row}}
+            {{#each studinfo ./col ./row}}
+              {{#if isUnmark }}
+                <td style="padding:10px">{{>attendancetakenSeat}}</td>
+              {{/if}}
+              {{#if isPresent}}
+                <td style="padding:10px">{{>presentSeat}}</td>
+              {{/if}}
+              {{#if isLate}}
+                <td style="padding:10px">{{>lateSeat}}</td>
+              {{/if}}
+              {{#if isAbsent}}
+                <td style="padding:10px">{{>absentSeat}}</td>
+              {{/if}}
+              {{/each}}
+          {{else}}
+              <td style="padding:10px">{{>blankSeat}}</td>
+          {{/if}}
+        {{/each}}
+      </tr>
+      {{/each}}
+    </table>
+    </div>
+  </div>
+{{/each}}
+  {{/ionContent}} {{/ionView}}
+</template>

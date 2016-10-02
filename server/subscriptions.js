@@ -25,3 +25,7 @@ Meteor.publish("classindex",function(){
 Meteor.publish("students",function(){
   return students.find({});
 });
+
+Meteor.publish("attendance",function(){
+  return attendance.find({});
+});

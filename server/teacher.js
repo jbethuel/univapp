@@ -1,4 +1,22 @@
+
 Meteor.methods({
+  getserverdate:function(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+      dd='0'+dd;
+    }
+
+    if(mm<10) {
+      mm='0'+mm;
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    console.log(today);
+    return today;
+  },
   AddClass:function(description, sec_code, subj_code, sched, time_start, time_end, sem, school_yr){
     var passkey = Random.id(8);
 
@@ -42,4 +60,10 @@ Meteor.methods({
     }
 
   },
+  attendanceCheck:function(classId,studId,remark,date){
+    attendance.insert({classId:classId,studId:studId,remark:remark,dateCreated:date});
+  },
+  attendanceUpdate:function(classId,studId,remark,date){
+    attendance.update({classId:classId,studId:studId,dateCreated:date},{$set:{remark:remark}});
+  }
 });
