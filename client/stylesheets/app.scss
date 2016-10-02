@@ -6,6 +6,10 @@ $loading-font-size: 22px;
 @import 'meteoric_ionic-sass/_ionic';
 @import 'meteoric_ionicons-sass/_ionicons';
 
+.space-register{
+  padding-bottom: 10px;
+}
+
 // login page start
 
 .home_login{
@@ -56,9 +60,8 @@ $loading-font-size: 22px;
 //register page
 
 .register-form{
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-top: 26px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 //register page end

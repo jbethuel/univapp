@@ -1,6 +1,6 @@
 Meteor.methods({
 
-  registerStudent: function(token, stud_id, fullname, pw){
+  registerStudent: function(token, stud_id, firstname, middlename, lastname, pw){
     var ifexist = tokens.find({token:token, used: false, type:'student'}).count();
     if(ifexist === 1){
       studentDetails = {
@@ -8,7 +8,9 @@ Meteor.methods({
         password: pw,
         profile: {
           id: stud_id,
-          fullname: fullname
+          firstname: firstname,
+          middlename: middlename,
+          lastname: lastname
         }
       }
       id = Accounts.createUser(studentDetails);
@@ -18,7 +20,7 @@ Meteor.methods({
       throw new Meteor.Error("invalid", "Invalid Token.");
     }
   },
-  registerTeacher: function(token, teach_id, fullname, pw){
+  registerTeacher: function(token, teach_id, firstname, middlename, lastname, pw){
     var ifexist = tokens.find({token: token, used: false, type:'teacher'}).count();
     if(ifexist === 1){
         regDetails = {
@@ -26,7 +28,9 @@ Meteor.methods({
         password: pw,
         profile: {
           id: teach_id,
-          fullname: fullname
+          firstname: firstname,
+          middlename: middlename,
+          lastname: lastname
         }
       }
         id = Accounts.createUser(regDetails);

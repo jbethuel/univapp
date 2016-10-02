@@ -7,21 +7,15 @@
 
           <div class="content">
 
-            {{#if connected}}
-              {{connected}}
-            {{/if}}
-
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="../user.png">
                 <h2 class="sidebar_name">Joseph Bethuel</h2>
                 <h2 class="sidebar_name">STUDENT</h2>
               </a>
-
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Main Menu
               </div>
-
               <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'studentDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Home
                 {{#if isAndroid}}
@@ -30,7 +24,6 @@
                   {{> ionIcon icon="ios-home" class="positive"}}
                 {{/if}}
               </div>
-
               <div class="item item-icon-left" id="sideMessenger" style="{{#if isActiveRoute 'studentDashboardMessenger'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Messenger
                 {{#if isAndroid}}
@@ -39,7 +32,6 @@
                   {{> ionIcon icon="ios-email" class="positive"}}
                 {{/if}}
               </div>
-
               <div class="item item-icon-left" id="sideSearch" style="{{#if isActiveRoute 'studentDashboardSearch'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Search
                 {{#if isAndroid}}
@@ -48,7 +40,6 @@
                   {{> ionIcon icon="ios-search" class="positive"}}
                 {{/if}}
               </div>
-
               <div class="item item-icon-left" id="sideSchedules" style="{{#if isActiveRoute 'studentDashboardSchedules'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 My Schedules
                 {{#if isAndroid}}
@@ -57,7 +48,6 @@
                   {{> ionIcon icon="ios-list" class="positive"}}
                 {{/if}}
               </div>
-
               <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'studentDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Settings
                 {{#if isAndroid}}
@@ -66,7 +56,9 @@
                   {{> ionIcon icon="ios-settings" class="positive"}}
                 {{/if}}
               </div>
-
+              <div class="item item-divider sidebar_subtitle sidebar-item-divider">
+                Application
+              </div>
               <div class="item item-icon-left" id="sideAbout" style="{{#if isActiveRoute 'studentDashboardAbout'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 About
                 {{#if isAndroid}}
@@ -75,10 +67,9 @@
                   {{> ionIcon icon="android-alert" class="positive"}}
                 {{/if}}
               </div>
-
               <div class="item item-icon-left" id="sideLogout" data-ion-menu-close>
                 Log out
-                {{> ionIcon icon="power" class="energized"}}
+                {{> ionIcon icon="ios-undo" class="energized"}}
               </div>
 
             </div>

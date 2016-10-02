@@ -29,16 +29,3 @@ Template.teacherDashboardLayout.events({
     Router.go('login');
   }
 });
-
-Template.teacherDashboardLayout.helpers({
-	connected: function(){
-		status = Session.get('status');
-		if(status == "connecting"){
-			$.notify("Connecting", "warn");
-		}else if(status == "disconnected"){
-			$.notify("Disconnected", "error");
-		}else{
-			$.notify("Connected", "success");
-		}
-	}
-});
