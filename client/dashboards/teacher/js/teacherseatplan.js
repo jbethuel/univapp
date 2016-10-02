@@ -2,6 +2,7 @@ Template.teacherDashboardSeatplan.onCreated(function(){
 Meteor.subscribe("classindex");
 Meteor.subscribe("students");
 Meteor.subscribe("appusers");
+Meteor.subscribe("attendance");
 Session.setDefault("editSeatplan",false);
 Session.setDefault("swapSeatplan",false);
 //set the Session swap1 default to false meaning the swap function is not yet activated
@@ -11,10 +12,10 @@ Session.setDefault("studentswap",[]);
 });
 
 Template.teacherDashboardSeatplan.onDestroyed(function(){
-Session.set("editSeatplan", null);
-Session.set("swapSeatplan", null);
-Session.set("swap",null);
-Session.setDefault("studentswap",null);
+Session.set("editSeatplan", false);
+Session.set("swapSeatplan", false);
+Session.set("swap",false);
+Session.setDefault("studentswap",[]);
 });
 
 Template.teacherDashboardSeatplan.helpers({
@@ -22,6 +23,9 @@ Template.teacherDashboardSeatplan.helpers({
     if(Session.get("editSeatplan") == true){
       return true;
     }else{
+      Session.set("swapSeatplan", false);
+      Session.set("swap",false);
+      Session.setDefault("studentswap",[]);
       return false;
     }
   },
@@ -41,8 +45,8 @@ Template.teacherDashboardSeatplan.helpers({
       return false;
     }
   },
-  isSwapSeatnum:function(col,row){
-    var seatnum = col + ":" + row,
+  isSwapSeatnum:function(seatnum){
+    var seatnum = seatnum,
         swapseatnum = Session.get("studentswap");
     if(swapseatnum.length > 0){
       if(seatnum == swapseatnum[0].seatnum){
@@ -58,6 +62,10 @@ Template.teacherDashboardSeatplan.helpers({
   classinfo:function(){
     Session.set("currentClassId",this.class_id);
     return classindex.find({_id:this.class_id}).fetch();
+  },
+  studinfo:function(col,row){
+    console.log(col+":"+row);
+    return students.find({seatnum:col+":"+row}).fetch();
   },
   loopcol:function(){
     var countvar = [];
@@ -81,6 +89,28 @@ Template.teacherDashboardSeatplan.helpers({
       return true;
     }else{
       return false;
+    }
+  },
+  isUnmark:function(){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:Session.get("datetoday")}).count() == 0){
+        console.log(Session.get("datetoday"));
+        console.log(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:"2016-10-2"}).count());
+        return true;
+    }
+  },
+  isPresent:function(){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"present",dateCreated:Session.get("datetoday")}).count() == 1){
+        return true;
+    }
+  },
+  isLate:function(){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"late",dateCreated:Session.get("datetoday")}).count() == 1){
+        return true;
+    }
+  },
+  isAbsent:function(){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"absent",dateCreated:Session.get("datetoday")}).count() == 1){
+        return true;
     }
   }
 });

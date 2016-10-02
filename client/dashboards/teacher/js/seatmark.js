@@ -13,10 +13,17 @@ Template.vacantSeat.events({
 
 Template.takenSeat.helpers({
   name:function(){
-    var info =  students.find({seatnum:this.col+":"+this.row}).fetch();
+    var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();
     return name[0].profile.fullname;
   },
+  isSwapChecked:function(){
+    if(Session.get("swap")== true){
+      return true;
+    }else{
+      return false;
+    }
+  }
 })
 
 Template.takenSeat.events({
@@ -26,13 +33,11 @@ Template.takenSeat.events({
       if(Session.get("swap") == false){
         var swapinfo = Session.get("studentswap");
         Session.set("swap",true);
-        swapinfo.push({seatnum:this.col + ":" + this.row});
+        swapinfo.push({seatnum:this.seatnum});
         Session.set("studentswap",swapinfo);
-        var out = this.col + ":" + this.row;
-        console.log(out);
       }else{
         var swapinfo = Session.get("studentswap");
-        swapinfo.push({seatnum:this.col + ":" + this.row});
+        swapinfo.push({seatnum:this.seatnum});
         var swap1 = students.find({seatnum:swapinfo[0].seatnum},{studId:1}).fetch(),
             swap2 = students.find({seatnum:swapinfo[1].seatnum},{studId:1}).fetch();
 
@@ -164,7 +169,7 @@ Template.swapvacantSeat.events({
 
 Template.swapreadySeat.helpers({
   name:function(){
-    var info =  students.find({seatnum:this.col+":"+this.row}).fetch();
+    var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();
     return name[0].profile.fullname;
   },

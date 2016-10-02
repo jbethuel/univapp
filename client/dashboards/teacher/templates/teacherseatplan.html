@@ -91,12 +91,34 @@
       <tr>
         {{#each looprow column ../rows}}
           {{#if isTaken ./col row}}
-            {{#if isSwapSeatnum ./col row}}
-              <td style="padding:10px">{{>swapreadySeat}}</td>
-            {{else}}
-              <td style="padding:10px">{{>takenSeat}}</td>
-            {{/if}}
+            {{#each studinfo ./col ./row}}
+              {{#if isSwapSeatnum seatnum}}
+                <td style="padding:10px">{{>swapreadySeat}}</td>
+              {{else}}
+              {{#if isSwapChecked}}
+                <td style="padding:10px">{{>takenSeat}}</td>
+              {{else}}
+                {{#if isUnmark }}
+                  <td style="padding:10px">{{>takenSeat}}</td>
+                {{else}}
+                  {{#if isPresent}}
+                    <td style="padding:10px">{{>presentSeat}}</td>
+                  {{else}}
+                    {{#if isLate}}
+                      <td style="padding:10px">{{>lateSeat}}</td>
+                    {{else}}
+                      {{#if isAbsent}}
+                        <td style="padding:10px">{{>absentSeat}}</td>
+                      {{/if}}
+                    {{/if}}
 
+                  {{/if}}
+
+                {{/if}}
+
+              {{/if}}
+              {{/if}}
+            {{/each}}
           {{else}}
               {{#if isEditChecked}}
                 {{#if isSwapChecked}}

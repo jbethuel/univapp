@@ -6,7 +6,9 @@
     <div class="item item-text-wrap">
       <div style="position: absolute;z-index:9998;right:0px;top:-0px;width: 0;height: 0;border-style: solid;border-width: 0 30px 30px 0;border-color: transparent white transparent transparent;">
       </div>
-      <img src="/tick.png" style="position:absolute;z-index:9999;width:12px;right:1px;top:1px;">
+      {{#if isSwapChecked}}
+        <img src="/swap.png" style="position:absolute;z-index:9999;width:15px;right:1px;top:1px;">
+      {{/if}}
       <div style="position:absolute;top:10px;left:10px">
         <img src="/test.jpg" style="width:85px;height:100px">
         <h3><b>{{name}}</b></h3>
