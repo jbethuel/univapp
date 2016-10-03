@@ -65,5 +65,8 @@ Meteor.methods({
   },
   attendanceUpdate:function(classId,studId,remark,date){
     attendance.update({classId:classId,studId:studId,dateCreated:date},{$set:{remark:remark}});
+  },
+  attendanceReset:function(classId,date){
+    attendance.remove({classId:classId,dateCreated:date});
   }
 });

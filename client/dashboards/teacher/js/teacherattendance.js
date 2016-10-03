@@ -93,6 +93,42 @@ Template.teacherDashboardAttendance.helpers({
 });
 
 Template.teacherDashboardAttendance.events({
+  "click #checkAttendancePresent":function(e){
+    e.preventDefault();
+    var classId = Session.get("currentClassId");
+    var student = students.find({classId:classId}).fetch(),
+        date = Session.get("currentDateSelected");
+      console.log(student);
+    if(student.length > 0){
+      for(var x=0;x<student.length;x++){
+        if(attendance.find({classId:classId,studId:student[x].studId,dateCreated:date}).count() == 0){
+            Meteor.call("attendanceCheck",classId,student[x].studId,"present",date);
+        }
+      }
+    }
+
+  },
+  "click #checkAttendanceAbsent":function(e){
+    e.preventDefault();
+    var classId = Session.get("currentClassId");
+    var student = students.find({classId:classId}).fetch(),
+        date = Session.get("currentDateSelected");
+      console.log(student);
+    if(student.length > 0){
+      for(var x=0;x<student.length;x++){
+        if(attendance.find({classId:classId,studId:student[x].studId,dateCreated:date}).count() == 0){
+            Meteor.call("attendanceCheck",classId,student[x].studId,"absent",date);
+        }
+      }
+    }
+
+  },
+  "click #checkAttendanceReset":function(e){
+    e.preventDefault();
+    var classId = Session.get("currentClassId"),
+        date = Session.get("currentDateSelected");
+      Meteor.call("attendanceReset",classId,date);
+  },
   "click #checkAttendance": function(event){
     if($('#checkAttendance').prop("checked") == true){
         if(attendance.find({classId:Session.get("currentClassId"),dateCreated:$("#date_selected").val()}).count() == 0){
