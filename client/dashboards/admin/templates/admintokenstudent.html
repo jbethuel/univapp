@@ -17,33 +17,37 @@
     {{#ionContent}}
       <div class="padding">
 
-        <ul class="list">
-          <li class="item item-toggle">
-            {{#if available}}available{{else}}unavailable{{/if}}
-           <label class="toggle toggle-balanced">
-             <input type="checkbox" class="available">
-             <div class="track">
-               <div class="handle"></div>
-             </div>
-           </label>
-          </li>
-        </ul>
-
-        <button class="button button-block button-balanced btn_token">
-          Generate Token
-          {{> ionIcon icon="android-add-circle"}}
-        </button>
-
-        <ul class="list">
-          {{#each tokens}}
-            <li class="item">
-              <span>{{token}}</span>
-              {{#if available}}
-              <button class="button button-icon icon ion-ios-copy pull-right btn_copy" data-clipboard-text="{{token}}"></button>
-              {{/if}}
+        {{#if Template.subscriptionsReady}}
+          <ul class="list">
+            <li class="item item-toggle">
+              {{#if available}}available{{else}}unavailable{{/if}}
+             <label class="toggle toggle-balanced">
+               <input type="checkbox" class="available">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
             </li>
-          {{/each}}
-        </ul>
+          </ul>
+
+          <button class="button button-block button-balanced btn_token">
+            Generate Token
+            {{> ionIcon icon="android-add-circle"}}
+          </button>
+
+          <ul class="list">
+            {{#each tokens}}
+              <li class="item">
+                <span>{{token}}</span>
+                {{#if available}}
+                <button class="button button-icon icon ion-ios-copy pull-right btn_copy" data-clipboard-text="{{token}}"></button>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
+          {{else}}
+            {{>spinner}}
+        {{/if}}
 
       </div>
     {{/ionContent}}

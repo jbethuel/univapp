@@ -24,29 +24,32 @@
     {{#ionContent}}
       <div class="padding">
 
+      {{#if Template.subscriptionsReady}}
         <div class="list">
 
-          <a class="item item-thumbnail-left" href="#">
-            <img src="../class.png">
-            <h3><strong>System Analysis Design</strong></h3>
-            <h3><strong>SAD</strong></h3>
-            <h3><strong>AS123</strong></h3>
-            <h3><strong>MWF - [7:30am - 9:00am]</strong></h3>
-            <h3><strong>1st Sem - [2015-2016]</strong></h3>
-            <h3><strong>Tr. Mam Way Ligo</strong></h3>
-          </a>
-
-          <a class="item item-thumbnail-left" href="#">
-            <img src="../class.png">
-            <h3><strong>System Analysis Design</strong></h3>
-            <h3><strong>SAD</strong></h3>
-            <h3><strong>AS123</strong></h3>
-            <h3><strong>MWF - [7:30am - 9:00am]</strong></h3>
-            <h3><strong>1st Sem - [2015-2016]</strong></h3>
-            <h3><strong>Tr. Mam Way Ligo</strong></h3>
-          </a>
+          {{#each myclasses}}
+            {{#each inClass classId}}
+              <a class="item item-thumbnail-left" href="{{pathFor 'tabs.one'}}" id="btnenterclass">
+                <img src="../class.png">
+                <h3><strong>{{description}}</strong></h3>
+                <h3><strong>{{sec_code}} - {{subj_code}}</strong></h3>
+                <h3>
+                  <strong>
+                    {{#each TeacherName teachId}}
+                      Prof. {{profile.firstname}} {{profile.lastname}}
+                    {{/each}}
+                  </strong>
+                </h3>
+                <h3>{{sched}} - [{{time_start}} - {{time_end}}]</h3>
+                <h3>{{sem}} - [{{school_yr}}]</h3>
+              </a>
+            {{/each}}
+          {{/each}}
 
         </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
       </div>
     {{/ionContent}}

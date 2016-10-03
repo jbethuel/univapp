@@ -23,17 +23,21 @@
   {{#ionView}}
     {{#ionContent}}
     <div class="padding">
-      <div class="list">
-        {{#each classes}}
-          <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
-            <i class="icon ion-person-stalker"></i>
-              <h3>Subject:{{description}}</h3>
-              <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
-              <p><b>Passkey:</b>{{passkey}}</p>
-            <i class="icon ion-android-open" ></i>
-          </a>
-        {{/each}}
-      </div>
+      {{#if Template.subscriptionsReady}}
+        <div class="list">
+          {{#each classes}}
+            <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
+              <i class="icon ion-person-stalker"></i>
+                <h3>Subject:{{description}}</h3>
+                <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
+                <p><b>Passkey:</b>{{passkey}}</p>
+              <i class="icon ion-android-open" ></i>
+            </a>
+          {{/each}}
+        </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
     </div>
     {{/ionContent}}
   {{/ionView}}

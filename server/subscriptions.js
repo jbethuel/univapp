@@ -29,3 +29,7 @@ Meteor.publish("students",function(){
 Meteor.publish("attendance",function(){
   return attendance.find({});
 });
+
+Meteor.publish("messageboard", function(){
+  return messageboard.find({});
+});

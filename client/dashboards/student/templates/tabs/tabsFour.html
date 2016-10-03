@@ -2,68 +2,51 @@
   {{> _tabsHeader}}
 
   {{#ionContent class="padding"}}
-    <!-- {{#each messages}}
-      {{#if equals sentBy currentUser._id}} -->
-        <div class="list">
-            <a class="item item-thumbnail-right" href="#">
-              <img src="../../admin.png">
-                <h3>You</h3>
-              <p>{{message}}haha</p>
-              <p>{{livestamp createdAt}}</p>
-            </a>
-        </div>
+    {{#if Template.subscriptionsReady}}
+      {{#each messages}}
+        {{#if equals senderId currentUser._id}}
+          <div class="list">
+              <a class="item item-thumbnail-right" href="#">
+                <img src="../../admin.png">
+                  <h3>You</h3>
+                <p>{{message}}haha</p>
+                <p>{{livestamp createdAt}}</p>
+              </a>
+          </div>
+          {{else}}
+          <div class="list">
+              <a class="item item-thumbnail-left" href="#">
+                <img src="../../user.png">
+                  <h3>{{#each sendername senderId}}{{profile.firstname}}{{/each}}</h3>
+                <p>{{message}}hahahah</p>
+                <p>{{livestamp createdAt}}</p>
+              </a>
+          </div>
+          {{/if}}
+        {{/each}}
+
+      {{else}}
+        {{>spinner}}
+      {{/if}}
+    {{/ionContent}}
         <!-- {{else}} -->
-        <div class="list">
+        <!-- <div class="list">
             <a class="item item-thumbnail-left" href="#">
               <img src="../../user.png">
                 <h3>{{teacherName}}mam wayligo</h3>
               <p>{{message}}hahahah</p>
               <p>{{livestamp createdAt}}</p>
             </a>
-        </div>
-        <div class="list">
-            <a class="item item-thumbnail-right" href="#">
-              <img src="../../admin.png">
-                <h3>You</h3>
-              <p>{{message}}haha</p>
-              <p>{{livestamp createdAt}}</p>
-            </a>
-        </div>
-        <!-- {{else}} -->
-        <div class="list">
-            <a class="item item-thumbnail-left" href="#">
-              <img src="../../user.png">
-                <h3>{{teacherName}}mam wayligo</h3>
-              <p>{{message}}hahahah</p>
-              <p>{{livestamp createdAt}}</p>
-            </a>
-        </div>
-        <div class="list">
-            <a class="item item-thumbnail-right" href="#">
-              <img src="../../admin.png">
-                <h3>You</h3>
-              <p>{{message}}haha</p>
-              <p>{{livestamp createdAt}}</p>
-            </a>
-        </div>
-        <!-- {{else}} -->
-        <div class="list">
-            <a class="item item-thumbnail-left" href="#">
-              <img src="../../user.png">
-                <h3>{{teacherName}}mam wayligo</h3>
-              <p>{{message}}hahahah</p>
-              <p>{{livestamp createdAt}}</p>
-            </a>
-        </div>
+        </div> -->
       <!-- {{/if}}
     {{/each}} -->
-  {{/ionContent}}
+
 
   {{#ionFooterBar class="item item-input-inset"}}
     <label class="item-input-wrapper">
-      <input type="text" placeholder="Type something">
+      <input type="text" class="messagearea" placeholder="Type something">
     </label>
-    <button class="button button-small button-clear">
+    <button class="button button-small button-clear btn_send">
       Send
     </button>
   {{/ionFooterBar}}

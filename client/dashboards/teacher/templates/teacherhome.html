@@ -25,19 +25,26 @@
       <div class="padding">
 
         <h4><strong>ANNOUNCEMENTS:</strong></h4>
-        {{#each news}}
-          <div class="card">
-            <div class="item item-divider">
-              {{title}} <strong>by: {{author}}</strong>
+
+        {{#if Template.subscriptionsReady}}
+          {{#each news}}
+            <div class="list card">
+              <div class="list">
+                  <a class="item item-thumbnail-left" href="#">
+                    <img src="../admin.png">
+                    <h3>What: {{title}}</h3>
+                    <h3>By: {{author}}</h3>
+                    <p>{{content}}</p>
+                  </a>
+                  <div class="item item-text-wrap">
+                    <p>{{livestamp createdAt}}</p>
+                  </div>
+              </div>
             </div>
-            <div class="item item-text-wrap">
-              {{content}}
-            </div>
-            <div class="item item-divider">
-              {{livestamp createdAt}}
-            </div>
-          </div>
-        {{/each}}
+          {{/each}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
 
       </div>
     {{/ionContent}}

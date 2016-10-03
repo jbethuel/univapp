@@ -12,13 +12,6 @@
     {{else}}
       <h1 class="title" style="text-align:center;">Home</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}
@@ -26,21 +19,25 @@
       <div class="padding">
         <h3><strong>ANNOUNCEMENTS:</strong></h3>
 
-        {{#each news}}
-          <div class="list card">
-            <div class="list">
-                <a class="item item-thumbnail-left" href="#">
-                  <img src="../admin.png">
-                  <h3>What: {{title}}</h3>
-                  <h3>By: {{author}}</h3>
-                  <p>{{content}}</p>
-                </a>
-                <div class="item item-text-wrap">
-                  <p>{{livestamp createdAt}}</p>
-                </div>
+        {{#if Template.subscriptionsReady}}
+          {{#each news}}
+            <div class="list card">
+              <div class="list">
+                  <a class="item item-thumbnail-left" href="#">
+                    <img src="../admin.png">
+                    <h3>What: {{title}}</h3>
+                    <h3>By: {{author}}</h3>
+                    <p>{{content}}</p>
+                  </a>
+                  <div class="item item-text-wrap">
+                    <p>{{livestamp createdAt}}</p>
+                  </div>
+              </div>
             </div>
-          </div>
-        {{/each}}
+          {{/each}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
 
       </div>
     {{/ionContent}}
