@@ -1,0 +1,54 @@
+<template name="adminDashboardModify">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    {{#if isAndroid}}
+      <h1 class="title"> Modify User</h1>
+    {{else}}
+      <h1 class="title" style="text-align:center;"> Modify User</h1>
+    {{/if}}
+  {{/contentFor}}
+
+  {{#ionView}}
+
+  {{#ionSubheaderBar class="item-input-inset"}}
+
+  <label class="item-input-wrapper">
+    <input type="text" class="searchuser" placeholder="Search student / teacher Id">
+  </label>
+
+  {{/ionSubheaderBar}}
+
+    {{#ionContent}}
+    <div class="padding">
+
+    {{#if Template.subscriptionsReady}}
+      <div class="list">
+
+        {{#each result}}
+          {{#if user}}
+            <a class="item item-icon-right">
+              <h2><strong>{{username}}</strong></h2>
+              <p>{{profile.lastname}}</p>
+              <p>{{profile.firstname}}</p>
+              <i class="icon ion-log-in" data-ion-modal="_myModal"></i>
+            </a>
+          {{/if}}
+
+        {{else}}
+          No results found.
+        {{/each}}
+
+      </div>
+    {{else}}
+      {{>spinner}}
+    {{/if}}
+
+    </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

@@ -15,6 +15,14 @@ Template.adminDashboardLayout.events({
     event.preventDefault();
     Router.go('adminDashboardTokenTeacher')
   },
+  "click #sideLoginUser": function(event){
+    event.preventDefault();
+    Router.go('adminDashboardLoginUser');
+  },
+  "click #sideModifyAccount": function(event){
+    event.preventDefault();
+    Router.go('adminDashboardModify');
+  },
   "click #sideSettings": function(event){
     event.preventDefault();
     Router.go('adminDashboardSettings');

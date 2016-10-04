@@ -67,6 +67,12 @@
                   {{> ionIcon icon="android-alert" class="positive"}}
                 {{/if}}
               </div>
+              {{#if isImpersonating}}
+              <div class="item item-icon-left" data-unimpersonate data-ion-menu-close>
+                Back to admin
+                {{> ionIcon icon="log-out" class="energized"}}
+              </div>
+              {{/if}}
               <div class="item item-icon-left" id="sideLogout" data-ion-menu-close>
                 Log out
                 {{> ionIcon icon="ios-undo" class="energized"}}

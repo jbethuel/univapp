@@ -42,7 +42,23 @@
               <div class="item item-icon-left" id="sideGenerateTeacher" style="{{#if isActiveRoute 'adminDashboardTokenTeacher'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Generate Token Teacher
                 {{#if isAndroid}}
-                  {{> ionIcon icon="android-add-circle" class="energized"}}
+                  {{> ionIcon icon="plus-round" class="energized"}}
+                {{else}}
+                  {{> ionIcon icon="ios-plus-outline" class="positive"}}
+                {{/if}}
+              </div>
+              <div class="item item-icon-left" id="sideLoginUser" style="{{#if isActiveRoute 'adminDashboardLoginUser'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+                Login As User
+                {{#if isAndroid}}
+                  {{> ionIcon icon="ios-redo" class="energized"}}
+                {{else}}
+                  {{> ionIcon icon="ios-plus-outline" class="positive"}}
+                {{/if}}
+              </div>
+              <div class="item item-icon-left" id="sideModifyAccount" style="{{#if isActiveRoute 'adminDashboardModify'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+                Modify An Account
+                {{#if isAndroid}}
+                  {{> ionIcon icon="edit" class="energized"}}
                 {{else}}
                   {{> ionIcon icon="ios-plus-outline" class="positive"}}
                 {{/if}}

@@ -33,6 +33,8 @@ fastclick@1.0.12
 fortawesome:fontawesome@4.5.0
 fourseven:scss@3.10.0
 geojson-utils@1.0.9
+gwendall:body-events@0.1.6
+gwendall:impersonate@0.2.2
 hot-code-push@1.0.4
 html-tools@1.0.11
 htmljs@1.0.11
