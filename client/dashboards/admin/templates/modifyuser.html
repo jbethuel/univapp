@@ -1,0 +1,52 @@
+<template name="modifyuser">
+  {{#ionModal title="Modify User"}}
+    <div class="padding">
+
+      {{#if Template.subscriptionsReady}}
+        {{#each user}}
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">User ID:</span>
+              <input type="number" class="reg_id" value="{{username}}">
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First Name: </span>
+              <input type="text" class="reg_firstname" value="{{profile.firstname}}">
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Middle Name:</span>
+              <input type="text" class="reg_middlename" value="{{profile.middlename}}">
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Last Name:</span>
+              <input type="text" class="reg_lastname" value="{{profile.lastname}}">
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Password:</span>
+              <input type="password" class="reg_pw">
+            </label>
+          </div>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Confirm Password:</span>
+              <input type="password" class="reg_conf_pw">
+            </label>
+          </div>
+        {{/each}}
+      {{/if}}
+
+      <button class="button button-block button-balanced btn_save">
+        Save Changes
+      </button>
+
+    </div>
+  {{/ionModal}}
+</template>
