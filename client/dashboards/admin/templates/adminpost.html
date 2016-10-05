@@ -1,51 +1,57 @@
 <template name="adminDashboardPost">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='navicon'}}
-    </button>
-  {{/contentFor}}
+  {{#if isInRole 'admin'}}
 
-  {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title"> Post News</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;"> Post News</h1>
-    {{/if}}
-  {{/contentFor}}
+      {{#contentFor "headerButtonLeft"}}
+        <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+          {{> ionIcon icon='navicon'}}
+        </button>
+      {{/contentFor}}
 
-  {{#ionView}}
-    {{#ionContent}}
-      <div class="padding">
+      {{#contentFor "headerTitle"}}
+        {{#if isAndroid}}
+          <h1 class="title"> Post News</h1>
+        {{else}}
+          <h1 class="title" style="text-align:center;"> Post News</h1>
+        {{/if}}
+      {{/contentFor}}
 
-        <div class="list card">
-          <a href="#" class="item item-icon-right">
-            <div class="item-text-wrap">
-              <p>Sends news to teachers & students.</p>
+      {{#ionView}}
+        {{#ionContent}}
+          <div class="padding">
+
+            <div class="list card">
+              <a href="#" class="item item-icon-right">
+                <div class="item-text-wrap">
+                  <p>Sends news to teachers & students.</p>
+                </div>
+                {{> ionIcon icon="android-alert" class="energized"}}
+              </a>
             </div>
-            {{> ionIcon icon="android-alert" class="positive"}}
-          </a>
-        </div>
 
-        <div class="list">
-          <label class="item item-input">
-            <input type="text" class="txtTitle" placeholder="News Title">
-          </label>
-          <label class="item item-input">
-            <textarea class="txtContent" placeholder="Content"></textarea>
-          </label>
-        </div>
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" class="txtTitle" placeholder="News Title">
+              </label>
+              <label class="item item-input">
+                <textarea class="txtContent" placeholder="Content"></textarea>
+              </label>
+            </div>
 
-        <div class="row">
-          <div class="col">
-            <a class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</a>
+            <div class="row">
+              <div class="col col-50">
+                <a class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</a>
+              </div>
+
+              <div class="col col-50">
+                <a class="button button-block icon-right ion-android-send button-balanced btn_send">Send</a>
+              </div>
+            </div>
+
           </div>
+        {{/ionContent}}
+      {{/ionView}}
 
-          <div class="col">
-            <a class="button button-block icon-right ion-android-send button-balanced btn_send">Send</a>
-          </div>
-        </div>
-
-      </div>
-    {{/ionContent}}
-  {{/ionView}}
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

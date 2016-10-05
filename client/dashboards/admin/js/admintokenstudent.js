@@ -1,7 +1,7 @@
 Template.adminDashboardTokenStudent.onCreated(function(){
   this.subscribe('tokensStudent');
   Session.setDefault("available", "unavailable");
-  new Clipboard('button');
+  new Clipboard('.btn_copy');
 });
 
 Template.adminDashboardTokenStudent.onDestroyed(function(){

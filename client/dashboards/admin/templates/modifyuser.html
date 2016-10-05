@@ -1,52 +1,61 @@
 <template name="modifyuser">
-  {{#ionModal title="Modify User"}}
-    <div class="padding">
+  {{#if isInRole 'admin'}}
 
-      {{#if Template.subscriptionsReady}}
-        {{#each user}}
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">User ID:</span>
-              <input type="number" class="reg_id" value="{{username}}">
-            </label>
-          </div>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">First Name: </span>
-              <input type="text" class="reg_firstname" value="{{profile.firstname}}">
-            </label>
-          </div>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Middle Name:</span>
-              <input type="text" class="reg_middlename" value="{{profile.middlename}}">
-            </label>
-          </div>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Last Name:</span>
-              <input type="text" class="reg_lastname" value="{{profile.lastname}}">
-            </label>
-          </div>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Password:</span>
-              <input type="password" class="reg_pw">
-            </label>
-          </div>
-          <div class="list">
-            <label class="item item-input">
-              <span class="input-label">Confirm Password:</span>
-              <input type="password" class="reg_conf_pw">
-            </label>
-          </div>
-        {{/each}}
-      {{/if}}
+    {{#ionModal title="Modify User"}}
+      <div class="padding">
 
-      <button class="button button-block button-balanced btn_save">
-        Save Changes
-      </button>
+        {{#if Template.subscriptionsReady}}
+          {{#each user}}
+            <div class="card list">
+              <div class="item item-divider">
+                <h3>Basic Information:</h3>
+              </div>
 
-    </div>
-  {{/ionModal}}
+              <label class="item item-input">
+                <span class="input-label">User ID:</span>
+                <input type="number" class="reg_id" value="{{username}}">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">First Name: </span>
+                <input type="text" class="reg_firstname" value="{{profile.firstname}}">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Middle Name:</span>
+                <input type="text" class="reg_middlename" value="{{profile.middlename}}">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Last Name:</span>
+                <input type="text" class="reg_lastname" value="{{profile.lastname}}">
+              </label>
+            </div>
+
+            <button class="button button-block button-balanced btn_save">
+              Save Changes
+            </button>
+          {{/each}}
+        {{/if}}
+
+        <div class="card list">
+          <div class="item item-divider">
+            <h3>Password:</h3>
+          </div>
+          <label class="item item-input">
+            <span class="input-label">Password:</span>
+            <input type="password" class="reg_pw">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Confirm Password:</span>
+            <input type="password" class="reg_conf_pw">
+          </label>
+        </div>
+        <button class="button button-block button-balanced btn_savepw">
+          Save Changes For Password
+        </button>
+
+      </div>
+    {{/ionModal}}
+
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

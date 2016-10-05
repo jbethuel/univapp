@@ -1,7 +1,7 @@
 Template.adminDashboardTokenTeacher.onCreated(function(){
   this.subscribe('tokensTeacher');
   Session.setDefault("available", "unavailable");
-  new Clipboard('button');
+  new Clipboard('.btn_copy');
 });
 
 Template.adminDashboardTokenTeacher.onDestroyed(function(){

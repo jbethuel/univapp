@@ -1,32 +1,38 @@
 <template name="adminDashboardSettings">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='navicon'}}
-    </button>
-  {{/contentFor}}
+  {{#if isInRole 'admin'}}
 
-  {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title"> Settings</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;"> Settings</h1>
-    {{/if}}
-  {{/contentFor}}
+    {{#contentFor "headerButtonLeft"}}
+      <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+        {{> ionIcon icon='navicon'}}
+      </button>
+    {{/contentFor}}
 
-  {{#ionView}}
-    {{#ionContent}}
-      <div class="padding">
+    {{#contentFor "headerTitle"}}
+      {{#if isAndroid}}
+        <h1 class="title"> Settings</h1>
+      {{else}}
+        <h1 class="title" style="text-align:center;"> Settings</h1>
+      {{/if}}
+    {{/contentFor}}
 
-        <div class="list">
-          <a class="item item-thumbnail-left" href="#">
-            <img src="../user.png">
-            <h2>ADMIN</h2>
-            <p>Upload/Change your avatar</p>
-            <p><input type="file"></p>
-          </a>
+    {{#ionView}}
+      {{#ionContent}}
+        <div class="padding">
+
+          <div class="list">
+            <a class="item item-thumbnail-left" href="#">
+              <img src="../user.png">
+              <h2>ADMIN</h2>
+              <p>Upload/Change your avatar</p>
+              <p><input type="file"></p>
+            </a>
+          </div>
+
         </div>
+      {{/ionContent}}
+    {{/ionView}}
 
-      </div>
-    {{/ionContent}}
-  {{/ionView}}
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

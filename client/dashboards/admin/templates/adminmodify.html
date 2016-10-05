@@ -1,54 +1,63 @@
 <template name="adminDashboardModify">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='navicon'}}
-    </button>
-  {{/contentFor}}
+  {{#if isInRole 'admin'}}
 
-  {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title"> Modify User</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;"> Modify User</h1>
-    {{/if}}
-  {{/contentFor}}
+    {{#contentFor "headerButtonLeft"}}
+      <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+        {{> ionIcon icon='navicon'}}
+      </button>
+    {{/contentFor}}
 
-  {{#ionView}}
+    {{#contentFor "headerTitle"}}
+      {{#if isAndroid}}
+        <h1 class="title"> Modify User</h1>
+      {{else}}
+        <h1 class="title" style="text-align:center;"> Modify User</h1>
+      {{/if}}
+    {{/contentFor}}
 
-  {{#ionSubheaderBar class="item-input-inset"}}
+    {{#ionView}}
 
-  <label class="item-input-wrapper">
-    <input type="text" class="searchuser" placeholder="Search student / teacher Id">
-  </label>
+    {{#ionSubheaderBar class="list item item-input-inset"}}
 
-  {{/ionSubheaderBar}}
+      <label class="item-input-wrapper">
+        <input type="text" class="searchuser" placeholder="Search ID">
+      </label>
+      <button class="button button-clear button-dark button-small btn_clear">
+        clear
+      </button>
 
-    {{#ionContent}}
-    <div class="padding">
+    {{/ionSubheaderBar}}
 
-    {{#if Template.subscriptionsReady}}
-      <div class="list">
+      {{#ionContent}}
+      <div class="padding">
 
-        {{#each result}}
-          {{#if user}}
-            <a class="item item-icon-right">
-              <h2><strong>{{username}}</strong></h2>
-              <p>{{profile.lastname}}</p>
-              <p>{{profile.firstname}}</p>
-              <i class="icon ion-log-in" data-ion-modal="modifyuser"></i>
-            </a>
-          {{/if}}
+      {{#if Template.subscriptionsReady}}
+        <div class="list">
 
-        {{else}}
-          No results found.
-        {{/each}}
+          {{#each result}}
+            {{#if user}}
+              <a class="item item-avatar item-icon-right" href="#">
+                <img src="../../user.png">
+                <h2>{{username}}</h2>
+                <p>{{profile.lastname}}, {{profile.firstname}}</p>
+                <i class="icon ion-compose" data-ion-modal="modifyuser"></i>
+              </a>
+            {{/if}}
+
+          {{else}}
+            No results found.
+          {{/each}}
+
+        </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
       </div>
-    {{else}}
-      {{>spinner}}
-    {{/if}}
+      {{/ionContent}}
+    {{/ionView}}
 
-    </div>
-    {{/ionContent}}
-  {{/ionView}}
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

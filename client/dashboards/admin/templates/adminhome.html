@@ -1,74 +1,80 @@
 <template name="adminDashboardHome">
-  {{#contentFor "headerButtonLeft"}}
-    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-      {{> ionIcon icon='navicon'}}
-    </button>
-  {{/contentFor}}
+  {{#if isInRole 'admin'}}
 
-  {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title"> Home</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;"> Home</h1>
-    {{/if}}
-  {{/contentFor}}
+    {{#contentFor "headerButtonLeft"}}
+      <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+        {{> ionIcon icon='navicon'}}
+      </button>
+    {{/contentFor}}
 
-  {{#ionView}}
+    {{#contentFor "headerTitle"}}
+      {{#if isAndroid}}
+        <h1 class="title"> Home</h1>
+      {{else}}
+        <h1 class="title" style="text-align:center;"> Home</h1>
+      {{/if}}
+    {{/contentFor}}
 
-    {{#ionContent}}
-      <div class="padding">
+    {{#ionView}}
 
-        {{#if Template.subscriptionsReady}}
-          <div class="row">
-            <div class="col col-50">
-              <div class="card">
-                <div class="item item-divider">
-                  Admin <br> Announcements
+      {{#ionContent}}
+        <div class="padding">
+
+          {{#if Template.subscriptionsReady}}
+            <div class="row">
+              <div class="col col-50">
+                <div class="card">
+                  <div class="item item-divider">
+                    Admin <br> Announcements
+                  </div>
+                  <div class="item item-text-wrap">
+                    <h1><div class="text_center">{{announcements}}</div></h1>
+                  </div>
                 </div>
-                <div class="item item-text-wrap">
-                  <h1><div class="text_center">{{announcements}}</div></h1>
+              </div>
+              <div class="col col-50">
+                <div class="card">
+                  <div class="item item-divider">
+                    Tokens <br> Used
+                  </div>
+                  <div class="item item-text-wrap">
+                    <h1><div class="text_center">{{tokensUsed}}/{{tokens}}</div></h1>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col col-50">
-              <div class="card">
-                <div class="item item-divider">
-                  Tokens <br> Used
-                </div>
-                <div class="item item-text-wrap">
-                  <h1><div class="text_center">{{tokensUsed}}/{{tokens}}</div></h1>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col col-50">
-              <div class="card">
-                <div class="item item-divider">
-                  Student <br> Accounts
+            <div class="row">
+              <div class="col col-50">
+                <div class="card">
+                  <div class="item item-divider">
+                    Student <br> Accounts
+                  </div>
+                  <div class="item item-text-wrap">
+                    <h1><div class="text_center">{{students}}</div></h1>
+                  </div>
                 </div>
-                <div class="item item-text-wrap">
-                  <h1><div class="text_center">{{students}}</div></h1>
+              </div>
+              <div class="col col-50">
+                <div class="card">
+                  <div class="item item-divider">
+                    Teacher <br> Accounts
+                  </div>
+                  <div class="item item-text-wrap">
+                    <h1><div class="text_center">{{teachers}}</div></h1>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col col-50">
-              <div class="card">
-                <div class="item item-divider">
-                  Teacher <br> Accounts
-                </div>
-                <div class="item item-text-wrap">
-                  <h1><div class="text_center">{{teachers}}</div></h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        {{else}}
-          {{>spinner}}
-        {{/if}}
+          {{else}}
+            {{>spinner}}
+          {{/if}}
 
-      </div>
-    {{/ionContent}}
-  {{/ionView}}
+        </div>
+      {{/ionContent}}
+    {{/ionView}}
+
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

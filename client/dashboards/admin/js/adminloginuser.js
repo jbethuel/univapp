@@ -11,6 +11,11 @@ Template.adminDashboardLoginUser.events({
     event.preventDefault();
     user = $(".searchuser").val();
     Session.set("searchuser",user);
+  },
+  "click .btn_clear": function(event){
+    event.preventDefault();
+    $(".searchuser").val("");
+    Session.set("searchuser","");
   }
 });
 

@@ -99,6 +99,11 @@ $loading-font-size: 22px;
   border: hidden;
 }
 
+.about-logo{
+  text-align: center;
+  width: 100%;
+}
+
 
 .ionic-body.platform-android {
   font-family: "Roboto", sans-serif;
@@ -115,7 +120,7 @@ $loading-font-size: 22px;
 
 .ion-slide {
   text-align: center;
-  padding-top: 200px;
+  padding-top: 50px;
 
   &.dark-bg {
     h3 {

@@ -2,7 +2,7 @@ Template.adminDashboardModify.onCreated(function(){
   this.subscribe("appusers");
 });
 
-Template.adminDashboardLoginUser.onDestroyed(function(){
+Template.adminDashboardModify.onDestroyed(function(){
   delete Session.keys['searchuser'];
 });
 
@@ -16,6 +16,11 @@ Template.adminDashboardModify.events({
     event.preventDefault();
     var id = this._id;
     Session.set("userId", id);
+  },
+  "click .btn_clear": function(event){
+    event.preventDefault();
+    $(".searchuser").val("");
+    Session.set("searchuser", "");
   }
 });
 
