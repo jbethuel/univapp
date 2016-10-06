@@ -68,5 +68,51 @@ Meteor.methods({
   },
   attendanceReset:function(classId,date){
     attendance.remove({classId:classId,dateCreated:date});
+  },
+  gradepercent: function(classe, midtermCS, midtermPRJ, midtermEXAM, finaltermCS, finaltermPRJ, finaltermEXAM) {
+  var a = percentage.find({
+    classId: classe,
+    alreadyexist: true
+  }).count();
+  if (a === 1) {
+    console.log("updated");
+    percentage.update({
+      classId: classe
+    }, {
+      $set:{
+        midtermCS:midtermCS,
+        midtermPRJ:midtermPRJ,
+        midtermEXAM:midtermEXAM,
+        finaltermCS:finaltermCS,
+        finaltermPRJ:finaltermPRJ,
+        finaltermEXAM:finaltermEXAM
+      }
+    });
+  } else {
+    console.log("grade percentage has been set");
+    percentage.insert({
+      classId: classe,
+      teacherId: this.userId,
+       midtermCS:midtermCS,
+       midtermPRJ:midtermPRJ,
+       midtermEXAM:midtermEXAM,
+       finaltermCS:finaltermCS,
+       finaltermPRJ:finaltermPRJ,
+       finaltermEXAM:finaltermEXAM,
+      alreadyexist: true
+
+    });
+
+  }
+
+},
+  addRecord:function(classId,term,type,items){
+    graderecordindex.insert({classId:classId,teachId:this.userId,term:term,type:type,total_items:items});
+  },
+  addStudentGrade:function(studId,recordId,grade){
+    graderecord.insert({recordId:recordId,studId:studId,grade:grade,dateCreated:new Date()});
+  },
+  changeStudentGrade:function(gradeId,newgrade){
+    graderecord.update({_id:gradeId},{$set:{grade:newgrade,dateCreated:new Date()}});
   }
 });

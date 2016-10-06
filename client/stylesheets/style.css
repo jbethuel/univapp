@@ -1,0 +1,27 @@
+.table-wrapper {
+    overflow-x:scroll;
+    overflow-y:visible;
+    margin-left:153px;
+    margin-bottom:100px;
+}
+
+
+td, th {
+    padding: 5px 20px;
+    width:150px;
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    height:50px;
+}
+
+th:first-child {
+    position: absolute;
+    background-color:#92C9FC;
+    padding: 5px 5px;
+    border-left:1px solid black;
+    left:0;
+}
+
+th{
+  background-color:yellow;
+}

@@ -1,0 +1,116 @@
+<template name="teacherDashboardRecords">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="teacherDashboardClass"}}
+  {{/contentFor}} {{#contentFor "headerTitle"}}
+  <button class="button button-clear pull-right" data-ion-menu-toggle="right">
+    {{#if isAndroid}} {{> ionIcon icon='android-more-vertical'}} {{else}} {{> ionIcon icon='navicon'}} {{/if}}
+  </button>
+  {{/contentFor}} {{#ionView}} {{#ionContent}}
+  {{#if ispercentset class_id}}
+ <div class="row">
+   <h4>Please set your percentage,<span><a href="{{pathFor 'teacherDashboardGradeSettings' class_id}}"> click here </a></span>to set</h4>
+ </div>
+ {{/if}}
+    <div class="button-bar">
+      <a class="button {{#if isMidTerm}}button-positive{{/if}}" id="btn-midtermRecord">MidTerm</a>
+      <a class="button {{#if isFinalTerm}}button-positive{{/if}}" id="btn-finaltermRecord">FinalTerm</a>
+      <a class="button {{#if isCompleteTerm}}button-positive{{/if}}" id="btn-CompleteRecord">Complete</a>
+    </div>
+    {{#if isCompleteTerm}}
+    {{else}}
+    <div class="button-bar">
+      <a class="button {{#if isClassStanding}}button-energized{{/if}}" id="btn-ClassStanding">CS</a>
+      <a class="button {{#if isProject}}button-energized{{/if}}" id="btn-Project">PRJ</a>
+      <a class="button {{#if isExam}}button-energized{{/if}}" id="btn-Exam">EXAM</a>
+      <a class="button {{#if isSummary}}button-energized{{/if}}" id="btn-Summary">SUMMARY</a>
+    </div>
+    {{#if isSummary}}
+    {{else}}
+    <div class="button-bar">
+      <a class="button button-stable" id="btn-addnew">Add New</a>
+    </div>
+    {{/if}}
+    {{/if}}
+
+    <div class="table-wrapper">
+        <table>
+            <thead class="header">
+                <tr>
+                    <th>Students Name</th>
+                    {{#if isCompleteTerm}}
+                      <th>Midterm</th>
+                      <th>Finalterm</th>
+                      <th>Total</th>
+                    {{else}}
+                      {{#if isSummary}}
+                        {{#if ispercentset class_id}}
+                          <th>PRJ<br>0</th>
+                          <th>CS<br>0</th>
+                          <th>EXAM<br>0</th>
+                          <th>Total<br>0</th>
+                        {{else}}
+                          {{#each gradesettings}}
+                            <th>CS<br>{{#if isMidTerm}}{{convertTohundred midtermCS}}{{else}}{{convertTohundred finaltermCS}}{{/if}}%</th>
+                            <th>PRJ<br>{{#if isMidTerm}}{{convertTohundred midtermPRJ}}{{else}}{{convertTohundred finaltermPRJ}}{{/if}}%</th>
+                            <th>EXAM<br>{{#if isMidTerm}}{{convertTohundred midtermEXAM}}{{else}}{{convertTohundred finaltermEXAM}}{{/if}}%</th>
+                            <th>Total<br>100%</th>
+                          {{/each}}
+                        {{/if}}
+                      {{else}}
+                        {{#each graderecord}}
+                          <th>Items<br>{{total_items}}</th>
+                        {{/each}}
+                        {{#each recordTotalItems}}
+                          <th>Totals<br>{{total_items}}</th>
+                          <th>Equivalent<br>{{totaleq}}</th>
+                        {{/each}}
+                      {{/if}}
+                    {{/if}}
+                </tr>
+            </thead>
+            <tbody class="results">
+
+                    {{#each students}}
+                    <tr>
+                    <th><b>{{name studId}}</b></th>
+                      {{#if isCompleteTerm}}
+                        {{#each completeRecord studId}}
+                          <td>{{midtermtotals}}</td>
+                          <td>{{finaltermtotals}}</td>
+                          <td>{{overalltotals}}</td>
+                        {{/each}}
+                      {{else}}
+                        {{#if isSummary}}
+                          {{#each summaryRecord studId}}
+                            <td>{{totalCS}}</td>
+                            <td>{{totalPRJ}}</td>
+                            <td>{{totalEXAM}}</td>
+                            <td>{{overallTotal}}</td>
+                          {{/each}}
+                        {{else}}
+                          {{#each studentRecord}}
+                            {{#if norecord ../studId _id}}
+                              {{#each gradeinfo ../studId ./_id}}
+                                <td id="addgrade">No Data</td>
+                              {{/each}}
+                            {{else}}
+                              {{#each studentgrade ../studId _id}}
+                                <td id="changegrade">{{grade}}</td>
+                              {{/each}}
+                            {{/if}}
+                          {{/each}}
+                          {{#each studTotalGrade}}
+                            <td>{{total_items}}</td>
+                            <td>{{totaleq}}</td>
+                          {{/each}}
+                        {{/if}}
+                      {{/if}}
+                      </tr>
+                    {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+
+  {{/ionContent}} {{/ionView}}
+</template>

@@ -30,6 +30,18 @@ Meteor.publish("attendance",function(){
   return attendance.find({});
 });
 
+Meteor.publish("graderecord",function(){
+  return graderecord.find({});
+});
+
+Meteor.publish("graderecordindex",function(){
+  return graderecordindex.find({});
+});
+
+Meteor.publish("percentage",function(){
+  return percentage.find({});
+});
+
 Meteor.publish("messageboard", function(){
   return messageboard.find({});
 });
