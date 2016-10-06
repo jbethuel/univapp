@@ -6,7 +6,7 @@
 }
 
 
-td, th {
+.table-wrapper td, .table-wrapper th {
     padding: 5px 20px;
     width:150px;
     border-bottom:1px solid black;
@@ -14,7 +14,7 @@ td, th {
     height:50px;
 }
 
-th:first-child {
+.table-wrapper th:first-child {
     position: absolute;
     background-color:#92C9FC;
     padding: 5px 5px;
@@ -22,6 +22,6 @@ th:first-child {
     left:0;
 }
 
-th{
+.table-wrapper th{
   background-color:yellow;
 }
