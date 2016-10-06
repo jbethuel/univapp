@@ -1,15 +1,15 @@
-Template.modifyuser.onCreated(function(){
+Template._modifyuser.onCreated(function(){
   this.subscribe("appusers");
 });
 
-Template.modifyuser.helpers({
+Template._modifyuser.helpers({
   user: function(){
     id = Session.get("userId");
     return Meteor.users.find({_id: id}).fetch();
   }
 });
 
-Template.modifyuser.events({
+Template._modifyuser.events({
   "click .btn_save": function(event){
     event.preventDefault();
 

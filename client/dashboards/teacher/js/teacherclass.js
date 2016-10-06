@@ -1,13 +1,13 @@
 Template.teacherDashboardClass.onCreated(function() {
+  new Clipboard(".copy");
   this.subscribe("classindex");
-  Session.setDefault("manageSearchClass", "");
-  Session.setDefault("filterSemester", "");
-  Session.setDefault("filterYear", "");
-  Session.setDefault("filterDay", "");
+  Session.set("manageSearchClass", "");
+  Session.set("filterSemester", "");
+  Session.set("filterYear", "");
+  Session.set("filterDay", "");
 });
 
 Template.teacherDashboardClass.helpers({
-  //display the classes of the user
   classes: function() {
     var teachId = Meteor.userId();
     var keyword = Session.get("manageSearchClass");
@@ -38,19 +38,27 @@ Template.teacherDashboardClass.helpers({
 });
 
 Template.teacherDashboardClass.events({
-  "keyup #txtSearchDescription": function(event) {
+  "keyup .searchuser": function(event) {
     event.preventDefault();
-    Session.set("manageSearchClass", $("#txtSearchDescription").val());
+    Session.set("manageSearchClass", $("#searchuser").val());
+  },
+  "click .copy": function(event){
+    event.preventDefault();
+    passkey = this.passkey;
+    title = "COPIED";
+    button = "button button-balanced";
+    template = "<div class='title_prompt'>Token copied to clipboard: "+passkey+"</div>";
+    Meteor.Messages.dialog(title, template, button);
   },
   'click [data-action=showActionSheet]': function(event, template) {
     var classIndexId = this._id;
-    console.log(classIndexId);
 
     IonActionSheet.show({
       titleText: 'Actions',
       buttons: [  {
-        text: 'View <i class="icon ion-edit"></i>'
+        text: 'View Class'
       }],
+
       destructiveText: 'Delete',
       cancelText: 'Cancel',
       cancel: function() {
@@ -60,9 +68,13 @@ Template.teacherDashboardClass.events({
 
         if (index == 0) {
           console.log(classIndexId);
-          Router.go('teacherDashboardSeatplan', {
+          Session.set("classId", classIndexId);
+          Router.go('teacherDashboardViewClass',{
             class_id: classIndexId
           });
+          // Router.go('teacherDashboardSeatplan', {
+          //   class_id: classIndexId
+          // });
         }
         return true;
       },
@@ -70,21 +82,21 @@ Template.teacherDashboardClass.events({
         console.log('Destructive Action!');
 
         IonPopup.prompt({
-          title: 'Delete Record',
-          template: "<div class='title_prompt'>You're about to delete this record. Are you sure you want to delete this? please type YES</div>",
+          title: 'Delete Class',
+          template: "<div class='title_prompt'>You're about to delete this class, please type CONFIRM</div>",
           okText: 'Submit',
           inputType: 'Text',
             onOk: function(error, result){
               token = result;
-              if(token === "YES"){
+              if(token === "CONFIRM"){
                 Meteor.call("deleteClass", classIndexId);
                 IonLoading.show({
-                  customTemplate: '<p>The record was successfully deleted.</p>',
+                  customTemplate: '<p>The class was successfully deleted.</p>',
                   duration: 3000
                 });
               }else{
                 IonLoading.show({
-                  customTemplate: '<h4>ERROR</h4><p>The record was not successfully deleted.</p>',
+                  customTemplate: '<h4>ERROR</h4><p>The class was not successfully deleted.</p>',
                   duration: 3000
                 });
               }
@@ -93,20 +105,5 @@ Template.teacherDashboardClass.events({
         return true;
       }
     });
-  }
-});
-
-Template.filter.events({
-  "click #selSemester": function(event) {
-    event.preventDefault();
-    Session.set("filterSemester", $("#selSemester").val());
-  },
-  "click #selYear": function(event) {
-    event.preventDefault();
-    Session.set("filterYear", $("#selYear").val());
-  },
-  "click #selDay": function(event) {
-    event.preventDefault();
-    Session.set("filterDay", $("#selDay").val());
   }
 });

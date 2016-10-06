@@ -1,5 +1,4 @@
 <template name="adminDashboardModify">
-  {{#if isInRole 'admin'}}
 
     {{#contentFor "headerButtonLeft"}}
       <button class="button button-clear pull-left" data-ion-menu-toggle="left">
@@ -40,7 +39,7 @@
                 <img src="../../user.png">
                 <h2>{{username}}</h2>
                 <p>{{profile.lastname}}, {{profile.firstname}}</p>
-                <i class="icon ion-compose" data-ion-modal="modifyuser"></i>
+                <i class="icon ion-compose" data-ion-modal="_modifyuser"></i>
               </a>
             {{/if}}
 
@@ -57,7 +56,4 @@
       {{/ionContent}}
     {{/ionView}}
 
-  {{else}}
-    {{>dashboard}}
-  {{/if}}
 </template>

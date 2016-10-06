@@ -29,15 +29,3 @@ Template.teacherDashboardLayout.events({
     Router.go('login');
   }
 });
-// Template.teacherDashboardLayout.helpers({
-//  profile: function(){
-//     var profile = Profile.findOne({"metadata.owner": Meteor.userId()});
-//     if(profile){
-//       return profile;
-//     }
-//       return [];
-//     }
-// })
-
-
-

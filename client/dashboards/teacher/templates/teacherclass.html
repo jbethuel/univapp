@@ -20,21 +20,34 @@
     </button>
   {{/contentFor}}
 
+  {{#ionSubheaderBar class="list item item-input-inset"}}
+
+    <label class="item-input-wrapper">
+      <input type="text" class="searchuser" placeholder="Search ID">
+    </label>
+    <button class="button button-clear button-dark button-small btn_clear">
+      clear
+    </button>
+
+  {{/ionSubheaderBar}}
+
   {{#ionView}}
     {{#ionContent}}
     <div class="padding">
       {{#if Template.subscriptionsReady}}
-        <div class="list">
-          {{#each classes}}
-            <a class="item item-icon-left item-icon-right" data-action="showActionSheet">
-              <i class="icon ion-person-stalker"></i>
-                <h3>Subject:{{description}}</h3>
-                <p><b>Schedule:</b>{{sec_code}} - {{subj_code}} - {{sem}} - {{school_yr}}</p>
-                <p><b>Passkey:</b>{{passkey}}</p>
-              <i class="icon ion-android-open" ></i>
-            </a>
-          {{/each}}
-        </div>
+
+        {{#each classes}}
+          <div class="list card">
+            <li class="item item-icon-right">
+                <h3>{{description}} - {{students}} students</h3>
+                <p>{{sec_code}} - {{subj_code}}</p>
+                <p>{{time_start}} - {{time_end}}</p>
+                <p>{{sem}} - {{school_yr}}</p>
+                <p>Passkey: {{passkey}} <a class="copy" href="#" data-clipboard-text="{{passkey}}">Copy Key</a></p>
+              <i class="icon ion-chevron-right" data-action="showActionSheet"></i>
+            </li>
+          </div>
+        {{/each}}
       {{else}}
         {{>spinner}}
       {{/if}}

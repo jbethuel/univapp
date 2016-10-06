@@ -1,5 +1,4 @@
-<template name="modifyuser">
-  {{#if isInRole 'admin'}}
+<template name="_modifyuser">
 
     {{#ionModal title="Modify User"}}
       <div class="padding">
@@ -55,7 +54,4 @@
       </div>
     {{/ionModal}}
 
-  {{else}}
-    {{>dashboard}}
-  {{/if}}
 </template>
