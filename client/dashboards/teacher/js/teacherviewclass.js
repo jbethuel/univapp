@@ -7,8 +7,10 @@ Template.teacherDashboardViewClass.onDestroyed(function(){
 });
 
 Template.teacherDashboardViewClass.helpers({
-  classinfo: function(){
-    id = Session.get("classId");
-    return classindex.find({_id: id}).fetch();
+  classid: function(){
+    return this.class_id;
+  },
+  classinfo: function(classid){
+    return classindex.find({_id:classid}).fetch();
   }
 });

@@ -68,7 +68,6 @@ Template.teacherDashboardClass.events({
 
         if (index == 0) {
           console.log(classIndexId);
-          Session.set("classId", classIndexId);
           Router.go('teacherDashboardViewClass',{
             class_id: classIndexId
           });

@@ -11,7 +11,7 @@
 
     <ul class="list title_prompt">
       <li class="item">
-        {{#each classinfo}}
+        {{#each classinfo classid}}
           <p>{{description}} - {{students}}</p>
           <p>{{sec_code}} - {{subj_code}}</p>
           <p>{{time_start}} - {{time_end}}</p>
@@ -21,62 +21,60 @@
       </li>
     </ul>
 
-<div class="title_prompt">
-  <div class="row" style="margin:0;padding:0;">
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+      <div class="row">
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/microphone-icon.png" style="height:30%">
+            <div class="title_prompt">
+              <p>Announcement</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/activity-icon.png">
+            <div class="title_prompt">
+              <p>Activity</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-  </div>
-  <div class="row" style="margin:0;padding:0;">
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/seatplan-icon.png">
+            <div class="title_prompt">
+              <p>Seat Plan</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/users-icon.png">
+            <div class="title_prompt">
+              <p>Attendance</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-  </div>
-  <div class="row" style="margin:0;padding:0;">
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+      </div>
+      <div class="row">
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/classrecords-icon.png">
+            <div class="title_prompt">
+              <p>Class Records</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-    <div class="col col-50" style="padding:15px 10px;border:solid">
-      <a href="" style="text-decoration:none;color:black">
-        <div style="background-color:white;width:50px;height:50px;">
-          <a class="button button-icon icon ion-ios-football"></a>
+        <div class="col col-50">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/settings-icon.png">
+            <div class="title_prompt">
+              <p>Grade Settings</p>
+            </div>
+          </div>
         </div>
-        Activities
-      </a>
-    </div>
-  </div>
-</div>
+      </div>
 
     {{/ionContent}}
   {{/ionView}}
