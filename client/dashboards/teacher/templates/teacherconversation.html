@@ -3,45 +3,45 @@
     {{>ionNavBackButton path="teacherDashboardMessenger"}}
   {{/contentFor}}
   {{#contentFor "headerTitle"}}
-    <h1 class="title">New Message</h1>
+    <h1 class="title">Back</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent class="padding has-header"}}
-    <div class="padding">
-      {{#each messages}}
-        {{#if equals sentBy currentUser._id}}
-          <div class="list">
-              <a class="item item-thumbnail-right" href="#">
-                <img src="/student.png">
-                  <h3>You</h3>
-                <p>{{message}}</p>
-                <p>{{livestamp createdAt}}</p>
-              </a>
-          </div>
-          {{else}}
-          <div class="list">
-              <a class="item item-thumbnail-left" href="#">
-                <img src="/teacher.png">
-                  <h3>{{teacherName}}</h3>
-                <p>{{message}}</p>
-                <p>{{livestamp createdAt}}</p>
-              </a>
-          </div>
-        {{/if}}
-      {{/each}}
-    </div>
+
+    {{#each messages}}
+      {{#if equals sentBy currentUser._id}}
+        <div class="list">
+          <a class="item item-avatar-right" href="#">
+            <img src="../user.png">
+            <div style="text-align:right; margin-right:20px;">
+              <h2>YOU</h2>
+              <p>{{message}}</p>
+              <p><small>{{livestamp createdAt}}</small></p>
+            </div>
+          </a>
+        </div>
+        {{else}}
+        <div class="list">
+          <a class="item item-avatar" href="#">
+            <img src="../user.png">
+            <h2>{{#each name}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+            <p>{{message}}</p>
+            <p><small>{{livestamp createdAt}}</small></p>
+          </a>
+        </div>
+      {{/if}}
+    {{/each}}
+
   {{/ionContent}}
 
-    {{#ionFooterBar}}
-    <div class="bar bar-header item-input-inset">
+    {{#ionFooterBar class="item item-input-inset"}}
       <label class="item-input-wrapper">
-        <input type="search" class="txtmessage" placeholder="Type Something">
+        <input type="text" class="txtArea" placeholder="Type something">
       </label>
-      <button class="button button-clear btnSend">
+      <button class="button button-small button-clear btn_send">
         Send
       </button>
-    </div>
     {{/ionFooterBar}}
 
   {{/ionView}}

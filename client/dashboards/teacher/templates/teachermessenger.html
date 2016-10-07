@@ -11,43 +11,28 @@
     {{else}}
       <h1 class="title" style="text-align:center;">Messenger</h1>
     {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
-    </button>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      <div class="padding">
+    <div class="list">
 
-          <div class="list list-inset">
-            <label class="item item-input">
-              <i class="icon ion-search placeholder-icon"></i>
-              <input type="text" placeholder="Search">
-            </label>
-          </div>
+      {{#if Template.subscriptionsReady}}
+        {{#each thread}}
+          <a class="item item-avatar" href="#">
+            <img src="../user.png">
+            <h2>{{#each name stud_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+            <span class="item-note">
+              {{livestamp createdAt}}
+            </span>
+            <p>{{message}}</p>
+          </a>
+        {{/each}}
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
-          <div class="list">
-
-            <a class="item item-avatar" href="#">
-              <img src="../user.png">
-              <h2>Venkman</h2>
-              <p>Back off, man. I'm a scientist.</p>
-            </a>
-
-            <a class="item item-avatar" href="#">
-              <img src="../user.png">
-              <h2>Venkman</h2>
-              <p>Back off, man. I'm a scientist.</p>
-            </a>
-
-          </div>
-
-      </div>
+    </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

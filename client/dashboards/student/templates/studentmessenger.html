@@ -15,23 +15,22 @@
 
   {{#ionView}}
     {{#ionContent}}
-      <div class="padding">
+      <div class="list">
 
-        <div class="list">
-
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
-          </a>
-
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>Venkman</h2>
-            <p>Back off, man. I'm a scientist.</p>
-          </a>
-
-        </div>
+        {{#if Template.subscriptionsReady}}
+          {{#each thread}}
+            <a class="item item-avatar" href="#">
+              <img src="../user.png">
+              <h2>{{#each name teach_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+              <span class="item-note">
+                {{livestamp createdAt}}
+              </span>
+              <p>{{message}}</p>
+            </a>
+          {{/each}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
 
       </div>
     {{/ionContent}}
