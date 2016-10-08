@@ -1,0 +1,64 @@
+<template name="studentDashboardViewClass">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="studentDashboardSchedules"}}
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Back</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+    <ul class="list title_prompt">
+      <li class="item">
+        {{#each classinfo}}
+          <p>{{description}} - {{students}}</p>
+          <p>{{sec_code}} - {{subj_code}}</p>
+          <p>{{time_start}} - {{time_end}}</p>
+          <p>{{sem}} - {{school_yr}}</p>
+          <p>{{passkey}}</p>
+          <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
+        {{/each}}
+      </li>
+    </ul>
+
+      <div class="row" style="margin-top:-30px">
+        <div class="col col-50" id="classStanding">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/classrecords-icon.png" style="height:30%">
+            <div class="title_prompt">
+              <p>My Class Standing</p>
+            </div>
+          </div>
+        </div>
+        <div class="col col-50" id="classActivity">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/activity-icon.png">
+            <div class="title_prompt">
+              <p>Activities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:-40px">
+        <div class="col col-50" id="classRoom">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/seatplan-icon.png">
+            <div class="title_prompt">
+              <p>Visit Classroom</p>
+            </div>
+          </div>
+        </div>
+        <div class="col col-50" id="classMessage">
+          <div class="card padding">
+            <img class="full-image" src="../../../class/messageboard-icon.png">
+            <div class="title_prompt">
+              <p>Message Board</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>

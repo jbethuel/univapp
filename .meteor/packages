@@ -30,7 +30,6 @@ alanning:roles
 zimme:active-route
 xvendo:clipboardjs
 session@1.1.6
-ryanwu:meteor-notifyjs
 random@1.0.10
 copleykj:livestamp
 momentjs:moment
@@ -38,3 +37,4 @@ ostrio:files
 sacha:spin
 gwendall:impersonate
 check@1.2.3
+chrismbeckett:toastr

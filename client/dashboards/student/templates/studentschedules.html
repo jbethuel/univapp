@@ -12,11 +12,7 @@
       <h1 class="title" style="text-align:center;">Student Schedules</h1>
     {{/if}}
     <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{#if isAndroid}}
-        {{> ionIcon icon='android-more-vertical'}}
-      {{else}}
-        {{> ionIcon icon='more'}}
-      {{/if}}
+      {{> ionIcon icon='android-more-vertical'}}
     </button>
   {{/contentFor}}
 
@@ -29,21 +25,22 @@
 
           {{#each myclasses}}
             {{#each inClass classId}}
-              <a class="item item-thumbnail-left" href="{{pathFor 'tabs.one'}}" id="btnenterclass">
-                <img src="../class.png">
-                <h3><strong>{{description}}</strong></h3>
-                <h3><strong>{{sec_code}} - {{subj_code}}</strong></h3>
-                <h3>
-                  <strong>
-                    {{#each TeacherName teachId}}
-                      Prof. {{profile.firstname}} {{profile.lastname}}
-                    {{/each}}
-                  </strong>
-                </h3>
-                <h3>{{sched}} - [{{time_start}} - {{time_end}}]</h3>
-                <h3>{{sem}} - [{{school_yr}}]</h3>
-              </a>
+
+              <div class="list card">
+                <div class="item item-divider">
+                  <h3>{{description}}</h3>
+                </div>
+                <li class="item item-icon-right">
+                  <p>{{sec_code}} - {{subj_code}}</p>
+                  <p>{{time_start}} - {{time_end}}</p>
+                  <p>{{sem}} - {{school_yr}}</p>
+                <i class="icon ion-chevron-right"></i>
+                </li>
+              </div>
+              
             {{/each}}
+            {{else}}
+              No class found.
           {{/each}}
 
         </div>

@@ -77,11 +77,11 @@ Template.body.helpers({
 	connected: function(){
 		status = Session.get('status');
 		if(status == "connecting"){
-			$.notify("Connecting", "warn");
+			toastr.warning("", "connecting").css("width","140px");
 		}else if(status == "disconnected"){
-			$.notify("Disconnected", "error");
+			toastr.error("", "disconnected").css("width","145px");
 		}else{
-			$.notify("Connected", "success");
+			toastr.success("", "connected").css("width","140px");
 		}
 	}
 });

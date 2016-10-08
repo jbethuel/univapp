@@ -1,0 +1,18 @@
+<template name="studentDashboardClassStanding">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="studentDashboardViewClass/{{currentRoute}}"}}
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Back</h1>
+  {{/contentFor}}
+
+  {{#ionSubheaderBar}}
+    <h2 class="title">Class Standing</h2>
+  {{/ionSubheaderBar}}
+
+  {{#ionView}}
+    {{#ionContent}}
+
+    {{/ionContent}}
+  {{/ionView}}
+</template>
