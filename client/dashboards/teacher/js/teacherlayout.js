@@ -29,3 +29,9 @@ Template.teacherDashboardLayout.events({
     Router.go('login');
   }
 });
+Template.teacherDashboardLayout.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:Meteor.userId()});
+  }
+});
+

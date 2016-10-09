@@ -23,19 +23,33 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-
-
-          <a class="item item-thumbnail-left" href="#">
-            <img src="../user.png">
-            <h2>STUDENT</h2>
-            <p>Upload/Change your avatar</p>
-          <a class="button button-icon icon ion-camera" id="btnUpload"></a>
-          </a>
-            <input type="file" id="fileopen" hidden="true">
-
-
-
+           {{>uploadForm}}
       </div>
+   
+      {{>uploadedFiles}}
     {{/ionContent}}
   {{/ionView}}
+</template>
+
+<template name="uploadForm">
+          <a class="item item-thumbnail-left" href="#" id="btnUpload">
+            <img src="../camera.png">
+            <h2>STUDENT</h2>
+            <p>Upload/Change your avatar</p>
+          </a>
+            <input type="file" id="fileInput" hidden="true">
+</template>
+
+<template name="uploadedFiles">
+  {{#if uploadedFiles.count}}
+    <ul>
+      {{#each file in uploadedFiles.each}}
+        <li>
+         <img src="{{file.link}}" alt="">
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div></div>
+  {{/if}}
 </template>
