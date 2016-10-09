@@ -9,7 +9,7 @@
   {{#ionView}}
     {{#ionContent}}
 
-    <ul class="list title_prompt">
+    <ul class="list title_prompt" style="margin-bottom:0px;">
       <li class="item">
         {{#each classinfo classid}}
           <p>{{description}} - {{students}}</p>
@@ -19,62 +19,59 @@
           <p>{{passkey}}</p>
         {{/each}}
       </li>
+      <div class="item-divider">
+        Main Menu
+      </div>
     </ul>
 
-      <div class="row" style="margin-top:-30px">
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/microphone-icon.png" style="height:30%">
-            <div class="title_prompt">
-              <p>Announcement</p>
-            </div>
-          </div>
-        </div>
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/activity-icon.png">
-            <div class="title_prompt">
-              <p>Activity</p>
-            </div>
-          </div>
-        </div>
+    <div class="list" style="margin-bottom:0px;">
+      <a class="item item-icon-left item-icon-right" id="teacherAnnouncement">
+        <i class="icon ion-mic-c energized"></i>
+        Announcement
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherActivity">
+        <i class="icon ion-edit energized"></i>
+        Class Activities
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherSeatplan">
+        <i class="icon ion-grid energized"></i>
+        Seat Plan
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherAttendance">
+        <i class="icon ion-person-stalker energized"></i>
+        Attendance
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherGraderecords">
+        <i class="icon ion-clipboard energized"></i>
+        Grade Records
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherMessage">
+        <i class="icon ion-android-chat energized"></i>
+        Message Board
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-left item-icon-right" id="teacherSettings">
+        <i class="icon ion-wrench energized"></i>
+        Grade Settings
+        <i class="icon ion-chevron-right"></i>
+      </a>
+    </div>
+
+    <ul class="list title_prompt" style="margin-bottom: 0px;">
+      <div class="item-divider">
+        Settings
       </div>
-      <div class="row" style="margin-top:-30px">
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/seatplan-icon.png">
-            <div class="title_prompt">
-              <p>Seat Plan</p>
-            </div>
-          </div>
-        </div>
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/users-icon.png">
-            <div class="title_prompt">
-              <p>Attendance</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row" style="margin-top:-30px">
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/classrecords-icon.png">
-            <div class="title_prompt">
-              <p>Class Records</p>
-            </div>
-          </div>
-        </div>
-        <div class="col col-50">
-          <div class="card padding">
-            <img class="full-image" src="../../../class/settings-icon.png">
-            <div class="title_prompt">
-              <p>Grade Settings</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    </ul>
+    <div class="list">
+      <a class="item title_prompt" style="color:red;">
+        Delete Class
+      </a>
+    </div>
 
     {{/ionContent}}
   {{/ionView}}

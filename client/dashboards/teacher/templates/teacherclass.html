@@ -38,13 +38,13 @@
 
         {{#each classes}}
           <div class="list card">
-            <li class="item item-icon-right">
+            <li class="item item-icon-right class">
                 <h3>{{description}} - {{students}} students</h3>
                 <p>{{sec_code}} - {{subj_code}}</p>
                 <p>{{time_start}} - {{time_end}}</p>
                 <p>{{sem}} - {{school_yr}}</p>
                 <p>Passkey: {{passkey}} <a class="copy" href="#" data-clipboard-text="{{passkey}}">Copy Key</a></p>
-              <i class="icon ion-chevron-right" data-action="showActionSheet"></i>
+              <i class="icon ion-chevron-right"></i>
             </li>
           </div>
         {{/each}}
