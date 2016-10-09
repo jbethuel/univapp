@@ -42,6 +42,15 @@ Template.teacherDashboardRecords.helpers({
   isSummary:function(){
     return Session.get("itemtype") === "summary";
   },
+  headertitle:function(){
+    var titleItem = Session.get("itemtype"),
+        titleTerm = Session.get("term");
+    if(titleTerm == "complete term"){
+      return "SUMMARY";
+    }else{
+      return titleItem.toUpperCase();
+    }
+  },
   graderecord:function(){
     Session.set("classId",this.class_id);
     var records =  graderecordindex.find({classId:Session.get("classId"),term:Session.get("term"),type:Session.get("itemtype")}).fetch();

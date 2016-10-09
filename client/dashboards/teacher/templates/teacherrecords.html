@@ -24,14 +24,20 @@
       <a class="button {{#if isExam}}button-energized{{/if}}" id="btn-Exam">EXAM</a>
       <a class="button {{#if isSummary}}button-energized{{/if}}" id="btn-Summary">SUMMARY</a>
     </div>
-    {{#if isSummary}}
-    {{else}}
-    <div class="button-bar">
-      <a class="button button-stable" id="btn-addnew">Add New</a>
-    </div>
-    {{/if}}
     {{/if}}
 
+  <div class="record-tableheader-wrapper">
+    <div style="position:absolute;left:5px;"><h3 style="color:white"><b>{{headertitle}}</b></h3></div>
+    {{#if isCompleteTerm}}
+    {{else}}
+      {{#if isSummary}}
+      {{else}}
+        <div class="button-position">
+          <a class="btn-addrecord" id="btn-addnew"><b>+</b></a>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
     <div class="table-wrapper">
         <table>
             <thead class="header">

@@ -8,20 +8,47 @@
 
 .table-wrapper td, .table-wrapper th {
     padding: 5px 20px;
-    width:150px;
-    border-bottom:1px solid black;
-    border-right:1px solid black;
+    font-weight: bold;
+    width:100%;
+    background-color: #EEEEEE;
+    border-bottom:1px solid #F2F2F2;
+    border-right:1px solid #F2F2F2;
     height:50px;
 }
 
 .table-wrapper th:first-child {
     position: absolute;
-    background-color:#92C9FC;
+    background-color:#3B3B3B;
     padding: 5px 5px;
-    border-left:1px solid black;
+    width:150px;
+    border-left:1px solid #F2F2F2;
     left:0;
 }
 
 .table-wrapper th{
-  background-color:yellow;
+  background-color:#4CAF50;
+  color:white;
+}
+.btn-addrecord{
+  color:white;
+  font-size:60px;
+}
+
+.button-position{
+  position:absolute;
+  right:5px;
+  background-color:#397D86;
+  width:60px;
+  height:60px;
+  align:center;
+  top:0;
+  padding:19px 13px
+}
+
+.record-tableheader-wrapper{
+  width:100%;
+  height:60px;
+  background-color:#418B96;
+  padding:15px;
+  position:relative
 }
