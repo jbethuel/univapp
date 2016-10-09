@@ -49,7 +49,14 @@ Template.studentDashboardSearch.events({
               });
             }else{
               if(checkstud === 0){
-                Meteor.call('addstudent',studDetails);
+                Meteor.call('addstudent',studDetails, function(error){
+                  if(!error){
+                    IonLoading.show({
+                      customTemplate: '<h4>SUCCESS</h4><p>Succesfully enrolled to the class.</p>',
+                      duration: 3000
+                    });
+                  }
+                });
               }
               Router.go("studentDashboardSchedules");
             }

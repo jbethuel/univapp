@@ -12,11 +12,10 @@
       <ul class="list title_prompt" style="margin-bottom: 0px;">
         <li class="item">
           {{#each classinfo}}
-            <p>{{description}} - {{students}}</p>
+            <p>{{description}}</p>
             <p>{{sec_code}} - {{subj_code}}</p>
             <p>{{time_start}} - {{time_end}}</p>
             <p>{{sem}} - {{school_yr}}</p>
-            <p>{{passkey}}</p>
             <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
           {{/each}}
         </li>
@@ -54,7 +53,7 @@
         </div>
       </ul>
       <div class="list">
-        <a class="item title_prompt" style="color:red;">
+        <a class="item title_prompt" style="color:red;" id="classDelete">
           Drop Class
         </a>
       </div>

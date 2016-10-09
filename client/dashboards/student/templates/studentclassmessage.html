@@ -1,4 +1,4 @@
-<template name="studentDashboardClassMessasge">
+<template name="studentDashboardClassMessage">
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton path=""}}
   {{/contentFor}}
@@ -13,6 +13,40 @@
   {{#ionView}}
     {{#ionContent}}
 
+      {{#each messages}}
+        {{#if equals senderId currentUser._id}}
+          <div class="list">
+            <a class="item item-avatar-right" href="#">
+              <img src="../user.png">
+              <div style="text-align:right; margin-right:20px;">
+                <h2>YOU</h2>
+                <p>{{message}}</p>
+                <p><small>{{livestamp createdAt}}</small></p>
+              </div>
+            </a>
+          </div>
+          {{else}}
+          <div class="list">
+            <a class="item item-avatar" href="#">
+              <img src="../user.png">
+              <h2>{{#each name senderId}}{{profile.lastname}}{{/each}}</h2>
+              <p>{{message}}</p>
+              <p><small>{{livestamp createdAt}}</small></p>
+            </a>
+          </div>
+        {{/if}}
+      {{/each}}
+
     {{/ionContent}}
+
+    {{#ionFooterBar class="item item-input-inset"}}
+      <label class="item-input-wrapper">
+        <input type="text" class="txtArea" placeholder="Type something">
+      </label>
+      <button class="button button-small button-clear btn_send">
+        Send
+      </button>
+    {{/ionFooterBar}}
+
   {{/ionView}}
 </template>
