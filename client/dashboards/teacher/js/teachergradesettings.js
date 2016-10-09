@@ -1,6 +1,8 @@
 Template.teacherDashboardGradeSettings.onCreated(function(){
+  Tracker.autorun(function(){
+    Meteor.subscribe("percentage",Session.get("classId"));
+  });
   this.subscribe("classindex");
-  this.subscribe("percentage");
 });
 
 Template.teacherDashboardGradeSettings.events({

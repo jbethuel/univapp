@@ -1,8 +1,10 @@
 Template.teacherDashboardRecords.onCreated(function(){
-  Meteor.subscribe("graderecordindex");
+  Tracker.autorun(function(){
+    Meteor.subscribe("students",Session.get("classId"));
+    Meteor.subscribe("graderecordindex",Session.get("classId"));
+    Meteor.subscribe("percentage",Session.get("classId"));
+  });
   Meteor.subscribe("graderecord");
-  Meteor.subscribe("percentage");
-  Meteor.subscribe("students");
   Meteor.subscribe("appusers");
   Session.setDefault("term","midterm");
   Session.setDefault("itemtype","class standing");

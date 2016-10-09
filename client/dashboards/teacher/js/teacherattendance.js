@@ -7,10 +7,12 @@ Meteor.startup(function(){
 });
 
 Template.teacherDashboardAttendance.onCreated(function(){
+Tracker.autorun(function(){
+  Meteor.subscribe("students",Session.get("currentClassId"));
+  Meteor.subscribe("attendance",Session.get("currentClassId"));
+});
 Meteor.subscribe("classindex");
-Meteor.subscribe("students");
 Meteor.subscribe("appusers");
-Meteor.subscribe("attendance");
 Session.set("checking",false);
 
 });

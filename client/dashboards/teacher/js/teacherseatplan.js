@@ -1,8 +1,10 @@
 Template.teacherDashboardSeatplan.onCreated(function(){
+  Tracker.autorun(function(){
+    Meteor.subscribe("students",Session.get("currentClassId"));
+    Meteor.subscribe("attendance",Session.get("currentClassId"));
+  });
 Meteor.subscribe("classindex");
-Meteor.subscribe("students");
 Meteor.subscribe("appusers");
-Meteor.subscribe("attendance");
 Session.setDefault("editSeatplan",false);
 Session.setDefault("swapSeatplan",false);
 //set the Session swap1 default to false meaning the swap function is not yet activated
