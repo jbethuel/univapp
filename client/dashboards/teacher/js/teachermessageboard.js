@@ -5,7 +5,7 @@ Template.teacherDashboardMessageboard.helpers({
   equals: function(v1, v2) {
     return (v1 === v2);
   },
-  name: function(senderID){
+  name: function(senderId){
     Meteor.subscribe("teacherMessageBoardName", senderId);
     return Meteor.users.find({_id: senderId});
   }

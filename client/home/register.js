@@ -25,7 +25,7 @@ Template.register.events({
         template: "<div class='title_prompt'>Please enter the token given by the admin.</div>",
         okText: 'Submit',
         inputType: 'password',
-        inputPlaceholder: '********',
+        inputPlaceholder: '',
           onOk: function(error, result){
             token = result;
             Meteor.call('registerStudent', token, stud_id, firstname, middlename, lastname, pw, function(error){
@@ -81,7 +81,7 @@ Template.register.events({
         template: "<div class='title_prompt'>Please enter the token given by admin.</div>",
         okText: 'Submit',
         inputType: 'password',
-        inputPlaceholder: '********',
+        inputPlaceholder: '',
           onOk: function(error, result){
             token = result;
             Meteor.call('registerTeacher', token, teach_id, firstname, middlename, lastname, pw, function(error){

@@ -2,7 +2,7 @@ Meteor.publish("teacherMessageBoard", function(id){
   return messageboard.find({classId: id});
 });
 
-Meteor.publish("teacherMessageBoardName", function(id){
+Meteor.publish("teacherMessageBoardName", function(senderId){
   return Meteor.users.find({_id: senderId}, {profile: 1});
 });
 
