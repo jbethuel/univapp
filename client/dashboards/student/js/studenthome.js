@@ -4,6 +4,6 @@ Template.studentDashboardHome.onCreated(function(){
 
 Template.studentDashboardHome.helpers({
   news: function(){
-    return news.find({});
+    return news.find({sendTo: "student"});
   }
 });

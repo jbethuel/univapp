@@ -12,11 +12,11 @@
     <ul class="list title_prompt" style="margin-bottom:0px;">
       <li class="item">
         {{#each classinfo classid}}
-          <p>{{description}} - {{students}}</p>
+          <p>{{description}} - {{studentCount _id}}</p>
           <p>{{sec_code}} - {{subj_code}}</p>
           <p>{{time_start}} - {{time_end}}</p>
           <p>{{sem}} - {{school_yr}}</p>
-          <p>{{passkey}}</p>
+          <p>Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
         {{/each}}
       </li>
       <div class="item-divider">
@@ -68,7 +68,7 @@
       </div>
     </ul>
     <div class="list">
-      <a class="item title_prompt" style="color:red;">
+      <a class="item title_prompt delete-class" style="color:red;">
         Delete Class
       </a>
     </div>

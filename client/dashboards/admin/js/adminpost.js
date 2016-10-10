@@ -23,8 +23,10 @@ Template.adminDashboardPost.events({
 
     title = $('.txtTitle').val();
     content = $('.txtContent').val();
+    student = $('.chkStud').is(':checked');
+    teacher = $('.chkTeach').is(':checked');
 
-    if(title == "" || content == ""){
+    if(title == "" || content == "" || (student == false && teacher == false)){
 
       title = "ERROR!";
       template = "<div class='title_prompt'>Title and content should not be empty.</div>";
@@ -33,11 +35,19 @@ Template.adminDashboardPost.events({
 
     }else{
 
+      if(student == false){
+        sendTo = "teacher";
+      }else if(teacher == false){
+        sendTo = "student";
+      }else{
+        sendTo = "both";
+      }
+
       IonPopup.confirm({
         title: 'The news will be sent',
         template: '<div class="title_prompt">Are you sure?</div>',
         onOk: function() {
-          Meteor.call('adminpost', title, content, function(error){
+          Meteor.call('adminpost', title, content, sendTo, function(error){
             if(!error){
               IonLoading.show({
                 customTemplate: '<h4>SUCCESS</h4><p>News posted!</p>',

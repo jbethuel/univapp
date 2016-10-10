@@ -4,6 +4,6 @@ Template.teacherDashboardHome.onCreated(function(){
 
 Template.teacherDashboardHome.helpers({
   news: function(){
-    return news.find({});
+    return news.find({sendTo: "teacher"});
   }
 });

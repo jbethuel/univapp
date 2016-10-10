@@ -1,5 +1,5 @@
 Meteor.methods({
-  adminpost: function(title, content){
+  adminpost: function(title, content, sendTo){
     var isadmin = Meteor.user().roles[0];
     var author = Meteor.user().profile.fullname;
       if(isadmin != 'admin'){
@@ -10,6 +10,7 @@ Meteor.methods({
           authorId: Meteor.userId(),
           title: title,
           content: content,
+          sendTo: sendTo,
           createdAt: new Date()
         });
       }

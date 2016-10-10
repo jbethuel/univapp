@@ -35,6 +35,10 @@ Template.teacherDashboardClass.helpers({
       teachId: teachId
     }).fetch();
   },
+  studentCount: function(_id){
+    Meteor.subscribe("studentCount", _id);
+    return students.find({classId:_id}).count();
+  }
 });
 
 Template.teacherDashboardClass.events({

@@ -1,82 +1,91 @@
 <template name="teacherDashboardAttendance">
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton path=""}}
-  {{/contentFor}} {{#contentFor "headerTitle"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
   <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-    {{#if isAndroid}} {{> ionIcon icon='android-more-vertical'}} {{else}} {{> ionIcon icon='navicon'}} {{/if}}
-  </button>
-  {{/contentFor}} {{#ionView}} {{#ionContent}}
-{{#each classinfo}}
-  <div class="list">
-    <label class="item item-input">
-      <span class="input-label"></span>
-      <input type="date" style="font-size:20px" value="{{dateToday}}" id="date_selected">
-    </label>
-  </div>
-<ul class="list">
-  <li class="item item-toggle">
-    {{#if isCheckedOn}}
-      Checking : On
+    {{#if isAndroid}}
+      {{> ionIcon icon='android-more-vertical'}}
     {{else}}
-      Checking : Off
+      {{> ionIcon icon='navicon'}}
     {{/if}}
-   <label class="toggle toggle-balanced">
-     <input type="checkbox" id="checkAttendance" >
-     <div class="track">
-       <div class="handle"></div>
-     </div>
-   </label>
-  </li>
-</ul>
-{{#if isCheckedOn}}
-<h4>Mark uncheck students as:</h4>
-<div class="button-bar">
-  <button class="button button-small button-balanced" id="checkAttendancePresent">
-    <b>Present</b>
   </button>
-  <button class="button button-small button-assertive" id="checkAttendanceAbsent">
-    <b>Absent</b>
-  </button>
-  <button class="button button-small button-stable" id="checkAttendanceReset">
-    <b>Reset</b>
-  </button>
-</div>
-  <h4>The checking is on, you can now click</h4>
-{{else}}
+  {{/contentFor}}
 
-{{/if}}
+  {{#ionView}}
+    {{#ionContent class="padding"}}
 
-
-  <div>
-    <div style="top:0px; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: scroll">
-    <table>
-      {{#each loopcol}}
-      <tr>
-        {{#each looprow column ../rows}}
-          {{#if isTaken ./col row}}
-            {{#each studinfo ./col ./row}}
-              {{#if isUnmark }}
-                <td style="padding:10px">{{>attendancetakenSeat}}</td>
-              {{/if}}
-              {{#if isPresent}}
-                <td style="padding:10px">{{>presentSeat}}</td>
-              {{/if}}
-              {{#if isLate}}
-                <td style="padding:10px">{{>lateSeat}}</td>
-              {{/if}}
-              {{#if isAbsent}}
-                <td style="padding:10px">{{>absentSeat}}</td>
-              {{/if}}
-              {{/each}}
-          {{else}}
-              <td style="padding:10px">{{>blankSeat}}</td>
-          {{/if}}
-        {{/each}}
-      </tr>
-      {{/each}}
-    </table>
+    {{#each classinfo}}
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label"></span>
+        <input type="date" style="font-size:20px" value="{{dateToday}}" id="date_selected">
+      </label>
     </div>
-  </div>
-{{/each}}
-  {{/ionContent}} {{/ionView}}
+    <ul class="list">
+      <li class="item item-toggle">
+        {{#if isCheckedOn}}
+          Checking : On
+        {{else}}
+          Checking : Off
+        {{/if}}
+       <label class="toggle toggle-balanced">
+         <input type="checkbox" id="checkAttendance" >
+         <div class="track">
+           <div class="handle"></div>
+         </div>
+       </label>
+      </li>
+    </ul>
+    {{#if isCheckedOn}}
+      <h4>Mark uncheck students as:</h4>
+        <div class="button-bar">
+          <button class="button button-small button-balanced" id="checkAttendancePresent">
+            <b>Present</b>
+          </button>
+          <button class="button button-small button-assertive" id="checkAttendanceAbsent">
+            <b>Absent</b>
+          </button>
+          <button class="button button-small button-stable" id="checkAttendanceReset">
+            <b>Reset</b>
+          </button>
+        </div>
+      <h4>The checking is on, you can now click</h4>
+    {{else}}
+    {{/if}}
+    
+      <div>
+        <div style="top:0px; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: scroll">
+        <table>
+          {{#each loopcol}}
+          <tr>
+            {{#each looprow column ../rows}}
+              {{#if isTaken ./col row}}
+                {{#each studinfo ./col ./row}}
+                  {{#if isUnmark }}
+                    <td style="padding:10px">{{>attendancetakenSeat}}</td>
+                  {{/if}}
+                  {{#if isPresent}}
+                    <td style="padding:10px">{{>presentSeat}}</td>
+                  {{/if}}
+                  {{#if isLate}}
+                    <td style="padding:10px">{{>lateSeat}}</td>
+                  {{/if}}
+                  {{#if isAbsent}}
+                    <td style="padding:10px">{{>absentSeat}}</td>
+                  {{/if}}
+                  {{/each}}
+              {{else}}
+                  <td style="padding:10px">{{>blankSeat}}</td>
+              {{/if}}
+            {{/each}}
+          </tr>
+          {{/each}}
+        </table>
+        </div>
+      </div>
+      {{/each}}
+    {{/ionContent}}
+  {{/ionView}}
 </template>

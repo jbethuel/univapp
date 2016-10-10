@@ -11,8 +11,19 @@
   {{/ionSubheaderBar}}
 
   {{#ionView}}
-    {{#ionContent}}
-
+    {{#ionContent class="padding has-header"}}
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" id="anno_title" placeholder="Title">
+      </label>
+      <label class="item item-input">
+        <textarea id="anno_content" placeholder="Content"></textarea>
+      </label>
+    </div>
+    <button class="button button-block button-balanced btn-send">
+      {{> ionIcon icon="android-send" class="stable"}}
+      Send
+    </button>
     {{/ionContent}}
   {{/ionView}}
 </template>
