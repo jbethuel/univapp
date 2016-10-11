@@ -3,6 +3,10 @@ Template.studentDashboardViewClass.onCreated(function(){
   this.subscribe("studentClassInfo", id)
 });
 
+Template.studentDashboardViewClass.onDestroyed(function(){
+  delete Session.keys["teachId"];
+});
+
 Template.studentDashboardViewClass.helpers({
   classinfo: function(){
     return classindex.find({}).fetch();
@@ -42,6 +46,10 @@ Template.studentDashboardViewClass.events({
     Router.go('studentDashboardClassMessage',{
       class_id: id
     });
+  },
+  "click #classTeacherMessage": function(event){
+    event.preventDefault();
+    Session.set("teachId", $('.teachId').text());
   },
   "click #classDelete": function(event){
     event.preventDefault();

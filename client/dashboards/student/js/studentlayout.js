@@ -3,6 +3,10 @@ Template.studentDashboardLayout.events({
     event.preventDefault();
     Router.go('studentDashboardHome');
   },
+  "click #sideAnnouncement": function(event){
+    event.preventDefault();
+    Router.go('studentDashboardClassAnnouncement');
+  },
   "click #sideMessenger": function(event){
     event.preventDefault();
     Router.go('studentDashboardMessenger');

@@ -14,10 +14,6 @@ Meteor.publish('appusers', function() {
   return Meteor.users.find({});
 });
 
-Meteor.publish("news", function(){
-  return news.find({});
-});
-
 Meteor.publish("classindex",function(){
   return classindex.find({});
 });

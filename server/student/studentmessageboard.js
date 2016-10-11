@@ -1,11 +1,3 @@
-Meteor.publish("studentMessageBoard", function(id){
-  return messageboard.find({classId: id});
-});
-
-Meteor.publish("studentMessageBoardName", function(senderId){
-  return Meteor.users.find({_id: senderId}, {profile: 1});
-});
-
 Meteor.methods({
   studentMessageBoardInsert: function(classId, message){
     id = this.userId;

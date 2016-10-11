@@ -1,7 +1,3 @@
-Meteor.publish("studentCount", function(_id){
-  return students.find({classId: _id});
-});
-
 Meteor.methods({
   teacherAnnouncement: function(classId, title, content){
     isTeacher = classindex.find({_id: classId, teachId: this.userId}).count();
@@ -11,11 +7,11 @@ Meteor.methods({
         classId: classId,
         title: title,
         content: content,
-        senderId: this.userId
+        senderId: this.userId,
+        createdAt: new Date()
       });
     }else{
       throw new Meteor.Error(500,'Access Denied.');
     }
-
   }
 });

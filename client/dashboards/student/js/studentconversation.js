@@ -1,13 +1,13 @@
 Template.studentDashboardConversation.onRendered(function(){
-  $(".padding").animate({ scrollTop: $('.padding').height()}, 1000);
+
 });
 
 Template.studentDashboardConversation.onCreated(function(){
   stud_id = Meteor.userId();
   teach_id = Router.current().params.teach_id;
   id = teach_id;
-  this.subscribe("user", id);
-  this.subscribe("subStudentMessages", stud_id, teach_id);
+  this.subscribe("studentConversationTeachInfo", id);
+  this.subscribe("studentConversationMessages", stud_id, teach_id);
 });
 
 Template.studentDashboardConversation.events({
@@ -21,7 +21,7 @@ Template.studentDashboardConversation.events({
       if(error){
         console.log(error.reason);
       }else{
-        console.log("ok");
+        message = $('.txtArea').val("");
       }
     });
   }

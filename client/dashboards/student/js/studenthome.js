@@ -1,9 +1,9 @@
 Template.studentDashboardHome.onCreated(function(){
-  this.subscribe('news');
+  this.subscribe('studentNews');
 });
 
 Template.studentDashboardHome.helpers({
   news: function(){
-    return news.find({sendTo: "student"});
+    return news.find({}, {sort: {createdAt: -1}}).fetch();
   }
 });

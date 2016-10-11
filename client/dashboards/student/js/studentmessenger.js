@@ -1,7 +1,5 @@
 Template.studentDashboardMessenger.onCreated(function(){
-  id = Meteor.userId();
-  this.subscribe("studentMessages", id);
-  this.subscribe("appusers");
+  this.subscribe("studentMessages");
 });
 
 Template.studentDashboardMessenger.events({
@@ -24,6 +22,7 @@ Template.studentDashboardMessenger.helpers({
     });
   },
   name: function(teach_id){
+    Meteor.subscribe("studentMessengerName", teach_id);
     return Meteor.users.find({_id:teach_id}).fetch();
   }
 });

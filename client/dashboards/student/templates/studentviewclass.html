@@ -17,6 +17,7 @@
             <p>{{time_start}} - {{time_end}}</p>
             <p>{{sem}} - {{school_yr}}</p>
             <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
+            <div class="teachId" hidden>{{teachId}}</div>
           {{/each}}
         </li>
         <div class="item-divider">
@@ -43,6 +44,11 @@
         <a class="item item-icon-left item-icon-right" id="classMessage">
           <i class="icon ion-chatbox-working energized"></i>
           Message Board
+          <i class="icon ion-chevron-right"></i>
+        </a>
+        <a class="item item-icon-left item-icon-right" id="classTeacherMessage" data-ion-modal="compose">
+          <i class="icon ion-ios-chatboxes energized"></i>
+          Message Instructor
           <i class="icon ion-chevron-right"></i>
         </a>
       </div>

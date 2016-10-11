@@ -17,21 +17,21 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-        <h3><strong>ANNOUNCEMENTS:</strong></h3>
+        <h4><strong>ADMIN ANNOUNCEMENTS:</strong></h4>
 
         {{#if Template.subscriptionsReady}}
           {{#each news}}
             <div class="list card">
               <div class="list">
-                  <a class="item item-thumbnail-left" href="#">
-                    <img src="../admin.png">
-                    <h3>What: {{title}}</h3>
-                    <h3>By: {{author}}</h3>
-                    <p>{{content}}</p>
-                  </a>
-                  <div class="item item-text-wrap">
-                    <p>{{livestamp createdAt}}</p>
-                  </div>
+                <a class="item item-thumbnail-left" href="#">
+                  <img src="../admin.png">
+                  <h3>What: {{title}}</h3>
+                  <h3>By: {{author}}</h3>
+                  <div class="item-text=wrap">{{content}}</div>
+                </a>
+                <div class="item item-text-wrap">
+                  <p>{{livestamp createdAt}}</p>
+                </div>
               </div>
             </div>
           {{/each}}

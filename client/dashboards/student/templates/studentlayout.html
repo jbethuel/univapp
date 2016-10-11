@@ -24,6 +24,14 @@
                   {{> ionIcon icon="ios-home" class="positive"}}
                 {{/if}}
               </div>
+              <div class="item item-icon-left" id="sideAnnouncement" style="{{#if isActiveRoute 'studentDashboardClassAnnouncement'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
+                Class Announcement
+                {{#if isAndroid}}
+                  {{> ionIcon icon="mic-c" class="energized"}}
+                {{else}}
+                  {{> ionIcon icon="ios-mic" class="positive"}}
+                {{/if}}
+              </div>
               <div class="item item-icon-left" id="sideMessenger" style="{{#if isActiveRoute 'studentDashboardMessenger'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Messenger
                 {{#if isAndroid}}

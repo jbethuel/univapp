@@ -1,0 +1,46 @@
+<template name="studentDashboardClassAnnouncement">
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+      {{> ionIcon icon='navicon'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    {{#if isAndroid}}
+      <h1 class="title">Home</h1>
+    {{else}}
+      <h1 class="title" style="text-align:center;">Home</h1>
+    {{/if}}
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      <div class="padding">
+        <h4><strong>CLASS ANNOUNCEMENTS:</strong></h4>
+
+        {{#if Template.subscriptionsReady}}
+          {{#each classid}}
+            {{#each announcement classId}}
+              <div class="list card">
+                <div class="list">
+                  <a class="item item-thumbnail-left" href="#">
+                    <img src="../user.png">
+                    <h3><strong>WHAT:</strong> {{title}}</h3>
+                    <h3><strong>BY:</strong> {{#each teacherName senderId}}Prof. {{profile.lastname}} {{profile.firstname}}{{/each}}</h3>
+                    <div class="item-text-wrap">{{content}}</div>
+                  </a>
+                  <div class="item item-text-wrap">
+                    <p>{{livestamp createdAt}}</p>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          {{/each}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
+
+      </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

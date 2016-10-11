@@ -15,7 +15,7 @@
 
       {{#each messages}}
         {{#if equals senderId currentUser._id}}
-          <div class="list">
+          <div class="list" style="margin-bottom: 0px;">
             <a class="item item-avatar-right" href="#">
               <img src="../user.png">
               <div style="text-align:right; margin-right:20px;">
@@ -26,7 +26,7 @@
             </a>
           </div>
           {{else}}
-          <div class="list">
+          <div class="list" style="margin-bottom: 0px;">
             <a class="item item-avatar" href="#">
               <img src="../user.png">
               <h2>{{#each name senderId}}{{profile.lastname}}{{/each}}</h2>
