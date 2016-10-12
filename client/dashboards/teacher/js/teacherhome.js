@@ -4,6 +4,6 @@ Template.teacherDashboardHome.onCreated(function(){
 
 Template.teacherDashboardHome.helpers({
   news: function(){
-    return news.find({});
+    return news.find({}, {sort:{createdAt: -1}}).fetch();
   }
 });

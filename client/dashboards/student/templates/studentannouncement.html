@@ -23,10 +23,13 @@
             {{#each announcement classId}}
               <div class="list card">
                 <div class="list">
-                  <a class="item item-thumbnail-left" href="#">
-                    <img src="../user.png">
-                    <h3><strong>WHAT:</strong> {{title}}</h3>
-                    <h3><strong>BY:</strong> {{#each teacherName senderId}}Prof. {{profile.lastname}} {{profile.firstname}}{{/each}}</h3>
+                  <a class="item" href="#">
+                    {{#each classinfo classId}}
+                      <h3>Description: {{description}}</h3>
+                      <h3>Section Code: {{sec_code}}</h3>
+                    {{/each}}
+                    <h3>WHAT: {{title}}</h3>
+                    <h3>BY: {{#each teacherName senderId}}Prof. {{profile.lastname}} {{profile.firstname}}{{/each}}</h3>
                     <div class="item-text-wrap">{{content}}</div>
                   </a>
                   <div class="item item-text-wrap">

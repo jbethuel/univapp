@@ -6,7 +6,7 @@ Template.teacherDashboardConversation.onCreated(function(){
   teach_id = Meteor.userId();
   stud_id = Router.current().params.stud_id;
   id = stud_id;
-  this.subscribe("user", id);
+  this.subscribe("teacherMessengerName", stud_id);
   this.subscribe("subTeacherMessages", stud_id, teach_id);
 });
 

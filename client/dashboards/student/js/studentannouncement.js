@@ -14,5 +14,9 @@ Template.studentDashboardClassAnnouncement.helpers({
     id = senderId;
     Meteor.subscribe("teacherName", id);
     return Meteor.users.find({_id: id}).fetch();
+  },
+  classinfo: function(classId){
+    Meteor.subscribe("studentClassInfo", classId);
+    return classindex.find({}).fetch();
   }
 });

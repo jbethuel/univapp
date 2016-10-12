@@ -9,69 +9,74 @@
   {{#ionView}}
     {{#ionContent}}
 
-    <ul class="list title_prompt" style="margin-bottom:0px;">
-      <li class="item">
-        {{#each classinfo classid}}
-          <p>{{description}} - {{studentCount _id}}</p>
-          <p>{{sec_code}} - {{subj_code}}</p>
-          <p>{{time_start}} - {{time_end}}</p>
-          <p>{{sem}} - {{school_yr}}</p>
-          <p>Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
-        {{/each}}
-      </li>
-      <div class="item-divider">
-        Main Menu
-      </div>
-    </ul>
+      {{#if Template.subscriptionsReady}}
+        <ul class="list title_prompt" style="margin-bottom:0px;">
+          <li class="item">
+            {{#each classinfo classid}}
+              <p>{{description}} - {{studentCount _id}}</p>
+              <p>{{sec_code}} - {{subj_code}}</p>
+              <p>{{time_start}} - {{time_end}}</p>
+              <p>{{sem}} - {{school_yr}}</p>
+              <p>Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
+            {{/each}}
+          </li>
+          <div class="item-divider">
+            Main Menu
+          </div>
+        </ul>
 
-    <div class="list" style="margin-bottom:0px;">
-      <a class="item item-icon-left item-icon-right" id="teacherAnnouncement">
-        <i class="icon ion-mic-c energized"></i>
-        Announcement
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherActivity">
-        <i class="icon ion-edit energized"></i>
-        Class Activities
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherSeatplan">
-        <i class="icon ion-grid energized"></i>
-        Seat Plan
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherAttendance">
-        <i class="icon ion-person-stalker energized"></i>
-        Attendance
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherGraderecords">
-        <i class="icon ion-clipboard energized"></i>
-        Grade Records
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherMessage">
-        <i class="icon ion-android-chat energized"></i>
-        Message Board
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-left item-icon-right" id="teacherSettings">
-        <i class="icon ion-wrench energized"></i>
-        Grade Settings
-        <i class="icon ion-chevron-right"></i>
-      </a>
-    </div>
+        <div class="list" style="margin-bottom:0px;">
+          <a class="item item-icon-left item-icon-right" id="teacherAnnouncement">
+            <i class="icon ion-mic-c energized"></i>
+            Announcement
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherActivity">
+            <i class="icon ion-edit energized"></i>
+            Class Activities
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherSeatplan">
+            <i class="icon ion-grid energized"></i>
+            Seat Plan
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherAttendance">
+            <i class="icon ion-person-stalker energized"></i>
+            Attendance
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherGraderecords">
+            <i class="icon ion-clipboard energized"></i>
+            Grade Records
+              <br><small>Best view if landscape mode</small>
+              <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherMessage">
+            <i class="icon ion-android-chat energized"></i>
+            Message Board
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherSettings">
+            <i class="icon ion-wrench energized"></i>
+            Grade Settings
+            <i class="icon ion-chevron-right"></i>
+          </a>
+        </div>
 
-    <ul class="list title_prompt" style="margin-bottom: 0px;">
-      <div class="item-divider">
-        Settings
-      </div>
-    </ul>
-    <div class="list">
-      <a class="item title_prompt delete-class" style="color:red;">
-        Delete Class
-      </a>
-    </div>
+        <ul class="list title_prompt" style="margin-bottom: 0px;">
+          <div class="item-divider">
+            Settings
+          </div>
+        </ul>
+        <div class="list">
+          <a class="item title_prompt delete-class" style="color:red;">
+            Delete Class
+          </a>
+        </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
     {{/ionContent}}
   {{/ionView}}

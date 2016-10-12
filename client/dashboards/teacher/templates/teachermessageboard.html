@@ -13,29 +13,33 @@
   {{#ionView}}
     {{#ionContent}}
 
-    {{#each messages}}
-      {{#if equals senderId currentUser._id}}
-        <div class="list" style="margin-bottom: 0px;">
-          <a class="item item-avatar-right" href="#">
-            <img src="../user.png">
-            <div style="text-align:right; margin-right:20px;">
-              <h2>YOU</h2>
+    {{#if Template.subscriptionsReady}}
+      {{#each messages}}
+        {{#if equals senderId currentUser._id}}
+          <div class="list" style="margin-bottom: 0px;">
+            <a class="item item-avatar-right" href="#">
+              <img src="../user.png">
+              <div style="text-align:right; margin-right:20px;">
+                <h2>YOU</h2>
+                <p>{{message}}</p>
+                <p><small>{{livestamp createdAt}}</small></p>
+              </div>
+            </a>
+          </div>
+          {{else}}
+          <div class="list" style="margin-bottom: 0px;">
+            <a class="item item-avatar" href="#">
+              <img src="../user.png">
+              <h2>{{#each name senderId}}{{profile.lastname}}{{/each}}</h2>
               <p>{{message}}</p>
               <p><small>{{livestamp createdAt}}</small></p>
-            </div>
-          </a>
-        </div>
-        {{else}}
-        <div class="list" style="margin-bottom: 0px;">
-          <a class="item item-avatar" href="#">
-            <img src="../user.png">
-            <h2>{{#each name senderId}}{{profile.lastname}}{{/each}}</h2>
-            <p>{{message}}</p>
-            <p><small>{{livestamp createdAt}}</small></p>
-          </a>
-        </div>
-      {{/if}}
-    {{/each}}
+            </a>
+          </div>
+        {{/if}}
+      {{/each}}
+    {{else}}
+      {{>spinner}}
+    {{/if}}
 
     {{/ionContent}}
 

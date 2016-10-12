@@ -1,7 +1,6 @@
 Template.teacherDashboardMessenger.onCreated(function(){
   id = Meteor.userId();
   this.subscribe("teacherMessages", id);
-  this.subscribe("appusers");
 });
 
 Template.teacherDashboardMessenger.events({
@@ -17,13 +16,14 @@ Template.teacherDashboardMessenger.events({
 Template.teacherDashboardMessenger.helpers({
   thread: function(){
     id = Meteor.userId();
-    return _.uniq(messages.find({sentBy: id},{sort: {
+    return _.uniq(messages.find({teach_id: id},{sort: {
       stud_id: 0, createdAt: -1}
     }).fetch(), true, doc => {
       return doc.stud_id;// https://forums.meteor.com/t/mongo-distinct-query/1748/9
     });
   },
   name: function(stud_id){
-    return Meteor.users.find({_id:stud_id},{username:1}).fetch();
+    Meteor.subscribe("teacherMessengerName", stud_id);
+    return Meteor.users.find({_id:stud_id}).fetch();
   }
 });

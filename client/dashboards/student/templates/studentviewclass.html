@@ -9,62 +9,64 @@
   {{#ionView}}
     {{#ionContent}}
 
-      <ul class="list title_prompt" style="margin-bottom: 0px;">
-        <li class="item">
-          {{#each classinfo}}
-            <p>{{description}}</p>
-            <p>{{sec_code}} - {{subj_code}}</p>
-            <p>{{time_start}} - {{time_end}}</p>
-            <p>{{sem}} - {{school_yr}}</p>
-            <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
-            <div class="teachId" hidden>{{teachId}}</div>
-          {{/each}}
-        </li>
-        <div class="item-divider">
-          Main Menu
+      {{#if Template.subscriptionsReady}}
+        <ul class="list title_prompt" style="margin-bottom: 0px;">
+          <li class="item">
+            {{#each classinfo}}
+              <p>{{description}}</p>
+              <p>{{sec_code}} - {{subj_code}}</p>
+              <p>{{time_start}} - {{time_end}}</p>
+              <p>{{sem}} - {{school_yr}}</p>
+              <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
+              <div class="teachId" hidden>{{teachId}}</div>
+            {{/each}}
+          </li>
+          <div class="item-divider">
+            Main Menu
+          </div>
+        </ul>
+
+        <div class="list" style="margin-bottom:0px;">
+          <a class="item item-icon-left item-icon-right" id="classStanding">
+            <i class="icon ion-document-text energized"></i>
+            Class Standing
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="classActivity">
+            <i class="icon ion-edit energized"></i>
+            Class Activities
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="classRoom">
+            <i class="icon ion-grid energized"></i>
+            Visit Class Room
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="classMessage">
+            <i class="icon ion-chatbox-working energized"></i>
+            Message Board
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="classTeacherMessage" data-ion-modal="compose">
+            <i class="icon ion-ios-chatboxes energized"></i>
+            Message Instructor
+            <i class="icon ion-chevron-right"></i>
+          </a>
         </div>
-      </ul>
 
-      <div class="list" style="margin-bottom:0px;">
-        <a class="item item-icon-left item-icon-right" id="classStanding">
-          <i class="icon ion-document-text energized"></i>
-          Class Standing
-          <i class="icon ion-chevron-right"></i>
-        </a>
-        <a class="item item-icon-left item-icon-right" id="classActivity">
-          <i class="icon ion-edit energized"></i>
-          Class Activities
-          <i class="icon ion-chevron-right"></i>
-        </a>
-        <a class="item item-icon-left item-icon-right" id="classRoom">
-          <i class="icon ion-grid energized"></i>
-          Visit Class Room
-          <i class="icon ion-chevron-right"></i>
-        </a>
-        <a class="item item-icon-left item-icon-right" id="classMessage">
-          <i class="icon ion-chatbox-working energized"></i>
-          Message Board
-          <i class="icon ion-chevron-right"></i>
-        </a>
-        <a class="item item-icon-left item-icon-right" id="classTeacherMessage" data-ion-modal="compose">
-          <i class="icon ion-ios-chatboxes energized"></i>
-          Message Instructor
-          <i class="icon ion-chevron-right"></i>
-        </a>
-      </div>
-
-      <ul class="list title_prompt" style="margin-bottom: 0px;">
-        <div class="item-divider">
-          Settings
+        <ul class="list title_prompt" style="margin-bottom: 0px;">
+          <div class="item-divider">
+            Settings
+          </div>
+        </ul>
+        <div class="list">
+          <a class="item title_prompt" style="color:red;" id="classDelete">
+            Drop Class
+          </a>
         </div>
-      </ul>
-      <div class="list">
-        <a class="item title_prompt" style="color:red;" id="classDelete">
-          Drop Class
-        </a>
-      </div>
-
-
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
     {{/ionContent}}
   {{/ionView}}
