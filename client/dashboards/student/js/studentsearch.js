@@ -49,7 +49,7 @@ Template.studentDashboardSearch.events({
               });
             }else{
               if(checkstud === 0){
-                Meteor.call('addstudent',studDetails, function(error){
+                Meteor.call('joinClass', studDetails, function(error){
                   if(!error){
                     IonLoading.show({
                       customTemplate: '<h4>SUCCESS</h4><p>Succesfully enrolled to the class.</p>',

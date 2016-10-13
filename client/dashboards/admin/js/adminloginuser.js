@@ -1,5 +1,5 @@
 Template.adminDashboardLoginUser.onCreated(function(){
-  this.subscribe("appusers");
+  this.subscribe("adminSearchUser");
 });
 
 Template.adminDashboardLoginUser.onDestroyed(function(){

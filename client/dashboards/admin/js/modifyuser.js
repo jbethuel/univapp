@@ -1,5 +1,6 @@
 Template._modifyuser.onCreated(function(){
-  this.subscribe("appusers");
+  id = Session.get("userId");
+  this.subscribe("adminModifyUser", id);
 });
 
 Template._modifyuser.helpers({
@@ -19,17 +20,23 @@ Template._modifyuser.events({
     middlename = $(".reg_middlename").val();
     lastname = $(".reg_lastname").val();
 
-    Meteor.call("modifyuser", id, username, firstname, middlename, lastname, function(error){
-      if(error){
-        console.log(error.reason);
-      }else{
-        title = "SUCCESS";
-        button = "button button-balanced";
-        template = "<div class='title_prompt'>Succesfully Modified.</div>";
-        Meteor.Messages.dialog(title, template, button);
-      }
-    });
-
+    if(username == "" || firstname == "" || middlename == "" || lastname == ""){
+      title = "ERROR";
+      button = "button button-assertive";
+      template = "<div class='title_prompt'>Complete the password fields.</div>";
+      Meteor.Messages.dialog(title, template, button);
+    }else{
+      Meteor.call("modifyuser", id, username, firstname, middlename, lastname, function(error){
+        if(error){
+          console.log(error.reason);
+        }else{
+          title = "SUCCESS";
+          button = "button button-balanced";
+          template = "<div class='title_prompt'>Succesfully Modified.</div>";
+          Meteor.Messages.dialog(title, template, button);
+        }
+      });
+    }
   },
   "click .btn_savepw": function(event){
     event.preventDefault();

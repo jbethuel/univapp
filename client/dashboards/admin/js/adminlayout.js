@@ -1,3 +1,8 @@
+Template.adminDashboardLayout.rendered = function() {
+  IonSideMenu.snapper.disable();
+  IonSideMenu.snapper.settings({touchToDrag: false});
+};
+
 Template.adminDashboardLayout.events({
   "click #sideHome": function(event){
     event.preventDefault();

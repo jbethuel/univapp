@@ -8,11 +8,7 @@
     {{/contentFor}}
 
     {{#contentFor "headerTitle"}}
-      {{#if isAndroid}}
-        <h1 class="title">About The App</h1>
-      {{else}}
-        <h1 class="title" style="text-align:center;">About The App</h1>
-      {{/if}}
+      <h1 class="title" style="text-align:center;">About The App</h1>
     {{/contentFor}}
 
     {{#ionView}}
@@ -21,23 +17,27 @@
         {{#ionSlideBox}}
           {{#ionSlide class="light-bg"}}
             <div class="padding">
-              <img src="../../about/meteor-logo.png" class="about-logo">
-              <img src="../../about/ionic-logo.png" class="about-logo">
-              <img src="../../about/cordova-logo.png" class="about-logo">
+              <img src="../../about/meteoric.png" class="about-logo">
             </div>
-          {{/ionSlide}}
-          {{#ionSlide class="dark-bg"}}
-            <div class="padding" style="color:white;">
-              <h2 style="color:white">Application Developers</h2><br>
-              Van Alfred Sabacajan<br>
-              Nino Paul Cervantes<br>
-              Joseph Bethuel Dela Cruz<br>
+            <div class="padding" style="color:black;">
+              <h2 style="color:black;">Developers</h2>
+              <p>
+                Van Alfred Sabacajan
+              </p>
+              <p>
+                Nino Paul Cervantes
+              </p>
+              <p>
+                Joseph Bethuel Dela Cruz
+              </p>
 
-              <h2 style="color:white">Researchers</h2><br>
-              Apple Joy Ebcas<br>
-              April Gloed Subrado<br>
+
+              <h2 style="color:black">Researchers</h2>
+              <p>Apple Joy Ebcas</p>
+              <p>April Gloed Subrado</p>
             </div>
           {{/ionSlide}}
+
           {{#ionSlide class="positive-bg"}}
             <div class="padding" style="color:white;">
               <h3 style="color:white;">Special thanks To:</h3><br>

@@ -1,5 +1,5 @@
 Template.adminDashboardTokenTeacher.onCreated(function(){
-  this.subscribe('tokensTeacher');
+  this.subscribe('adminTokenTeacher');
   Session.setDefault("available", "unavailable");
   new Clipboard('.btn_copy');
 });
@@ -21,6 +21,10 @@ Template.adminDashboardTokenTeacher.events({
     template = "<div class='title_prompt'>Token copied to clipboard: "+token+"</div>";
     Meteor.Messages.dialog(title, template, button);
   },
+  "click .btn_delete": function(event){
+    event.preventDefault();
+    Meteor.call("deleteTokens", this._id);
+  },
   "click input[type='checkbox']": function(event){
     if($('.available').prop("checked") == true){
       Session.set("available", "available");
@@ -33,13 +37,11 @@ Template.adminDashboardTokenTeacher.events({
 Template.adminDashboardTokenTeacher.helpers({
   tokens: function(){
     var filter = Session.get("available");
-
     if(filter == "available"){
       return tokens.find({$and:[{used: false},{type:'teacher'}]}).fetch();
     }else if(filter == "unavailable"){
       return tokens.find({$and:[{used: true},{type:'teacher'}]}).fetch();
     }
-
   },
   available: function(){
     var available = Session.get("available");

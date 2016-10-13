@@ -8,11 +8,7 @@
       {{/contentFor}}
 
       {{#contentFor "headerTitle"}}
-        {{#if isAndroid}}
-          <h1 class="title"> Student Token</h1>
-        {{else}}
-          <h1 class="title" style="text-align:center;"> Student Token</h1>
-        {{/if}}
+        <h1 class="title" style="text-align:center;"> Student Token</h1>
       {{/contentFor}}
 
       {{#ionView}}
@@ -40,9 +36,11 @@
               <div class="list">
 
                 {{#each tokens}}
-                  <a class="item {{#if available}}item-icon-right{{/if}}" href="#">
+                  <a class="item item-icon-right" href="#">
                     {{#if available}}
-                      <i class="icon ion-ios-copy btn_copy" data-clipboard-text="{{token}}"></i>
+                      <i class="icon ion-ios-copy balanced btn_copy" data-clipboard-text="{{token}}"></i>
+                    {{else}}
+                      <i class="icon ion-trash-b assertive btn_delete"></i>
                     {{/if}}
                     {{token}}
                   </a>

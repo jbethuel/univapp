@@ -8,7 +8,7 @@
           <div class="content">
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
-                <img src="../user.png">
+                <img src="../admin.png">
                 <h2 class="sidebar_name">Joseph Bethuel</h2>
                 <h2 class="sidebar_name">ADMIN</h2>
               </a>
@@ -16,75 +16,34 @@
                 Main Menu
               </div>
               <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'adminDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Home
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-home" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-home" class="energized"}}
-                {{/if}}
+                Home {{> ionIcon icon="android-home" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sidePost" style="{{#if isActiveRoute 'adminDashboardPost'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Post News
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-star" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-star" class="energized"}}
-                {{/if}}
+                Post News {{> ionIcon icon="android-star" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideGenerateStudent" style="{{#if isActiveRoute 'adminDashboardTokenStudent'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Generate Token Student
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-add-circle" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="plus" class="energized"}}
-                {{/if}}
+                Generate Token Student {{> ionIcon icon="android-add-circle" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideGenerateTeacher" style="{{#if isActiveRoute 'adminDashboardTokenTeacher'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Generate Token Teacher
-                {{#if isAndroid}}
-                  {{> ionIcon icon="plus-round" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-plus" class="energized"}}
-                {{/if}}
+                Generate Token Teacher {{> ionIcon icon="plus-round" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideLoginUser" style="{{#if isActiveRoute 'adminDashboardLoginUser'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Login As User
-                {{#if isAndroid}}
-                  {{> ionIcon icon="ios-redo" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-redo" class="energized"}}
-                {{/if}}
+                Login a User {{> ionIcon icon="ios-redo" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideModifyAccount" style="{{#if isActiveRoute 'adminDashboardModify'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Modify An Account
-                {{#if isAndroid}}
-                  {{> ionIcon icon="edit" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-compose" class="energized"}}
-                {{/if}}
+                Modify An Account {{> ionIcon icon="edit" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'adminDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Settings
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-settings" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-gear" class="energized"}}
-                {{/if}}
+                Settings {{> ionIcon icon="android-settings" class="energized"}}
               </div>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Application
               </div>
               <div class="item item-icon-left" id="sideAbout" style="{{#if isActiveRoute 'adminDashboardAbout'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                About
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-alert" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-information" class="energized"}}
-                {{/if}}
+                About {{> ionIcon icon="android-alert" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideLogout" data-ion-menu-close>
-                Log out
-                {{> ionIcon icon="ios-undo" class="energized"}}
+                Log out {{> ionIcon icon="ios-undo" class="energized"}}
               </div>
             </div>
           </div>

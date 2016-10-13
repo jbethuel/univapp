@@ -1,8 +1,7 @@
 Template.adminDashboardHome.onCreated(function(){
-  this.subscribe('tokens');
-  this.subscribe('contacts');
-  this.subscribe('news');
-  this.subscribe('appusers');
+  this.subscribe('adminTokens');
+  this.subscribe('adminNews');
+  this.subscribe('adminUsers');
 });
 
 Template.adminDashboardHome.helpers({
