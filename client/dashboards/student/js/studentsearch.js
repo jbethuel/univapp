@@ -25,8 +25,8 @@ Template.studentDashboardSearch.events({
     var studDetails = {
       studId: Meteor.userId(),
       classId: this._id,
-      colnum: 0,
-      rownum: 0
+      seatnum:"0:0",
+      drop:false
     }
     var checkstud = students.find({studId:Meteor.userId(),classId:this._id}).count();
     console.log(checkstud);
@@ -49,7 +49,7 @@ Template.studentDashboardSearch.events({
               });
             }else{
               if(checkstud === 0){
-                Meteor.call('joinClass', studDetails, function(error){
+                Meteor.call('joinClass', studDetails,roomId, function(error){
                   if(!error){
                     IonLoading.show({
                       customTemplate: '<h4>SUCCESS</h4><p>Succesfully enrolled to the class.</p>',

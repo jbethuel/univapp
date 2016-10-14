@@ -92,10 +92,10 @@ Template.teacherDashboardRecords.helpers({
         }
         if(percentGrade.length !=0){
           if(term == "midterm"){
-            overalltotals = (totalcs[0].totaleq*percentGrade[0].midtermCS) + (totalprj[0].totaleq*percentGrade[0].midtermPRJ) + totalexam[0].totaleq*percentGrade[0].midtermEXAM;
+            overalltotals = (Meteor.Custom.RoundOff(totalcs[0].totaleq)*percentGrade[0].midtermCS) + (Meteor.Custom.RoundOff(totalprj[0].totaleq)*percentGrade[0].midtermPRJ) + (Meteor.Custom.RoundOff(totalexam[0].totaleq)*percentGrade[0].midtermEXAM);
             return [{totalCS:totalcs[0].totaleq,totalPRJ:totalprj[0].totaleq,totalEXAM:totalexam[0].totaleq,overallTotal:Meteor.Custom.RoundOff(overalltotals)}];
           }else{
-            overalltotals = (totalcs[0].totaleq*percentGrade[0].finaltermCS) + (totalprj[0].totaleq*percentGrade[0].finaltermPRJ) + totalexam[0].totaleq*percentGrade[0].finaltermEXAM;
+            overalltotals = (Meteor.Custom.RoundOff(totalcs[0].totaleq)*percentGrade[0].finaltermCS) + (Meteor.Custom.RoundOff(totalprj[0].totaleq)*percentGrade[0].finaltermPRJ) + (Meteor.Custom.RoundOff(totalexam[0].totaleq)*percentGrade[0].finaltermEXAM);
             return [{totalCS:totalcs[0].totaleq,totalPRJ:totalprj[0].totaleq,totalEXAM:totalexam[0].totaleq,overallTotal:Meteor.Custom.RoundOff(overalltotals)}];
           }
         }else{
@@ -126,10 +126,10 @@ Template.teacherDashboardRecords.helpers({
               console.log(totalprj[0].totaleq);
               console.log(totalexam[0].totaleq);
             if(t==0){
-              midtermtotals = (totalcs[0].totaleq*percentGrade[0].midtermCS)+(totalprj[0].totaleq*percentGrade[0].midtermPRJ)+(totalexam[0].totaleq*percentGrade[0].midtermEXAM);
+              midtermtotals = (Meteor.Custom.RoundOff(totalcs[0].totaleq)*percentGrade[0].midtermCS)+(Meteor.Custom.RoundOff(totalprj[0].totaleq)*percentGrade[0].midtermPRJ)+(Meteor.Custom.RoundOff(totalexam[0].totaleq)*percentGrade[0].midtermEXAM);
             }else{
               console.log(midtermtotals);
-              finaltermtotals = (totalcs[0].totaleq*percentGrade[0].finaltermCS)+(totalprj[0].totaleq*percentGrade[0].finaltermPRJ)+(totalexam[0].totaleq*percentGrade[0].finaltermEXAM);
+              finaltermtotals = (Meteor.Custom.RoundOff(totalcs[0].totaleq)*percentGrade[0].finaltermCS)+(Meteor.Custom.RoundOff(totalprj[0].totaleq)*percentGrade[0].finaltermPRJ)+(Meteor.Custom.RoundOff(totalexam[0].totaleq)*percentGrade[0].finaltermEXAM);
               console.log(finaltermtotals);
             }
         }

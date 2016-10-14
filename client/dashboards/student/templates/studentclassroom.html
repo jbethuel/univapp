@@ -12,7 +12,39 @@
 
   {{#ionView}}
     {{#ionContent}}
-
+    {{#each classinfo}}
+    <div style="top:0px; right:0; bottom:0; left:0; overflow-y:scroll; overflow-x: scroll">
+    <table>
+      {{#each loopcol}}
+      <tr>
+        {{#each looprow column ../rows}}
+          {{#if isTaken ./col row}}
+            {{#each studinfo ./col ./row}}
+                  {{#if isUnmark }}
+                    <td style="padding:10px">{{>takenSeat}}</td>
+                  {{else}}
+                    {{#if isPresent}}
+                      <td style="padding:10px">{{>presentSeat}}</td>
+                    {{else}}
+                      {{#if isLate}}
+                        <td style="padding:10px">{{>lateSeat}}</td>
+                      {{else}}
+                        {{#if isAbsent}}
+                          <td style="padding:10px">{{>absentSeat}}</td>
+                        {{/if}}
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+            {{/each}}
+          {{else}}
+            <td style="padding:10px">{{>blankSeat}}</td>
+          {{/if}}
+        {{/each}}
+      </tr>
+      {{/each}}
+    </table>
+    </div>
+    {{/each}}
     {{/ionContent}}
   {{/ionView}}
 </template>

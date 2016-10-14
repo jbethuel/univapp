@@ -14,7 +14,8 @@
     {{#ionContent class="padding"}}
 
     {{#if Template.subscriptionsReady}}
-    <h4><strong>MID-TERM STANDINGS:</strong></h4>
+    {{#each gradeinfo}}
+    <h4><strong>{{term}} STANDINGS:</strong></h4>
       <div class="row" style="margin-top:-20px;">
         <div class="col col-50">
           <div class="card">
@@ -22,7 +23,7 @@
               Class Standing
             </div>
             <div class="item item-text-wrap">
-              <h1><div class="text_center">1</div></h1>
+              <h1><div class="text_center">{{totalCS}}</div></h1>
             </div>
           </div>
         </div>
@@ -32,7 +33,7 @@
               Exams
             </div>
             <div class="item item-text-wrap">
-              <h1><div class="text_center">1</div></h1>
+              <h1><div class="text_center">{{totalEXAM}}</div></h1>
             </div>
           </div>
         </div>
@@ -45,7 +46,7 @@
               Projects
             </div>
             <div class="item item-text-wrap">
-              <h1><div class="text_center">1</div></h1>
+              <h1><div class="text_center">{{totalPRJ}}</div></h1>
             </div>
           </div>
         </div>
@@ -55,58 +56,13 @@
               Mid Term Grade
             </div>
             <div class="item item-text-wrap">
-              <h1><div class="text_center">1</div></h1>
+              <h1><div class="text_center">{{overallTotal}}</div></h1>
             </div>
           </div>
         </div>
       </div>
+      {{/each}}
 
-      <h4><strong>FINAL-TERM STANDINGS:</strong></h4>
-        <div class="row" style="margin-top:-20px;">
-          <div class="col col-50">
-            <div class="card">
-              <div class="item item-divider">
-                Class Standing
-              </div>
-              <div class="item item-text-wrap">
-                <h1><div class="text_center">1</div></h1>
-              </div>
-            </div>
-          </div>
-          <div class="col col-50">
-            <div class="card">
-              <div class="item item-divider">
-                Exams
-              </div>
-              <div class="item item-text-wrap">
-                <h1><div class="text_center">1</div></h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row" style="margin-top:-20px;">
-          <div class="col col-50">
-            <div class="card">
-              <div class="item item-divider">
-                Projects
-              </div>
-              <div class="item item-text-wrap">
-                <h1><div class="text_center">1</div></h1>
-              </div>
-            </div>
-          </div>
-          <div class="col col-50">
-            <div class="card">
-              <div class="item item-divider">
-                Final Grade
-              </div>
-              <div class="item item-text-wrap">
-                <h1><div class="text_center">1</div></h1>
-              </div>
-            </div>
-          </div>
-        </div>
       {{else}}
         {{>spinner}}
       {{/if}}

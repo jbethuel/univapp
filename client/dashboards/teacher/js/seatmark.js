@@ -15,7 +15,7 @@ Template.takenSeat.helpers({
   name:function(){
     var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
   isSwapChecked:function(){
     if(Session.get("swap")== true){
@@ -55,28 +55,28 @@ Template.takenSeat.events({
 Template.presentSeat.helpers({
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
 });
 
 Template.lateSeat.helpers({
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
 });
 
 Template.absentSeat.helpers({
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
 });
 
 Template.attendancetakenSeat.helpers({
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
 });
 
@@ -171,7 +171,7 @@ Template.swapreadySeat.helpers({
   name:function(){
     var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();
-    return name[0].profile.fullname;
+    return name[0].profile.lastname +", "+name[0].profile.firstname;
   },
 })
 

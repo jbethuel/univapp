@@ -9,8 +9,21 @@ Meteor.methods({
       createdAt: new Date()
     });
   },
-  joinClass: function(studDetails){
-    students.insert(studDetails);
+  joinClass: function(studDetails,classId){
+    var classinfo = classindex.find({_id:classId}).fetch();
+    if(classinfo[0].rows == 0 && classinfo[0].cols == 0){
+        students.insert(studDetails);
+    }else{
+    for(var r = 1;r <= classinfo[0].cols;r++){
+      for(var c = 1;c <= classinfo[0].rows;c++){
+        if(students.find({seatnum:r+":"+c}).count()==0){
+          studDetails.seatnum = r+":"+c;
+          students.insert(studDetails);
+          return false;
+        }
+      }
+    }
+    }
   },
   studentMessageBoardInsert: function(classId, message){
     id = this.userId;
