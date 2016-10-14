@@ -115,7 +115,7 @@ addRecord:function(classId,term,type,items){
   return info;
 },
 editRecord:function(recordId,total){
-  graderecordindex.update({_id:recordId},{$set:{total_items:total}})
+  graderecordindex.update({_id:recordId},{$set:{total_items:Number(total)}})
 },
 deleteRecord:function(id){
   graderecordindex.remove({_id:id});
