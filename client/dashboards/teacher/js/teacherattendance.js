@@ -1,16 +1,9 @@
-Meteor.startup(function(){
-  setInterval(function(){
-    Meteor.call("getserverdate",function(error,result){
-      Session.set("datetoday",result);
-    })
-  }, 1000);
-});
-
 Template.teacherDashboardAttendance.onCreated(function(){
 Tracker.autorun(function(){
   Meteor.subscribe("students",Session.get("currentClassId"));
   Meteor.subscribe("attendance",Session.get("currentClassId"));
 });
+Session.set("currentDateSelected",Session.get("datetoday"));
 Meteor.subscribe("classindex");
 Meteor.subscribe("appusers");
 Session.set("checking",false);
@@ -27,8 +20,7 @@ Template.teacherDashboardAttendance.onDestroyed(function(){
 
 Template.teacherDashboardAttendance.helpers({
   dateToday:function(){
-    Session.set("currentDateSelected",Session.get("datetoday"));
-    return Session.get("datetoday");
+    return moment(Session.get("datetoday")).format("YYYY-MM-DD");
   },
   isCheckedOn:function(){
     if(Session.get("checking") == true){
@@ -72,23 +64,22 @@ Template.teacherDashboardAttendance.helpers({
     return students.find({seatnum:col+":"+row}).fetch();
   },
   isUnmark:function(){
-    console.log(Session.get("currentDateSelected"));
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:Session.get("currentDateSelected")}).count() == 0){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:moment(Session.get("currentDateSelected")).format("YYYY-MM-DD")}).count() == 0){
         return true;
     }
   },
   isPresent:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"present",dateCreated:Session.get("currentDateSelected")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"present",dateCreated:moment(Session.get("currentDateSelected")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   },
   isLate:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"late",dateCreated:Session.get("currentDateSelected")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"late",dateCreated:moment(Session.get("currentDateSelected")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   },
   isAbsent:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"absent",dateCreated:Session.get("currentDateSelected")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"absent",dateCreated:moment(Session.get("currentDateSelected")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   }
@@ -100,6 +91,7 @@ Template.teacherDashboardAttendance.events({
     var classId = Session.get("currentClassId");
     var student = students.find({classId:classId}).fetch(),
         date = Session.get("currentDateSelected");
+        date = moment(date).format("YYYY-MM-DD");
       console.log(student);
     if(student.length > 0){
       for(var x=0;x<student.length;x++){
@@ -115,6 +107,7 @@ Template.teacherDashboardAttendance.events({
     var classId = Session.get("currentClassId");
     var student = students.find({classId:classId}).fetch(),
         date = Session.get("currentDateSelected");
+        date = moment(date).format("YYYY-MM-DD");
       console.log(student);
     if(student.length > 0){
       for(var x=0;x<student.length;x++){
@@ -129,6 +122,7 @@ Template.teacherDashboardAttendance.events({
     e.preventDefault();
     var classId = Session.get("currentClassId"),
         date = Session.get("currentDateSelected");
+        date = moment(date).format("YYYY-MM-DD");
       Meteor.call("attendanceReset",classId,date);
   },
   "click #checkAttendance": function(event){

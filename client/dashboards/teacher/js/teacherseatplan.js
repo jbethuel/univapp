@@ -94,24 +94,24 @@ Template.teacherDashboardSeatplan.helpers({
     }
   },
   isUnmark:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:Session.get("datetoday")}).count() == 0){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:moment(Session.get("datetoday")).format("YYYY-MM-DD")}).count() == 0){
         console.log(Session.get("datetoday"));
         console.log(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,dateCreated:"2016-10-2"}).count());
         return true;
     }
   },
   isPresent:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"present",dateCreated:Session.get("datetoday")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"present",dateCreated:moment(Session.get("datetoday")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   },
   isLate:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"late",dateCreated:Session.get("datetoday")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"late",dateCreated:moment(Session.get("datetoday")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   },
   isAbsent:function(){
-    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"absent",dateCreated:Session.get("datetoday")}).count() == 1){
+    if(attendance.find({classId:Session.get("currentClassId"),studId:this.studId,remark:"absent",dateCreated:moment(Session.get("datetoday")).format("YYYY-MM-DD")}).count() == 1){
         return true;
     }
   }

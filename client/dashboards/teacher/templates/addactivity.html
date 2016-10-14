@@ -1,0 +1,55 @@
+<template name="teacheraddactivity">
+  {{#ionModal customTemplate=true title="NewActivity"}}
+    <div class="bar bar-header bar-energized">
+      <h2 class="title">New Activity</h2>
+      <button data-dismiss="modal" class="button button-icon">cancel</button>
+    </div>
+     <div class="padding" style="margin-top:50px">
+       <div class="list">
+
+         <label class="item item-input">
+           <span class="input-label">Title</span>
+           <input type="text" id="txtActivityTitle" placeholder="Title">
+         </label>
+         <label class="item item-input">
+           <span class="input-label">Total Score</span>
+           <input type="number" id="txtTotalScore" placeholder="Total score">
+         </label>
+         <label class="item item-input">
+           <textarea placeholder="Description" id="txtActivityDescription" style="text-align: left;" required="true"></textarea>
+         </label>
+
+         <div class="card">
+           <div class="item item-text-wrap">
+             <input multiple class="file fileinput" type="file">
+           </div>
+         </div>
+
+         <h4>Deadline</h4>
+         <label class="item item-input item-select">
+           <div class="input-label">
+             Term
+           </div>
+           <select id="txtActivityTerm">
+             <option value="midterm" selected>Midterm</option>
+             <option value="finalterm">Finalterm</option>
+           </select>
+         </label>
+         <label class="item item-input">
+           <span class="input-label">Time</span>
+           <input type="time" id="timepicker" required="true">
+         </label>
+         <label class="item item-input">
+           <span class="input-label">Date</span>
+           <input type="date" id="datepicker" required="true">
+         </label>
+
+       </div>
+
+       <button class="button button-block button-dark" data-dismiss="modal" id="btnAddActivity">
+         Add Activity
+       </button>
+
+     </div>
+  {{/ionModal}}
+</template>

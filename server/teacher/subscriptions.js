@@ -22,3 +22,7 @@ Meteor.publish("teacherMessageBoardName", function(senderId){
 Meteor.publish("studentCount", function(_id){
   return students.find({classId: _id});
 });
+
+Meteor.publish("roomactivity",function(classId){
+  return roomactivity.find({classId:classId});
+});

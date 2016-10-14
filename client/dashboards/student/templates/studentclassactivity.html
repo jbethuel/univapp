@@ -12,7 +12,43 @@
 
   {{#ionView}}
     {{#ionContent}}
+    {{classinfo}}
+      <div class="button-bar">
+        <button class="button button-small {{#if statusActiveCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusActive">
+          <b>Active</b>
+        </button>
+        <button class="button button-small {{#if statusDueCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusDue">
+          <b>Due</b>
+        </button>
+      </div>
 
+      {{#each activities}}
+      <div class="list card">
+        <div style="position:relative" class="item item-avatar">
+          <img src="mcfly.jpg">
+          <h2>{{title}}</h2>
+          <p>{{dateformat}}</p>
+        </div>
+
+      <div class="item item-body">
+        <div style="max-height:55px;overflow-y:hidden">
+        <p>
+          {{description}}
+        </p>
+        </div>
+        <p>
+          <a href="#" class="subdued">
+            Status:
+            {{#if statusActiveCheck}}
+              <span style="color:green">Active</span>
+            {{else}}
+              <span style="color:red">Due</span>
+            {{/if}}
+          </a>
+        </p>
+      </div>
+    </div>
+      {{/each}}
     {{/ionContent}}
   {{/ionView}}
 </template>

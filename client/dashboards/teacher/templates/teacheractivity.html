@@ -12,45 +12,58 @@
 
   {{#ionView}}
     {{#ionContent class="padding"}}
-      <div class="list">
-
-        <label class="item item-input">
-          <span class="input-label">Title</span>
-          <input type="text" id="txtActivityTitle" placeholder="Title">
-        </label>
-
-        <label class="item item-input">
-          <textarea placeholder="Description" id="txtActivityDescription" style="text-align: left;" required="true"></textarea>
-        </label>
-
-        <div class="card">
-          <div class="item item-text-wrap">
-            <input multiple class="file fileinput" type="file">
-          </div>
-        </div>
-
-        <h4>Deadline</h4>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Term
-          </div>
-          <select id="txtActivityTerm">
-            <option value="midterm" selected>Midterm</option>
-            <option value="finalterm">Finalterm</option>
-          </select>
-        </label>
-
-        <label class="item item-input">
-          <span class="input-label">Date</span>
-          <input type="date" id="datepicker" required="true">
-        </label>
-
+    {{classinfo}}
+      <div class="button-bar">
+        <button class="button button-small {{#if statusActiveCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusActive">
+          <b>Active</b>
+        </button>
+        <button class="button button-small {{#if statusDueCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusDue">
+          <b>Due</b>
+        </button>
       </div>
 
-      <button class="button button-block button-dark" id="btnAddActivity">
-        Add Activity
-      </button>
+      {{#each activities}}
+      <div class="list card">
+        <div style="position:relative" class="item item-avatar">
+          <img src="mcfly.jpg">
+          <h2>{{title}}</h2>
+          <p>{{dateformat}}</p>
+          <div style="position:absolute;right:0;top:0">
+            <button  class="button button-clear btnEditActivityPopOver" data-ion-popover="_EditActivityPopOver">
+             {{#if isAndroid}}
+               {{> ionIcon icon='android-more-vertical'}}
+             {{else}}
+               {{> ionIcon icon='more'}}
+             {{/if}}
+           </button>
+         </div>
+        </div>
 
+      <div class="item item-body">
+        <div style="max-height:55px;overflow-y:hidden">
+        <p>
+          {{description}}
+        </p>
+        </div>
+        <p>
+          <a href="#" class="subdued">
+            Status:
+            {{#if statusActiveCheck}}
+              <span style="color:green">Active</span>
+            {{else}}
+              <span style="color:red">Due</span>
+            {{/if}}
+          </a>
+        </p>
+      </div>
+    </div>
+      {{/each}}
+
+      <div style="position:fixed;bottom:15px;right:15px;z-index:9999">
+        <a  class="button button-icon" data-ion-modal="teacheraddactivity">
+          <img src="/addnew.png" width="75px">
+        </a>
+      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

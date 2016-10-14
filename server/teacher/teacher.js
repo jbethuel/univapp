@@ -2,19 +2,6 @@
 Meteor.methods({
   getserverdate:function(){
     var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-      dd='0'+dd;
-    }
-
-    if(mm<10) {
-      mm='0'+mm;
-    }
-    today = yyyy+'-'+mm+'-'+dd;
-    console.log(today);
     return today;
   },
   AddClass:function(description, sec_code, subj_code, sched, time_start, time_end, sem, school_yr){
@@ -122,13 +109,30 @@ Meteor.methods({
   }
 
 },
-  addRecord:function(classId,term,type,items){
-    graderecordindex.insert({classId:classId,teachId:this.userId,term:term,type:type,total_items:items});
-  },
-  addStudentGrade:function(studId,recordId,grade){
-    graderecord.insert({recordId:recordId,studId:studId,grade:grade,dateCreated:new Date()});
-  },
-  changeStudentGrade:function(gradeId,newgrade){
-    graderecord.update({_id:gradeId},{$set:{grade:newgrade,dateCreated:new Date()}});
-  }
+addRecord:function(classId,term,type,items){
+  var info = graderecordindex.insert({classId:classId,teachId:this.userId,term:term,type:type,total_items:Number(items)});
+  console.log(info);
+  return info;
+},
+editRecord:function(recordId,total){
+  graderecordindex.update({_id:recordId},{$set:{total_items:total}})
+},
+deleteRecord:function(id){
+  graderecordindex.remove({_id:id});
+},
+addActivity:function(activity){
+  roomactivity.insert(activity);
+},
+editActivity:function(activity,Id){
+  roomactivity.update({_id:Id},{$set:activity});
+},
+deleteActivity:function(id){
+  roomactivity.remove({_id:id});
+},
+addStudentGrade:function(studId,recordId,grade){
+  graderecord.insert({recordId:recordId,studId:studId,grade:grade,dateCreated:new Date()});
+},
+changeStudentGrade:function(gradeId,newgrade){
+  graderecord.update({_id:gradeId},{$set:{grade:newgrade,dateCreated:new Date()}});
+}
 });
