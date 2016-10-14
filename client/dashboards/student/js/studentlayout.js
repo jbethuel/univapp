@@ -1,3 +1,8 @@
+Template.studentDashboardLayout.onRendered(function(){
+  IonSideMenu.snapper.disable();
+  IonSideMenu.snapper.settings({touchToDrag: false});
+});
+
 Template.studentDashboardLayout.events({
   "click #sideHome": function(event){
     event.preventDefault();

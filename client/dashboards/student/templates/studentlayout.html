@@ -17,66 +17,29 @@
                 Main Menu
               </div>
               <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'studentDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Home
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-home" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-home" class="positive"}}
-                {{/if}}
+                Home {{> ionIcon icon="android-home" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideAnnouncement" style="{{#if isActiveRoute 'studentDashboardClassAnnouncement'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Class Announcement
-                {{#if isAndroid}}
-                  {{> ionIcon icon="mic-c" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-mic" class="positive"}}
-                {{/if}}
+                Class Announcement {{> ionIcon icon="mic-c" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideMessenger" style="{{#if isActiveRoute 'studentDashboardMessenger'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Messenger
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-mail" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-email" class="positive"}}
-                {{/if}}
+                Messenger {{> ionIcon icon="android-mail" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideSearch" style="{{#if isActiveRoute 'studentDashboardSearch'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Search
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-search" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-search" class="positive"}}
-                {{/if}}
+                Search {{> ionIcon icon="android-search" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideSchedules" style="{{#if isActiveRoute 'studentDashboardSchedules'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                My Schedules
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-list" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-list" class="positive"}}
-                {{/if}}
+                My Schedules {{> ionIcon icon="android-list" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'studentDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                Settings
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-settings" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-settings" class="positive"}}
-                {{/if}}
+                Settings {{> ionIcon icon="android-settings" class="energized"}}
               </div>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Application
               </div>
-              {{#if isImpersonating}}
               <div class="item item-icon-left" id="sideAbout" style="{{#if isActiveRoute 'studentDashboardAbout'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
-                About
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-alert" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="android-alert" class="positive"}}
-                {{/if}}
+                About {{> ionIcon icon="android-alert" class="energized"}}
               </div>
-              {{/if}}
               {{#if isImpersonating}}
               <div class="item item-icon-left" data-unimpersonate data-ion-menu-close>
                 Back to admin
@@ -84,25 +47,9 @@
               </div>
               {{/if}}
               <div class="item item-icon-left" id="sideLogout" data-ion-menu-close>
-                Log out
-                {{> ionIcon icon="ios-undo" class="energized"}}
+                Log out {{> ionIcon icon="ios-undo" class="energized"}}
               </div>
 
-            </div>
-          </div>
-
-        {{/ionSideMenu}}
-
-        {{#ionSideMenu side="right"}}
-
-          <div class="bar bar-header bar-dark">
-            <h1 class="title">Right Menu</h1>
-          </div>
-          <div class="content has-header">
-            <div class="list">
-              <div class="item item-icon-left" id="btnLogout" data-ion-menu-close>
-                {{> ionIcon icon="power"}} Log Out
-              </div>
             </div>
           </div>
 

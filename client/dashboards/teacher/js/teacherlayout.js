@@ -1,3 +1,8 @@
+Template.teacherDashboardLayout.onRendered(function(){
+  IonSideMenu.snapper.disable();
+  IonSideMenu.snapper.settings({touchToDrag: false});
+});
+
 Template.teacherDashboardLayout.events({
   "click #sideHome": function(event){
     event.preventDefault();
@@ -34,4 +39,3 @@ Template.teacherDashboardLayout.helpers({
     return Images.find({userId:Meteor.userId()});
   }
 });
-

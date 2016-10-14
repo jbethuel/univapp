@@ -1,4 +1,5 @@
 <template name="adminDashboardModify">
+  {{#if isInRole 'admin'}}
 
     {{#contentFor "headerButtonLeft"}}
       <button class="button button-clear pull-left" data-ion-menu-toggle="left">
@@ -52,4 +53,7 @@
       {{/ionContent}}
     {{/ionView}}
 
+  {{else}}
+    {{>dashboard}}
+  {{/if}}
 </template>

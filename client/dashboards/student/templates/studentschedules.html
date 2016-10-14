@@ -6,14 +6,7 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title">Student Schedules</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;">Student Schedules</h1>
-    {{/if}}
-    <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-      {{> ionIcon icon='android-more-vertical'}}
-    </button>
+    <h1 class="title" style="text-align:center;">My Schedules</h1>
   {{/contentFor}}
 
   {{#ionView}}
@@ -37,7 +30,7 @@
                 <i class="icon ion-chevron-right"></i>
                 </li>
               </div>
-              
+
             {{/each}}
             {{else}}
               No class found.

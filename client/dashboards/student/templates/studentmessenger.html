@@ -6,18 +6,14 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    {{#if isAndroid}}
-      <h1 class="title">Messenger</h1>
-    {{else}}
-      <h1 class="title" style="text-align:center;">Messenger</h1>
-    {{/if}}
+    <h1 class="title" style="text-align:center;">Student Messenger</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
-      <div class="list">
 
-        {{#if Template.subscriptionsReady}}
+      {{#if Template.subscriptionsReady}}
+        <div class="list">
           {{#each thread}}
             <a class="item item-avatar" href="#">
               <img src="../user.png">
@@ -28,11 +24,11 @@
               <p>{{message}}</p>
             </a>
           {{/each}}
-        {{else}}
-          {{>spinner}}
-        {{/if}}
+        </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
 
-      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

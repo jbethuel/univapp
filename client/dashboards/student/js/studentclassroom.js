@@ -3,8 +3,8 @@ Template.studentDashboardClassClassroom.onCreated(function(){
     Meteor.subscribe("students",Session.get("currentClassId"));
     Meteor.subscribe("attendance",Session.get("currentClassId"));
   });
-Meteor.subscribe("classindex");
-Meteor.subscribe("appusers");
+this.subscribe("classindex");
+this.subscribe("appusers");
 });
 
 Template.studentDashboardClassClassroom.helpers({

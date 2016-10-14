@@ -1,14 +1,14 @@
 // adminDashboardHome
 Meteor.publish("adminTokens", function(){
-  return tokens.find({});
+  return tokens.find({}, {_id: 1, used: 1});
 });
 
 Meteor.publish("adminUsers", function(){
-  return Meteor.users.find({});
+  return Meteor.users.find({}, {_id: 1});
 });
 
 Meteor.publish("adminNews", function(){
-  return news.find({});
+  return news.find({}, {_id:1});
 });
 // adminDashboardTokenStudent
 Meteor.publish("adminTokenStudent", function(){
