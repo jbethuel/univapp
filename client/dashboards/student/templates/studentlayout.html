@@ -9,7 +9,7 @@
 
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
-                <img src="../user.png">
+                              <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
                 <h2 class="sidebar_name">Joseph Bethuel</h2>
                 <h2 class="sidebar_name">STUDENT</h2>
               </a>

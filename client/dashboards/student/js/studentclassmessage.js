@@ -8,6 +8,13 @@ Template.studentDashboardClassMessage.helpers({
   name: function(senderId){
     Meteor.subscribe("studentMessageBoardName", senderId);
     return Meteor.users.find({_id: senderId});
+  },
+  image: function (){
+    Meteor.subscribe("studentMessagesImage", this.senderId);
+    return Images.find({userId:this.senderId});
+  },
+  ownImage: function (){
+    return Images.find({userId:Meteor.userId()});
   }
 });
 

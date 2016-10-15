@@ -14,7 +14,11 @@
         {{#if equals sentBy currentUser._id}}
           <div class="list" style="margin-bottom:0px">
             <a class="item item-avatar-right" href="#">
-              <img src="../user.png">
+              {{#if ownImage.count}}
+                {{#each file in ownImage.each}}
+                  <img src="{{file.link}}" alt="">
+                {{/each}}
+              {{/if}}
               <div style="text-align:right; margin-right:20px;">
                 <h2>YOU</h2>
                 <p>{{message}}</p>
@@ -25,7 +29,11 @@
           {{else}}
           <div class="list" style="margin-bottom:0px">
             <a class="item item-avatar">
-              <img src="../user.png">
+              {{#if image.count}}
+                {{#each file in image.each}}
+                  <img src="{{file.link}}" alt="">
+                {{/each}}
+              {{/if}}
               <h2>{{#each name}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
               <p>{{message}}</p>
               <p><small>{{livestamp createdAt}}</small></p>

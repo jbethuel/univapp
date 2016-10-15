@@ -13,32 +13,21 @@
     {{#ionContent}}
       <div class="padding">
 
-        <div class="list">
-
-            <a class="item item-thumbnail-left" href="#">
-              <img src="../user.png">
-              <h2>STUDENT</h2>
-              <p>Upload/Change your avatar</p>
-              <p><input type="file"></p>
-            </a>
-
-        </div>
-
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
-        <ul class="list">
-            <li class="item">
-              ...
-            </li>
-        </ul>
+        <a class="item item-thumbnail-left" href="#">
+          {{#if uploadedFiles.count}}
+            {{#each file in uploadedFiles.each}}
+              <img src="{{file.link}}" alt="">
+            {{/each}}
+          {{/if}}
+          <h2>STUDENT</h2>
+          <p>Upload/Change your avatar</p>
+          <p><button class="button button-small button-balanced" id="btnUpload">Upload Image</button></p>
+        </a>
+        <input type="file" id="fileInput" hidden="true">
+        {{#with currentUpload}}
+          {{>spinner}}UPLOADING ..
+        {{else}}
+        {{/with}}
 
       </div>
     {{/ionContent}}

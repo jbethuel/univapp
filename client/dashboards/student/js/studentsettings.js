@@ -1,20 +1,20 @@
-Template.uploadForm.helpers({
+Template.studentDashboardSettings.helpers({
   uploadedFiles: function () {
     return Images.find({userId:Meteor.userId()});
   }
 });
 
-Template.uploadForm.onCreated(function () {
+Template.studentDashboardSettings.onCreated(function () {
   this.currentUpload = new ReactiveVar(false);
 });
 
-Template.uploadForm.helpers({
+Template.studentDashboardSettings.helpers({
   currentUpload: function () {
     return Template.instance().currentUpload.get();
   }
 });
 
-Template.uploadForm.events({
+Template.studentDashboardSettings.events({
   "click #btnUpload": function(event){
     event.preventDefault();
     $("#fileInput").click()

@@ -39,5 +39,12 @@ Template.teacherDashboardConversation.helpers({
   name: function(){
     stud_id = Router.current().params.stud_id;
     return Meteor.users.find({_id:stud_id},{username:1}).fetch();
+  },
+  image: function (){
+    Meteor.subscribe("studentMessagesImage", this.stud_id);
+    return Images.find({userId:this.stud_id});
+  },
+  ownImage: function (){
+    return Images.find({userId:Meteor.userId()});
   }
 });

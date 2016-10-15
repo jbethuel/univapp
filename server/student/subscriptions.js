@@ -19,6 +19,10 @@ Meteor.publish("studentMessages", function(){
   return messages.find({stud_id:this.userId});
 });
 
+Meteor.publish("studentMessagesImage", function(teach_id){
+  return Images.find({userId: teach_id}).cursor;
+});
+
 Meteor.publish("studentMessengerName", function(teach_id){
   return Meteor.users.find({_id:teach_id});
 });

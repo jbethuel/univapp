@@ -16,7 +16,11 @@
       {{#if Template.subscriptionsReady}}
         {{#each thread}}
           <a class="item item-avatar" href="#">
-            <img src="../user.png">
+            {{#if image.count}}
+              {{#each file in image.each}}
+                <img src="{{file.link}}" alt="">
+              {{/each}}
+            {{/if}}
             <h2>{{#each name stud_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
             <span class="item-note">
               {{livestamp createdAt}}

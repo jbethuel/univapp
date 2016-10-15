@@ -25,5 +25,9 @@ Template.teacherDashboardMessenger.helpers({
   name: function(stud_id){
     Meteor.subscribe("teacherMessengerName", stud_id);
     return Meteor.users.find({_id:stud_id}).fetch();
-  }
+  },
+  image: function (){
+    Meteor.subscribe("studentMessagesImage", this.stud_id);
+    return Images.find({userId:this.stud_id});
+  },
 });
