@@ -121,13 +121,18 @@ deleteRecord:function(id){
   graderecordindex.remove({_id:id});
 },
 addActivity:function(activity){
-  roomactivity.insert(activity);
+  activity.teachId = this.userId;
+  var info = roomactivity.insert(activity);
+  return info;
 },
 editActivity:function(activity,Id){
   roomactivity.update({_id:Id},{$set:activity});
 },
 deleteActivity:function(id){
   roomactivity.remove({_id:id});
+},
+deleteFiles:function(id){
+  ActivityFiles.remove({meta:{activityId:id}});
 },
 addStudentGrade:function(studId,recordId,grade){
   graderecord.insert({recordId:recordId,studId:studId,grade:grade,dateCreated:new Date()});

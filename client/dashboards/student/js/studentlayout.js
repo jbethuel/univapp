@@ -1,3 +1,7 @@
+Template.studentDashboardLayout.onCreated(function(){
+
+      Meteor.subscribe('files.images.all');
+});
 Template.studentDashboardLayout.onRendered(function(){
   IonSideMenu.snapper.disable();
   IonSideMenu.snapper.settings({touchToDrag: false});

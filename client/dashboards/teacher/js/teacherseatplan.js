@@ -3,6 +3,7 @@ Template.teacherDashboardSeatplan.onCreated(function(){
     Meteor.subscribe("students",Session.get("currentClassId"));
     Meteor.subscribe("attendance",Session.get("currentClassId"));
   });
+Meteor.subscribe('files.images.all');
 Meteor.subscribe("classindex");
 Meteor.subscribe("appusers");
 Session.setDefault("editSeatplan",false);

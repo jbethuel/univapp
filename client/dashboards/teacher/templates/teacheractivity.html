@@ -25,7 +25,7 @@
       {{#each activities}}
       <div class="list card">
         <div style="position:relative" class="item item-avatar">
-          <img src="mcfly.jpg">
+          <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
           <h2>{{title}}</h2>
           <p>{{dateformat}}</p>
           <div style="position:absolute;right:0;top:0">

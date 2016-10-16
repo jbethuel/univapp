@@ -1,3 +1,7 @@
+Template.adminDashboardLayout.onCreated(function(){
+
+      Meteor.subscribe('files.images.all');
+});
 Template.adminDashboardLayout.rendered = function() {
   IonSideMenu.snapper.disable();
   IonSideMenu.snapper.settings({touchToDrag: false});

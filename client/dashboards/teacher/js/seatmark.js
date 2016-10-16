@@ -12,6 +12,9 @@ Template.vacantSeat.events({
 });
 
 Template.takenSeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();
@@ -53,6 +56,9 @@ Template.takenSeat.events({
 });
 
 Template.presentSeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
     return name[0].profile.lastname +", "+name[0].profile.firstname;
@@ -60,6 +66,9 @@ Template.presentSeat.helpers({
 });
 
 Template.lateSeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
     return name[0].profile.lastname +", "+name[0].profile.firstname;
@@ -67,6 +76,9 @@ Template.lateSeat.helpers({
 });
 
 Template.absentSeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
     return name[0].profile.lastname +", "+name[0].profile.firstname;
@@ -74,6 +86,9 @@ Template.absentSeat.helpers({
 });
 
 Template.attendancetakenSeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var name = Meteor.users.find({_id:this.studId}).fetch();
     return name[0].profile.lastname +", "+name[0].profile.firstname;
@@ -168,6 +183,9 @@ Template.swapvacantSeat.events({
 });
 
 Template.swapreadySeat.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.studId});
+  },
   name:function(){
     var info =  students.find({seatnum:this.seatnum}).fetch();
     var name = Meteor.users.find({_id:info[0].studId}).fetch();

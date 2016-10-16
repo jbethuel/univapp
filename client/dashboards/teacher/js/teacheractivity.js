@@ -2,10 +2,14 @@ Template.teacherDashboardActivity.onCreated(function(){
   Tracker.autorun(function(){
     Meteor.subscribe("roomactivity",Session.get("currentClassId"));
   });
+  Meteor.subscribe('files.images.all');
   Session.setDefault("Status","active");
 });
 
 Template.teacherDashboardActivity.helpers({
+  uploadedFiles: function () {
+    return Images.find({userId:this.teachId});
+  },
   classinfo:function(){
     Session.set("currentClassId",this.class_id);
     return Session.get("currentClassId");
@@ -77,6 +81,7 @@ Template._EditActivityPopOver.events({
               }else{
                 Meteor.call("deleteActivity",activityId,function(result){
                   if(!result){
+                    Meteor.call("deleteFiles",activityId);
                     IonLoading.show({
                       customTemplate: '<h4>SUCCESS</h4><p>The activity is successfully deleted.</p>',
                       duration: 3000

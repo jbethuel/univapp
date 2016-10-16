@@ -17,8 +17,8 @@
          {{#each studentInfos}}
            {{#if IsNotInClass _id}}
              <a class="item item-avatar" id="btnAddStud"  data-dismiss="modal" href="#">
-                 <img src="{{#with asd}} {{url}} {{/with}}">
-               <h3 style="color:black">{{profile.fullname}}</h3>
+                 <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
+               <h3 style="color:black">{{profile.lastname}}, {{profile.firstname}}</h3>
              </a>
             {{/if}}
          {{/each}}
