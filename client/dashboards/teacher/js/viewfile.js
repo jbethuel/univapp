@@ -12,7 +12,8 @@ Template.viewfile.helpers({
     return "connected";
   },
   studentgrade:function(){
-  return graderecord.findOne({recordId:Session.get("currentRecordId"),studId:this.userId});
+    Session.set("studentId",this.userId)
+    return graderecord.find({recordId:Session.get("currentRecordId"),studId:Session.get("studentId")});
   },
   uploadedFiles: function () {
     var info = ActivityFiles.find({_id:Session.get("currentFileId")});
@@ -24,17 +25,33 @@ Template.viewfile.helpers({
 Template.viewfile.events({
   "click #updategrade":function(){
   var newgrade = +$("#newgrades").val();
-  Meteor.call('changeStudentGrade', this._id, newgrade, function(error){
-    if(error){
-      title = "ERROR";
-      template = "<div class='title_prompt'>"+ error.reason +"</div>";
-      Meteor.Messages.dialog(title, template);
-    }else{
-      title = "success";
-      template = "Successfully Updated";
-      button = "button button-balanced";
-      Meteor.Messages.dialog(title, template, button);
-    }
-  });
+  var checkgrade = graderecord.find({recordId:Session.get("currentRecordId"),studId:Session.get("studentId")}).count();
+  if(checkgrade > 0){
+    Meteor.call('changeStudentGrade', this._id, newgrade, function(error){
+      if(error){
+        title = "ERROR";
+        template = "<div class='title_prompt'>"+ error.reason +"</div>";
+        Meteor.Messages.dialog(title, template);
+      }else{
+        title = "success";
+        template = "Successfully Updated";
+        button = "button button-balanced";
+        Meteor.Messages.dialog(title, template, button);
+      }
+    });
+  }else{
+    Meteor.call('addStudentGrade', Session.get("studentId"),Session.get("currentRecordId"), newgrade, function(error){
+      if(error){
+        title = "ERROR";
+        template = "<div class='title_prompt'>"+ error.reason +"</div>";
+        Meteor.Messages.dialog(title, template);
+      }else{
+        title = "success";
+        template = "Successfully Updated";
+        button = "button button-balanced";
+        Meteor.Messages.dialog(title, template, button);
+      }
+    });
+  }
 }
 });

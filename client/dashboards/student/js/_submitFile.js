@@ -50,7 +50,13 @@ Template.studentSubmitFile.events({
           uploadInstance.start();
         }
       }
-      }
+    }else{
+      errors = true;
+      IonLoading.show({
+        customTemplate: '<h4>ERROR</h4><p>Please select a file.</p>',
+        duration: 3000
+      });
+    }
       if(errors == false){
       IonPopup.show({
         title: "success",
