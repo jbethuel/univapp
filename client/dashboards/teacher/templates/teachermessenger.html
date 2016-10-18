@@ -11,28 +11,28 @@
 
   {{#ionView}}
     {{#ionContent}}
-    <div class="list">
+      <div class="list">
 
-      {{#if Template.subscriptionsReady}}
-        {{#each thread}}
-          <a class="item item-avatar" href="#">
-            {{#if image.count}}
-              {{#each file in image.each}}
-                <img src="{{file.link}}" alt="">
-              {{/each}}
-            {{/if}}
-            <h2>{{#each name stud_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
-            <span class="item-note">
-              {{livestamp createdAt}}
-            </span>
-            <p>{{message}}</p>
-          </a>
-        {{/each}}
-      {{else}}
-        {{>spinner}}
-      {{/if}}
+        {{#if Template.subscriptionsReady}}
+          {{#each thread}}
+            <a class="item item-avatar" href="#">
+              {{#if image.count}}
+                {{#each file in image.each}}
+                  <img src="{{file.link}}" alt="">
+                {{/each}}
+              {{/if}}
+              <h2>{{#each name stud_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+              <span class="item-note">
+                {{livestamp createdAt}}
+              </span>
+              <p>{{message}}</p>
+            </a>
+          {{/each}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
 
-    </div>
+      </div>
     {{/ionContent}}
   {{/ionView}}
 </template>

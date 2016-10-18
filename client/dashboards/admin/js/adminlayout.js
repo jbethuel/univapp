@@ -1,11 +1,10 @@
 Template.adminDashboardLayout.onCreated(function(){
-
-      Meteor.subscribe('files.images.all');
+  Meteor.subscribe('files.images.all');
 });
-Template.adminDashboardLayout.rendered = function() {
-  IonSideMenu.snapper.disable();
+
+Template.adminDashboardLayout.onRendered(function(){
   IonSideMenu.snapper.settings({touchToDrag: false});
-};
+});
 
 Template.adminDashboardLayout.events({
   "click #sideHome": function(event){

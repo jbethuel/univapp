@@ -1,7 +1,7 @@
 <template name="studentDashboardLayout">
   {{#if isInRole 'student'}}
   {{#ionBody}}
-    {{#ionSideMenuContainer}}
+    {{#ionSideMenuContainer side="left"}}
       {{#ionSideMenus}}
         {{#ionSideMenu}}
 
@@ -9,8 +9,11 @@
 
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
-                              <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
-                <h2 class="sidebar_name">Joseph Bethuel</h2>
+                <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
+                <h2 class="sidebar_name">{{currentUser.username}}</h2>
+                <h2 class="sidebar_name">{{currentUser.profile.lastname}}</h2>
+                <h2 class="sidebar_name">{{currentUser.profile.middlename}}</h2>
+                <h2 class="sidebar_name">{{currentUser.profile.firstname}}</h2>
                 <h2 class="sidebar_name">STUDENT</h2>
               </a>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">

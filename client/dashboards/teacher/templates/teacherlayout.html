@@ -1,7 +1,7 @@
 <template name="teacherDashboardLayout">
   {{#if isInRole 'teacher'}}
   {{#ionBody}}
-    {{#ionSideMenuContainer}}
+    {{#ionSideMenuContainer side="left"}}
       {{#ionSideMenus}}
         {{#ionSideMenu}}
 
@@ -14,6 +14,7 @@
                 <h2 class="sidebar_name">{{currentUser.profile.lastname}}</h2>
                 <h2 class="sidebar_name">{{currentUser.profile.middlename}}</h2>
                 <h2 class="sidebar_name">{{currentUser.profile.firstname}}</h2>
+                <h2 class="sidebar_name">TEACHER</h2>
               </a>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Main Menu

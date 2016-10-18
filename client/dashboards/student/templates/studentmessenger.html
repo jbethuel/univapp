@@ -12,8 +12,8 @@
   {{#ionView}}
     {{#ionContent}}
 
-      {{#if Template.subscriptionsReady}}
-        <div class="list">
+      <div class="list">
+        {{#if Template.subscriptionsReady}}
           {{#each thread}}
             <a class="item item-avatar" href="#">
               {{#if image.count}}
@@ -28,10 +28,10 @@
               <p>{{message}}</p>
             </a>
           {{/each}}
-        </div>
-      {{else}}
-        {{>spinner}}
-      {{/if}}
+        {{else}}
+          {{>spinner}}
+        {{/if}}
+      </div>
 
     {{/ionContent}}
   {{/ionView}}
