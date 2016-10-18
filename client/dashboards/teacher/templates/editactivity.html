@@ -1,11 +1,8 @@
 <template name="teachereditactivity">
-  {{#ionModal customTemplate=true title="NewActivity"}}
-    <div class="bar bar-header bar-energized">
-      <h2 class="title">Edit Activity</h2>
-      <button data-dismiss="modal" class="button button-icon">cancel</button>
-    </div>
+  {{#ionModal title="Edit Activity"}}
 
-     <div class="padding" style="margin-top:50px">
+
+     <div class="padding">
       {{#each activityinfo}}
        <div class="list">
          <label class="item item-input">
@@ -22,7 +19,21 @@
 
          <div class="card">
            <div class="item item-text-wrap">
-             <input multiple class="file fileinput" type="file">
+             {{#with currentUpload}}
+               {{>spinner}}UPLOADING ..
+            {{else}}
+             <input multiple class="file" id="fileinput" type="file">
+             {{/with}}
+             {{#if uploadedFiles.count}}
+               {{#each uploadedFiles}}
+               <tr>
+                 <td>{{name}}</td>
+                 <td>
+                   <a class="icon ion-close-circled del-file"></a>
+                 </td>
+              </tr>
+               {{/each}}
+            {{/if}}
            </div>
          </div>
 

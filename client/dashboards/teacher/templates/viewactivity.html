@@ -1,0 +1,65 @@
+<template name="teacherViewActivity">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path=""}}
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Back</h1>
+  {{/contentFor}}
+
+  {{#ionSubheaderBar}}
+    <h2 class="title">View Activity</h2>
+  {{/ionSubheaderBar}}
+
+  {{#ionView}}
+    {{#ionContent class="padding has-header"}}
+      {{#each activity_info}}
+        <div class="list card viewActivity">
+          <div style="position:relative" class="item ">
+          <h2>{{title}}</h2>
+            <p>Due Time: {{dateformat}}</p>
+          </div>
+
+        <div class="item item-body">
+          <div>
+          Total Score: {{points}}
+          <pre>
+            {{description}}
+          </pre>
+          {{#if fileRef.count}}
+            <h2>Files: </h2>
+            {{#each fileRef}}
+              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
+              {{name}}
+              </a>
+              <br>
+            {{/each}}
+          {{/if}}
+          </div>
+          <p>
+            <a href="#" class="subdued">
+
+            </a>
+          </p>
+        </div>
+        <div class="item item-divider">
+          Students who already submitted
+        </div>
+        {{#if studentFile.count}}
+        {{#each studentFile}}
+
+          <a class="item item-avatar item-icon-left item-icon-right viewStudentFile" href="#">
+            <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
+            <h2><strong>{{studentInfo}}</strong></h2>
+            <p>a file uploaded</p>
+            <i class="icon ion-chevron-right"></i>
+          </a>
+        {{/each}}
+        {{else}}
+          <h4 style="margin-left:10px"><strong>No Students submitted yet.</strong></h4>
+        {{/if}}
+      </div>
+      {{/each}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

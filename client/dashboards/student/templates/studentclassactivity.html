@@ -12,7 +12,7 @@
 
   {{#ionView}}
     {{#ionContent}}
-    {{classinfo}}
+    <p hidden>{{classinfo}}</p>
       <div class="button-bar">
         <button class="button button-small {{#if statusActiveCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusActive">
           <b>Active</b>
@@ -23,11 +23,24 @@
       </div>
 
       {{#each activities}}
-      <div class="list card">
+      <div class="list card viewActivity">
         <div style="position:relative" class="item item-avatar">
           <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
           <h2>{{title}}</h2>
-          <p>{{dateformat}}</p>
+          <p>Due Time: {{dateformat}}</p>
+          <div style="position:absolute;right:5px;top:5px">
+            {{#if statusActiveCheck}}
+              {{#if checkfile.count}}
+                <h2 style="color:green"><strong>Submitted</strong></h2>
+              {{/if}}
+            {{else}}
+              {{#if checkfile.count}}
+                <h2 style="color:green"><strong>Submitted</strong></h2>
+              {{else}}
+                <h2 style="color:red"><strong>Missed</strong></h2>
+              {{/if}}
+            {{/if}}
+          </div>
         </div>
 
       <div class="item item-body">

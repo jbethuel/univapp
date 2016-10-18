@@ -1,0 +1,39 @@
+<template name="viewfile">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path="teacherCurrentClass" }}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">View File</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+    <div class="padding">
+      <p hidden>{{infos}}</p>
+      {{#if uploadedFiles.count}}
+        {{#each uploadedFiles}}
+          <!--page to view selected files from the student-->
+          <div class="list">
+            {{#with studentgrade}}
+              <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                  <input type="Number" id="newgrades" placeholder="{{grade}}" value="{{grade}}">
+                </label>
+              <button class="button button-small" id="updategrade">
+                Submit
+              </button>
+              </div>
+            {{/with}}
+          </div>
+              <!--display the file in an object tag-->
+            <object style="width:100%;height:720px" data="{{name}}" type="application/pdf">
+              <embed src="{{path}} " type="application/pdf" />
+            </object>
+            <p>Error in loading the file? download it <a href="{{link}}?download=true" download={{name}} target="_parent" >here</a>.</p>
+          {{/each}}
+        {{/if}}
+    </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

@@ -29,8 +29,8 @@ Template.teacherDashboardCreate.events({
             text: 'OK',
             type: "button button-balanced",
             onTap: function() {
-              Router.go("teacherDashboardClass");
               IonPopup.close();
+              IonModal.close();
             }
           }]
         });

@@ -46,3 +46,7 @@ Meteor.publish("studentMessageBoard", function(id){
 Meteor.publish("studentMessageBoardName", function(senderId){
   return Meteor.users.find({_id: senderId}, {profile: 1});
 });
+
+Meteor.publish("studentGradeRecord",function(id){
+  return graderecord.find({recordId:id});
+});

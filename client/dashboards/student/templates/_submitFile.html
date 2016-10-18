@@ -1,0 +1,21 @@
+<template name="studentSubmitFile">
+  {{#ionModal title="Submit File"}}
+     <div class="padding">
+       <div class="list">
+         <h5><strong>Select a file to submit</strong></h5>
+         <div class="card">
+           <div class="item item-text-wrap">
+             {{#with currentUpload}}
+               {{>spinner}}UPLOADING ..
+            {{else}}
+             <input class="file" id="fileinput" type="file">
+             {{/with}}
+           </div>
+         </div>
+         <button class="button button-block button-dark"  id="btnSubmit">
+           Submit
+         </button>
+       </div>
+     </div>
+  {{/ionModal}}
+</template>

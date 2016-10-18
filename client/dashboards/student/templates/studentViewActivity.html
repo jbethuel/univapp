@@ -1,0 +1,78 @@
+<template name="studentViewActivity">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path=""}}
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Back</h1>
+  {{/contentFor}}
+
+  {{#ionSubheaderBar}}
+    <h2 class="title">View Activity</h2>
+  {{/ionSubheaderBar}}
+
+  {{#ionView}}
+    {{#ionContent class="padding has-header"}}
+      {{#each activity_info}}
+        <div class="list card viewActivity">
+          <div style="position:relative" class="item ">
+            <h2>{{title}}</h2>
+            <p>Due Time: {{dateformat}}</p>
+            <div style="position:absolute;right:5px;top:5px">
+
+                <h2 style="color:green"><strong>
+                  Grade:
+                    {{#if myGrade.count}}
+                      {{#each myGrade}}
+                        {{grade}}
+                      {{/each}}
+                    {{else}}
+                      No Grade
+                    {{/if}}
+                </strong></h2>
+            </div>
+          </div>
+
+        <div class="item item-body">
+          <div>
+          Total Score: {{points}}
+          <pre>
+            {{description}}
+          </pre>
+          {{#if fileRef.count}}
+            <h2>Reference File(s): </h2>
+            {{#each fileRef}}
+              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
+              {{name}}
+              </a>
+              <br>
+            {{/each}}
+            <br>
+            {{#if myFile.count}}
+            <h2>Submitted File:</h2>
+            {{#each myFile}}
+              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
+              {{name}}
+              </a>
+              <br>
+            {{/each}}
+            {{/if}}
+          {{/if}}
+          </div>
+          <p>
+            <a href="#" class="subdued">
+
+            </a>
+          </p>
+          {{#if notDue}}
+            {{#if myFile.count}}
+            {{else}}
+              <a class="button button-full icon-right ion-android-send button-balanced" data-ion-modal="studentSubmitFile">Submit Files</a>
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+      {{/each}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>

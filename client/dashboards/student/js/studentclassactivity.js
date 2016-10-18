@@ -4,6 +4,7 @@ Template.studentDashboardClassActivity.onCreated(function(){
     Meteor.subscribe("roomactivity",Session.get("currentClassId"));
   });
   Meteor.subscribe('files.images.all');
+  Meteor.subscribe('files.activityfiles.all');
   Session.setDefault("Status","active");
 });
 
@@ -14,6 +15,9 @@ Template.studentDashboardClassActivity.helpers({
   uploadedFiles: function () {
     return Images.find({userId:this.teachId});
   },
+  checkfile:function(){
+    return ActivityFiles.find({userId:Meteor.userId(),meta:{activityId:this._id,activityFile:false}});
+  },
   classinfo:function(){
     Session.set("currentClassId",this.class_id);
     return Session.get("currentClassId");
@@ -21,9 +25,9 @@ Template.studentDashboardClassActivity.helpers({
   activities:function(){
     var dueDate = new Date(Session.get("datetoday"));
     if(Session.get("Status") == "active"){
-      return roomactivity.find({due:{$gt:dueDate}}).fetch();
+      return roomactivity.find({due:{$gt:dueDate}},{sort:{due:1}}).fetch();
     }else{
-      return roomactivity.find({due:{$lt:dueDate}}).fetch();
+      return roomactivity.find({due:{$lt:dueDate}},{sort:{due:1}}).fetch();
     }
   },
   dateformat:function(){
@@ -51,5 +55,9 @@ Template.studentDashboardClassActivity.events({
   },
   "click #statusDue":function(e){
     Session.set("Status","due");
+  },
+  "click .viewActivity":function(e){
+    e.preventDefault();
+    Router.go("studentViewActivity",{activity_id:this._id});
   }
 });

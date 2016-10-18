@@ -11,8 +11,8 @@
   {{/ionSubheaderBar}}
 
   {{#ionView}}
-    {{#ionContent class="padding"}}
-    {{classinfo}}
+    {{#ionContent}}
+    <p hidden>{{classinfo}}</p>
       <div class="button-bar">
         <button class="button button-small {{#if statusActiveCheck}}button-assertive{{else}}button-stable{{/if}}" id="statusActive">
           <b>Active</b>
@@ -23,11 +23,11 @@
       </div>
 
       {{#each activities}}
-      <div class="list card">
+      <div class="list card viewActivity">
         <div style="position:relative" class="item item-avatar">
           <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
           <h2>{{title}}</h2>
-          <p>{{dateformat}}</p>
+          <p>Due: {{dateformat}}</p>
           <div style="position:absolute;right:0;top:0">
             <button  class="button button-clear btnEditActivityPopOver" data-ion-popover="_EditActivityPopOver">
              {{#if isAndroid}}
@@ -58,12 +58,9 @@
       </div>
     </div>
       {{/each}}
-
-      <div style="position:fixed;bottom:15px;right:15px;z-index:9999">
-        <a  class="button button-icon" data-ion-modal="teacheraddactivity">
-          <img src="/addnew.png" width="75px">
-        </a>
-      </div>
+      <a class="triangle-btn " data-ion-modal="teacheraddactivity">
+        <p>+</p>
+      </a>
     {{/ionContent}}
   {{/ionView}}
 </template>

@@ -28,6 +28,12 @@ Template.teacheraddactivity.events({
       term:term,
       due:new Date(due_date+","+due_time)
     };
+    if(Meteor.Validation.CheckBlankSpace(activity_info.title) == true){
+      activity_info.title = "No Title";
+    }
+    if(Meteor.Validation.CheckBlankSpace(activity_info.description) == true){
+      activity_info.description = "No Description";
+    }
     Meteor.call('addRecord',Session.get("currentClassId"),term,"class standing",total_score, function(error, result){
       var recordId = result;
         activity_info.recordId = recordId;
@@ -44,7 +50,8 @@ Template.teacheraddactivity.events({
             var uploadInstance = ActivityFiles.insert({
               file: file,
               meta:{
-                activityId:activityId
+                activityId:activityId,
+                activityFile:true
               },
               streams: 'dynamic',
               chunkSize: 'dynamic'

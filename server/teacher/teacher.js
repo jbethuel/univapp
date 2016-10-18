@@ -114,11 +114,14 @@ addRecord:function(classId,term,type,items){
   console.log(info);
   return info;
 },
-editRecord:function(recordId,total){
-  graderecordindex.update({_id:recordId},{$set:{total_items:Number(total)}})
+editRecord:function(recordId,total,term){
+  graderecordindex.update({_id:recordId},{$set:{total_items:Number(total),term:term}})
 },
 deleteRecord:function(id){
   graderecordindex.remove({_id:id});
+},
+deleteRecordGrades:function(id){
+  graderecord.remove({recordId:id});
 },
 addActivity:function(activity){
   activity.teachId = this.userId;
@@ -131,8 +134,14 @@ editActivity:function(activity,Id){
 deleteActivity:function(id){
   roomactivity.remove({_id:id});
 },
+deleteStudentFile:function(id){
+  ActivityFiles.remove({meta:{activityId:id,activityFile:false}});
+},
 deleteFiles:function(id){
-  ActivityFiles.remove({meta:{activityId:id}});
+  ActivityFiles.remove({meta:{activityId:id,activityFile:true}});
+},
+deleteOneFile:function(id){
+  ActivityFiles.remove({_id:id});
 },
 addStudentGrade:function(studId,recordId,grade){
   graderecord.insert({recordId:recordId,studId:studId,grade:grade,dateCreated:new Date()});

@@ -17,9 +17,9 @@ Template.teacherDashboardActivity.helpers({
   activities:function(){
     var dueDate = new Date(Session.get("datetoday"));
     if(Session.get("Status") == "active"){
-      return roomactivity.find({due:{$gt:dueDate}}).fetch();
+      return roomactivity.find({due:{$gt:dueDate}},{sort:{due:1}}).fetch();
     }else{
-      return roomactivity.find({due:{$lt:dueDate}}).fetch();
+      return roomactivity.find({due:{$lt:dueDate}},{sort:{due:1}}).fetch();
     }
   },
   dateformat:function(){
@@ -57,6 +57,11 @@ Template.teacherDashboardActivity.events({
 });
 
 Template._EditActivityPopOver.events({
+  "click .viewActivity":function(e){
+    e.preventDefault();
+    IonPopover.hide();
+    Router.go("teacherViewActivity",{activity_id:Session.get("ActivityId")});
+  },
   "click .btnEditActivity":function(e){
     e.preventDefault();
     IonModal.open("teachereditactivity");
@@ -82,6 +87,9 @@ Template._EditActivityPopOver.events({
                 Meteor.call("deleteActivity",activityId,function(result){
                   if(!result){
                     Meteor.call("deleteFiles",activityId);
+                    Meteor.call("deleteRecord",recordId);
+                    Meteor.call("deleteRecordGrades",recordId);
+                    Meteor.call("deleteStudentFile",activityId);
                     IonLoading.show({
                       customTemplate: '<h4>SUCCESS</h4><p>The activity is successfully deleted.</p>',
                       duration: 3000

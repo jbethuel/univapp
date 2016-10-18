@@ -92,7 +92,7 @@ Template.teacherDashboardViewClass.events({
                   customTemplate: '<h4>SUCCESS</h4><p>Succesfully dropped the class.</p>',
                   duration: 3000
                 });
-                Router.go("teacherDashboardSchedules");
+                Router.go("teacherDashboardClass");
               }
             });
           }else{

@@ -2,9 +2,6 @@
   {{#contentFor "headerButtonLeft"}}
     {{>ionNavBackButton path=""}}
   {{/contentFor}} {{#contentFor "headerTitle"}}
-  <button class="button button-clear pull-right" data-ion-menu-toggle="right">
-    {{#if isAndroid}} {{> ionIcon icon='android-more-vertical'}} {{else}} {{> ionIcon icon='navicon'}} {{/if}}
-  </button>
   {{/contentFor}} {{#ionView}} {{#ionContent}}
 {{#each classinfo}}
   <div class="padding">

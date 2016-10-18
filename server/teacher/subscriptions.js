@@ -26,3 +26,13 @@ Meteor.publish("studentCount", function(_id){
 Meteor.publish("roomactivity",function(classId){
   return roomactivity.find({classId:classId});
 });
+
+Meteor.publish("viewactivity",function(id){
+  return roomactivity.find({_id:id});
+});
+Meteor.publish("viewrecords",function(id){
+  return graderecord.find({recordId:id});
+});
+Meteor.publish("studentInfo",function(){
+  return Meteor.users.find({},{fields:{services:0}});
+});
