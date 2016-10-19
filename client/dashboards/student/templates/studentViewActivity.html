@@ -40,18 +40,18 @@
           </pre>
           {{#if fileRef.count}}
             <h2>Reference File(s): </h2>
-            {{#each fileRef}}
-               <a href="{{link}}?download=true" download="{{name}}" target="_parent">
-                {{name}}
+            {{#each file in fileRef.each}}
+               <a href="{{file.link}}?download=true" download="{{file.name}}" target="_parent">
+                {{file.name}}
               </a>
               <br>
             {{/each}}
             <br>
             {{#if myFile.count}}
             <h2>Submitted File:</h2>
-            {{#each myFile}}
-              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
-              {{name}}
+            {{#each file in myFile.each}}
+              <a href="{{file.link}}?download=true" download="{{file.name}}" target="_parent">
+              {{file.name}}
               </a>
               <br>
             {{/each}}

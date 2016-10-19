@@ -27,9 +27,9 @@
           </pre>
           {{#if fileRef.count}}
             <h2>Files: </h2>
-            {{#each fileRef}}
-              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
-              {{name}}
+            {{#each file in fileRef.each}}
+              <a href="{{file.link}}?download=true" download="{{file.name}}" target="_parent">
+              {{file.name}}
               </a>
               <br>
             {{/each}}
@@ -45,7 +45,7 @@
           Students who already submitted
         </div>
         {{#if studentFile.count}}
-        {{#each studentFile}}
+        {{#each file in studentFile.each}}
 
           <a class="item item-avatar item-icon-left item-icon-right viewStudentFile" href="#">
             <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
