@@ -25,7 +25,8 @@ Template.teachereditactivity.helpers({
 Template.teachereditactivity.events({
   "click #btnEditActivity":function(e,template){
     e.preventDefault();
-    var errors = false;
+    var errors = false,
+        hasFile = false;
     var varfile = document.getElementById("fileinput").files;
     var title = $("#txtActivityTitle").val(),
         description = $("#txtActivityDescription").val(),
@@ -58,6 +59,7 @@ Template.teachereditactivity.events({
       }
     });
     if(varfile.length > 0){
+      hasFile = true;
       for(var f=0;f<varfile.length;f++){
         var file = varfile[f];
         console.log(file);
@@ -86,6 +88,18 @@ Template.teachereditactivity.events({
               customTemplate: '<h4>ERROR</h4><p>'+ error.reason +'.</p>',
               duration: 3000
             });
+          }else{
+            IonPopup.show({
+              title: "success",
+              template: "The record has successfully updated.",
+              buttons: [{
+                text: 'OK',
+                type: "button button-balanced",
+                onTap: function() {
+                  IonPopup.close();
+                }
+              }]
+            });
           }
           template.currentUpload.set(false);
         });
@@ -94,7 +108,7 @@ Template.teachereditactivity.events({
       }
     }
     }
-    if(errors == false){
+    if(errors == false && hasFile == false){
     IonPopup.show({
       title: "success",
       template: "The record has successfully updated.",

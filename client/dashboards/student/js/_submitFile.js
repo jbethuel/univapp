@@ -43,7 +43,21 @@ Template.studentSubmitFile.events({
                 customTemplate: '<h4>ERROR</h4><p>'+ error.reason +'.</p>',
                 duration: 3000
               });
+            }else{
+              IonPopup.show({
+                title: "success",
+                template: "The activity has successfully saved.",
+                buttons: [{
+                  text: 'OK',
+                  type: "button button-balanced",
+                  onTap: function() {
+                    IonPopup.close();
+                    IonModal.close();
+                  }
+                }]
+              });
             }
+
             template.currentUpload.set(false);
           });
 
@@ -57,20 +71,6 @@ Template.studentSubmitFile.events({
         duration: 3000
       });
     }
-      if(errors == false){
-      IonPopup.show({
-        title: "success",
-        template: "The activity has successfully saved.",
-        buttons: [{
-          text: 'OK',
-          type: "button button-balanced",
-          onTap: function() {
-            IonPopup.close();
-            IonModal.close();
-          }
-        }]
-      });
-      }
   }
 
 });

@@ -10,7 +10,8 @@ Template.teacheraddactivity.helpers({
 
 Template.teacheraddactivity.events({
   "click #btnAddActivity":function(e, template){
-    var errors = false;
+    var errors = false,
+        hasFile = false;
     e.preventDefault();
     var varfile = document.getElementById("fileinput").files;
     var title = $("#txtActivityTitle").val(),
@@ -41,6 +42,7 @@ Template.teacheraddactivity.events({
         var activityId = result;
         console.log(activityId);
         if(varfile.length > 0){
+          hasFile = true;
           for(var f=0;f<varfile.length;f++){
             var file = varfile[f];
             console.log(file);
@@ -69,6 +71,19 @@ Template.teacheraddactivity.events({
                   customTemplate: '<h4>ERROR</h4><p>'+ error.reason +'.</p>',
                   duration: 3000
                 });
+              }else{
+                IonPopup.show({
+                  title: "success",
+                  template: "The activity has successfully saved.",
+                  buttons: [{
+                    text: 'OK',
+                    type: "button button-balanced",
+                    onTap: function() {
+                      IonPopup.close();
+                      IonModal.close();
+                    }
+                  }]
+                });
               }
               template.currentUpload.set(false);
             });
@@ -77,7 +92,7 @@ Template.teacheraddactivity.events({
           }
         }
         }
-        if(errors == false){
+        if(errors == false && hasFile == false){
         IonPopup.show({
           title: "success",
           template: "The activity has successfully saved.",

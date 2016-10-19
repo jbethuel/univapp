@@ -31,7 +31,7 @@
             <object style="width:100%;height:720px" data="{{file.name}}" type="application/pdf">
               <embed src="{{file.link}} " type="application/pdf" />
             </object>
-            <p>Error in loading the file? download it <a href="{{file.link}}?download=true" download="{{file.name}}" target="_parent">here</a>.</p>
+            <p>Error in loading the file? download it <a href="#" onclick="window.open('{{file.link}}', '_system', 'location=yes');">here</a>.</p>
           {{/each}}
         {{/if}}
     </div>
