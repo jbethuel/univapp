@@ -41,7 +41,7 @@
           {{#if fileRef.count}}
             <h2>Reference File(s): </h2>
             {{#each fileRef}}
-              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
+              <a href=" " onclick="window.open('{{link download=true}}', '_system')">
               {{name}}
               </a>
               <br>
@@ -50,7 +50,7 @@
             {{#if myFile.count}}
             <h2>Submitted File:</h2>
             {{#each myFile}}
-              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
+              <a href=" " onclick="window.open('{{link download=true}}', '_system')">
               {{name}}
               </a>
               <br>

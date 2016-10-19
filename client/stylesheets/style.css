@@ -14,9 +14,9 @@ pre{
 }
 
 .triangle-btn p{
-  position:absolute;
+  position:fixed;
   z-index:9999;
-  bottom:-80px;
+  bottom:5px;
   right:5px;
   color:white;
   font-size: 65px;
