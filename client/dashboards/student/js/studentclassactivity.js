@@ -58,6 +58,7 @@ Template.studentDashboardClassActivity.events({
   },
   "click .viewActivity":function(e){
     e.preventDefault();
+    console.log(this._id);
     Router.go("studentViewActivity",{activity_id:this._id});
   }
 });

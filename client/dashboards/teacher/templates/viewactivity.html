@@ -28,7 +28,7 @@
           {{#if fileRef.count}}
             <h2>Files: </h2>
             {{#each fileRef}}
-              <a href=" " onclick="window.open('{{link download=true}}', '_system')">
+              <a href="{{link}}?download=true" download="{{name}}" target="_parent">
               {{name}}
               </a>
               <br>
