@@ -49,6 +49,9 @@ Template.teacherDashboardClass.events({
   "click .copy": function(event){
     event.preventDefault();
     passkey = this.passkey;
+    if(Meteor.isCordova){
+      cordova.plugins.clipboard.copy(passkey);
+    }
     title = "COPIED";
     button = "button button-balanced";
     template = "<div class='title_prompt'>Token copied to clipboard: "+passkey+"</div>";

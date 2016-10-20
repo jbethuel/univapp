@@ -15,6 +15,9 @@ Template.adminDashboardTokenStudent.events({
   },
   "click .btn_copy": function(event){
     token = this.token;
+    if(Meteor.isCordova){
+      cordova.plugins.clipboard.copy(token);
+    }
     title = "COPIED";
     button = "button button-royal";
     template = "<div class='title_prompt'>Token copied to clipboard: "+token+"</div>";
