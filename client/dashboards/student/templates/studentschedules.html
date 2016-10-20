@@ -18,19 +18,27 @@
 
           {{#each myclasses}}
             {{#each inClass classId}}
-
-              <div class="list card">
-                <div class="item item-divider">
-                  <h3>{{description}}</h3>
-                </div>
-                <li class="item item-icon-right">
-                  <p>{{sec_code}} - {{subj_code}}</p>
-                  <p>{{time_start}} - {{time_end}}</p>
-                  <p>{{sem}} - {{school_yr}}</p>
-                <i class="icon ion-chevron-right"></i>
-                </li>
+            <div class="list card">
+              <div class="item ">
+                {{#if isDrop ../drop}}
+                  <h3 style="float:right;color:red"><strong>Dropped</strong></h3>
+                {{/if}}
+                <h2>{{description}}</h2>
               </div>
 
+              <div class="item item-body">
+                  <p>
+                  <b>Instructor:</b> {{#each name teachId}}{{profile.lastname}}, {{profile.firstname}}{{/each}}<br>
+                  <b>Section Code:</b> {{sec_code}} <br> <b>Subject Code:</b> {{subj_code}}<br>
+                  <b>Time:</b> {{time_start}} - {{time_end}}<br>
+                  <b>Semester:</b> {{sem}} , {{school_yr}}<br>
+                  </p>
+              </div>
+              <a class="item item-icon-right assertive" href="#" id="{{#if isDrop ../drop}}droppedInClass{{else}}visitClass{{/if}}">
+                <i class="icon ion-chevron-right"></i>
+                <span style="float:right">View Class</span>
+              </a>
+            </div>
             {{/each}}
             {{else}}
               No class found.

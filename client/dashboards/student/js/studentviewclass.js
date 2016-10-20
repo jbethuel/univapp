@@ -51,7 +51,38 @@ Template.studentDashboardViewClass.events({
     event.preventDefault();
     Session.set("teachId", $('.teachId').text());
   },
-  "click #classDelete": function(event){
+  "click #notInClass": function(event){
+    event.preventDefault();
+    IonPopup.prompt({
+      title: 'Drop Class',
+      template: "<div class='title_prompt'>Are you sure to leave this class?<br> type <strong>YES</strong></div>",
+      okText: 'Confirm',
+      inputType: 'text',
+      inputPlaceholder: '',
+        onOk: function(error, result){
+          if(result == "YES"){
+            id = Router.current().params.class_id;
+            Meteor.call("studentNotClass", id, function(error){
+              if(error){
+                console.log(error.reason);
+              }else{
+                IonLoading.show({
+                  customTemplate: '<h4>SUCCESS</h4><p>Succesfully dropped the class.</p>',
+                  duration: 3000
+                });
+                Router.go("studentDashboardSchedules");
+              }
+            });
+          }else{
+            IonLoading.show({
+              customTemplate: '<h4>ERROR</h4><p>Invalid keyword.</p>',
+              duration: 3000
+            });
+          }
+        }
+    });
+  },
+  "click #classDrop": function(event){
     event.preventDefault();
     IonPopup.prompt({
       title: 'Drop Class',

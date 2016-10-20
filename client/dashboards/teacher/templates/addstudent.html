@@ -4,16 +4,16 @@
        <div class="list list-inset">
          <label class="item item-input">
            <i class="icon ion-search placeholder-icon"></i>
-           <input type="text" placeholder="Search" id="txtSearchStud">
+           <input type="text" placeholder="Search Student Id" id="txtSearchStud">
          </label>
        </div>
 
        <div class="list">
-         {{outputinfo}}
+         <p hidden>{{outputinfo}}</p>
          {{#each studentInfos}}
            {{#if IsNotInClass _id}}
              <a class="item item-avatar" id="btnAddStud"  data-dismiss="modal" href="#">
-                 <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
+                 <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
                <h3 style="color:black">{{profile.lastname}}, {{profile.firstname}}</h3>
              </a>
             {{/if}}

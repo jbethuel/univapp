@@ -21,26 +21,25 @@ Template.studentDashboardClassClassroom.helpers({
   UnAssignednum:function(){
     return students.find({classId:this._id,seatnum:"0:0"}).count();
   },
-  studinfo:function(col,row){
-    console.log(col+":"+row);
-    return students.find({seatnum:col+":"+row}).fetch();
+  studinfo:function(row,col){
+    return students.find({seatnum:row+":"+col}).fetch();
   },
-  loopcol:function(){
+  looprow:function(){
     var countvar = [];
-    for(var x=1; x <= this.cols ;x++){
-      countvar.push({column:x});
+    for(var x=1; x <= this.rows ;x++){
+      countvar.push({row:x});
     }
     return countvar;
   },
-  looprow:function(col,rows){
+  loopcol:function(row,cols){
     var countvar = [];
-    for(var x=1; x <= rows ;x++){
-      countvar.push({col:col,row:x});
+    for(var x=1; x <= cols ;x++){
+      countvar.push({row:row,col:x});
     }
     return countvar;
   },
-  isTaken:function(col,row){
-    var seatnum = col + ":" + row;
+  isTaken:function(row,col){
+    var seatnum = row + ":" + col;
     var seatn = students.find({seatnum:seatnum}).count();
     console.log(seatn);
     if(seatn == 1){

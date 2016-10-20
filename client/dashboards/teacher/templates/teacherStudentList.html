@@ -1,0 +1,52 @@
+<template name="teacherStudentList">
+  {{#contentFor "headerButtonLeft"}}
+    {{>ionNavBackButton path=""}}
+  {{/contentFor}}
+  {{#contentFor "headerTitle"}}
+    <h1 class="title" style="text-align: center;">Student List</h1>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title" style="text-align:center;">Student List</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+    <p hidden>{{outputinfo}}</p>
+    <div class="list">
+      <div class="item item-divider">
+        Students
+      </div>
+      {{#if studentInfos.count}}
+      {{#each studentInfos}}
+        <a class="item item-avatar item-icon-left item-icon-right" href="#" >
+          <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
+          {{#each studentProfile}}
+            <h2><strong>{{profile.lastname}}, {{profile.firstname}}</strong></h2>
+            <p>Absences: <span style="color:red">{{absences}}</span></p>
+          {{/each}}
+          <i class="icon ion-gear-b" data-ion-popover="_EditStudent" id="btnEditStudent"></i>
+        </a>
+        {{/each}}
+      {{else}}
+        <h4 style="margin-left:10px"><strong>No Students in the list.</strong></h4>
+      {{/if}}
+      {{#if dropOuts.count}}
+      <div class="item item-divider">
+        Drop-out Students
+      </div>
+        {{#each dropOuts}}
+          <a class="item item-avatar item-icon-left item-icon-right" href="#" >
+            <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
+            {{#each studentProfile}}
+              <h2><strong>{{profile.lastname}}, {{profile.firstname}}</strong></h2>
+              <p style="color:red">Drop</p>
+            {{/each}}
+            <i class="icon ion-gear-b" data-ion-popover="_EditStudentDrop" id="btnEditStudent"></i>
+          </a>
+        {{/each}}
+      {{/if}}
+    </div>
+    {{/ionContent}}
+  {{/ionView}}
+</template>

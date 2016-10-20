@@ -6,7 +6,7 @@ Template.vacantSeat.helpers({
 Template.vacantSeat.events({
   "click .selectSeat":function(e){
     e.preventDefault();
-    var out = this.col + ":" + this.row;
+    var out = this.row + ":" + this.col;
     Session.set("selectedSeat",out);
   }
 });
@@ -160,7 +160,7 @@ Template.swapvacantSeat.events({
   "click .takeSwap":function(e){
     e.preventDefault();
     var swapinfo = Session.get("studentswap");
-    swapinfo.push({seatnum:this.col + ":" + this.row});
+    swapinfo.push({seatnum:this.row + ":" + this.col});
     console.log(swapinfo);
       var swap1 = students.find({seatnum:swapinfo[0].seatnum},{studId:1}).fetch(),
           swap2 = students.find({seatnum:swapinfo[1].seatnum},{studId:1}).fetch();

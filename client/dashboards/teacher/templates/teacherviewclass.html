@@ -1,6 +1,6 @@
 <template name="teacherDashboardViewClass">
   {{#contentFor "headerButtonLeft"}}
-    {{>ionNavBackButton text="Class Record" path="teacherDashboardClass"}}
+    {{>ionNavBackButton path="teacherDashboardClass"}}
   {{/contentFor}}
   {{#contentFor "headerTitle"}}
     <h1 class="title" style="text-align: center;">Class Record</h1>
@@ -39,6 +39,11 @@
           <a class="item item-icon-left item-icon-right" id="teacherSeatplan">
             <i class="icon ion-grid energized"></i>
             Seat Plan
+            <i class="icon ion-chevron-right"></i>
+          </a>
+          <a class="item item-icon-left item-icon-right" id="teacherStudentList">
+            <i class="icon ion-grid energized"></i>
+            Student List
             <i class="icon ion-chevron-right"></i>
           </a>
           <a class="item item-icon-left item-icon-right" id="teacherAttendance">

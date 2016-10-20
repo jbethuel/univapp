@@ -36,3 +36,22 @@ Meteor.publish("viewrecords",function(id){
 Meteor.publish("studentInfo",function(){
   return Meteor.users.find({},{fields:{services:0}});
 });
+Meteor.publish("teacherStudentprofile", function(studId){
+  return Meteor.users.find({_id: studId}, {profile: 1});
+});
+
+Meteor.publish("students",function(classId){
+  return students.find({classId:classId});
+});
+
+Meteor.publish("attendance",function(classId){
+  return attendance.find({classId:classId});
+});
+
+Meteor.publish("graderecordindex",function(classId){
+  return graderecordindex.find({classId:classId});
+});
+
+Meteor.publish("percentage",function(classId){
+  return percentage.find({classId:classId});
+});

@@ -1,8 +1,9 @@
 Template.teacheraddstudent.onCreated(function(){
-Meteor.subscribe("students");
-Meteor.subscribe("classindex");
-Meteor.subscribe("appusers");
-Meteor.subscribe('files.images.all');
+  Tracker.autorun(function(){
+    Meteor.subscribe("students",Session.get("classId"));
+  });
+  Meteor.subscribe("appusers");
+  Meteor.subscribe('files.images.all');
 });
 
 Template.teacheraddstudent.onDestroyed(function(){
@@ -18,9 +19,6 @@ Template.teacheraddstudent.helpers({
     }else{
       return Meteor.users.find({$or: [{"username": {'$regex' : '.*' + keyword + '.*',$options: 'i'}},{"profile.fullname": {'$regex' : '.*' + keyword + '.*',$options: 'i'}}],roles:["student"]}).fetch();
     }
-  },
-  uploadedFiles: function () {
-    return Images.find({userId:this._id});
   },
   outputinfo:function(){
     return Session.get("selectedSeat") + Session.get("currentClassId");

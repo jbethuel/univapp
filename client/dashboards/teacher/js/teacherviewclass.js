@@ -38,6 +38,13 @@ Template.teacherDashboardViewClass.events({
       class_id: id
     });
   },
+  "click #teacherStudentList": function(event){
+    event.preventDefault();
+    id = Router.current().params.class_id;
+    Router.go("teacherStudentList",{
+      class_id: id
+    });
+  },
   "click #teacherAttendance": function(event){
     event.preventDefault();
     id = Router.current().params.class_id;
