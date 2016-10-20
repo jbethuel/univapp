@@ -45,7 +45,7 @@
           Students who already submitted
         </div>
         {{#if studentFile.count}}
-        {{#each file in studentFile.each}}
+        {{#each studentFile}}
 
           <a class="item item-avatar item-icon-left item-icon-right viewStudentFile" href="#">
             <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}}/camera.png {{/if}}">
