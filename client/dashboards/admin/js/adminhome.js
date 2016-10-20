@@ -21,10 +21,3 @@ Template.adminDashboardHome.helpers({
     return Meteor.users.find({roles: "teacher"}).count();
   }
 });
-
-Template.adminDashboardHome.events({
-  "click .notify": function(e){
-    e.preventDefault();
-    Meteor.call("notify");
-  }
-})
