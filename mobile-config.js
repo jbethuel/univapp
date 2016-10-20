@@ -46,3 +46,7 @@ App.launchScreens({
   'android_xxhdpi_portrait': 'resources/splash/android_xxhdpi_portrait.png',
   'android_xxhdpi_landscape': 'resources/splash/android_xxhdpi_landscape.png'
 });
+
+App.configurePlugin('phonegap-plugin-push', {
+  SENDER_ID: 736841207820
+});

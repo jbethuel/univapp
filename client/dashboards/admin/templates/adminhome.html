@@ -15,7 +15,10 @@
 
       {{#ionContent}}
         <div class="padding">
-          {{> appDumpUI}}
+          <button class="button button-block button-balanced notify">
+            Generate Token
+            {{> ionIcon icon="android-add-circle"}}
+          </button>
           {{#if Template.subscriptionsReady}}
             <div class="row">
               <div class="col col-50">
