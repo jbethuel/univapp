@@ -182,7 +182,7 @@ Meteor.methods({
   takeStudent:function(studId){
     students.update({_id:studId},{$set:{drop:false}});
   },
-  kickStudent:function(_id){
+  kickStudent:function(studId){
     students.remove({_id:studId});
   }
 
