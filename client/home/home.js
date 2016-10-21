@@ -51,18 +51,17 @@ Template.login.events({
         if(error){
 
           if(error.reason = "User not found"){
-            IonPopup.show({
-              title: "ERROR",
-              template: "<div class='title_prompt'>Incorrect username or password.</div>",
-              buttons: [{
-                text: 'OK',
-                type: "button button-assertive",
-                onTap: function() {
-                  IonPopup.close();
-                }
-              }]
-            });
-
+							IonPopup.show({
+								title: "ERROR",
+								template: "<div class='title_prompt'>Incorrect username or password.</div>",
+								buttons: [{
+									text: 'OK',
+									type: "button button-assertive",
+									onTap: function() {
+										IonPopup.close();
+									}
+								}]
+							});
           }
         }else{
           Router.go('dashboard');
@@ -76,12 +75,20 @@ Template.login.events({
 Template.body.helpers({
 	connected: function(){
 		status = Session.get('status');
-		if(status == "connecting"){
-			toastr.warning("", "connecting").css("width","140px");
-		}else if(status == "disconnected"){
-			toastr.error("", "disconnected").css("width","145px");
+		if(status == "connected"){
+			if(Meteor.isCordova){
+				window.plugins.toast.showShortCenter("CONNECTED");
+				SpinnerPlugin.activityStop();
+			}else{
+				toastr.success("", "connected").css("width","140px");
+			}
 		}else{
-			toastr.success("", "connected").css("width","140px");
+			if(Meteor.isCordova){
+				var options = { dimBackground: true };
+				SpinnerPlugin.activityStart("connecting..", options);
+			}else{
+				toastr.warning("", "connecting").css("width","140px");
+			}
 		}
 	}
 });

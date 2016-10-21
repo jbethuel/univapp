@@ -45,5 +45,9 @@ Template.studentDashboardLayout.events({
 Template.studentDashboardLayout.helpers({
   uploadedFiles: function () {
     return Images.find({userId:Meteor.userId()});
+  },
+  unread: function(){
+    Meteor.subscribe("studentMessages");
+    return messages.find({seenByStudent: false}).count();
   }
 });

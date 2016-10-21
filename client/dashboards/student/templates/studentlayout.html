@@ -6,7 +6,7 @@
         {{#ionSideMenu}}
 
           <div class="content">
-
+            {{notification}}
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
@@ -27,6 +27,7 @@
               </div>
               <div class="item item-icon-left" id="sideMessenger" style="{{#if isActiveRoute 'studentDashboardMessenger'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Messenger {{> ionIcon icon="android-mail" class="energized"}}
+                <span class="badge badge-assertive">{{unread}}</span>
               </div>
               <div class="item item-icon-left" id="sideSearch" style="{{#if isActiveRoute 'studentDashboardSearch'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Search {{> ionIcon icon="android-search" class="energized"}}

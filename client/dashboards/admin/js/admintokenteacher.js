@@ -18,11 +18,13 @@ Template.adminDashboardTokenTeacher.events({
     token = this.token;
     if(Meteor.isCordova){
       cordova.plugins.clipboard.copy(token);
+      window.plugins.toast.showShortCenter("token "+ token +" copied to clipboard");
+    }else{
+      title = "COPIED";
+      button = "button button-royal";
+      template = "<div class='title_prompt'>Token copied to clipboard: "+token+"</div>";
+      Meteor.Messages.dialog(title, template, button);
     }
-    title = "COPIED";
-    button = "button button-royal";
-    template = "<div class='title_prompt'>Token copied to clipboard: "+token+"</div>";
-    Meteor.Messages.dialog(title, template, button);
   },
   "click .btn_delete": function(event){
     event.preventDefault();

@@ -35,18 +35,11 @@ Template.register.events({
                   duration: 3000
                 });
               }else{
-                IonPopup.show({
-                  title: "success",
-                  template: "You can now login.",
-                  buttons: [{
-                    text: 'OK',
-                    type: "button button-balanced",
-                    onTap: function() {
-                      Router.go('login');
-                      IonPopup.close();
-                    }
-                  }]
+                IonLoading.show({
+                  customTemplate: '<h4>SUCCESS</h4><p>You can now login.</p>',
+                  duration: 3000
                 });
+                Router.go('login');
               }//else
             });//meteor call
           }
@@ -91,18 +84,11 @@ Template.register.events({
                   duration: 3000
                 });
               }else{
-                IonPopup.show({
-                  title: "success",
-                  template: "You can now login.",
-                  buttons: [{
-                    text: 'OK',
-                    type: "button button-balanced",
-                    onTap: function() {
-                      IonPopup.close();
-                      Router.go('login');
-                    }
-                  }]
+                IonLoading.show({
+                  customTemplate: '<h4>SUCCESS</h4><p>You can now login.</p>',
+                  duration: 3000
                 });
+                Router.go('login');
               }
             });
           }
