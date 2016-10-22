@@ -13,7 +13,9 @@ $loading-font-size: 22px;
 // login page start
 
 .home_login{
-  background-color: #31435B;
+  background: #485563; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #485563 , #29323c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .home-banner{
@@ -36,7 +38,7 @@ $loading-font-size: 22px;
 
 @media screen and (orientation:portrait) {
   .space{
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
   .buksu_logo{
     @include transition(0.4s);

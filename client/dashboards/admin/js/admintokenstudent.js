@@ -12,6 +12,7 @@ Template.adminDashboardTokenStudent.events({
   "click .btn_token": function(event){
     event.preventDefault();
     Meteor.call('addTokensStudent');
+    window.plugins.toast.showShortCenter("1 student token generated");
   },
   "click .btn_copy": function(event){
     token = this.token;
@@ -28,6 +29,9 @@ Template.adminDashboardTokenStudent.events({
   "click .btn_delete": function(){
     event.preventDefault();
     Meteor.call("deleteTokens", this._id);
+    if(Meteor.isCordova){
+      window.plugins.toast.showShortCenter("Token deleted");
+    }
   },
   "click input[type='checkbox']": function(event){
     if($('.available').prop("checked") == true){

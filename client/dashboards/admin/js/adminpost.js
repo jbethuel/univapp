@@ -4,19 +4,24 @@ Template.adminDashboardPost.events({
 
     $('.txtTitle').val('');
     $('.txtContent').val('');
+    $('.chkStud').prop('checked', false);
+    $('.chkTeach').prop('checked', false);
 
-    IonPopup.show({
-      title: 'CANCELLED',
-      template: '<div class="title_prompt">Nothing was sent.</div>',
-      buttons: [{
-        text: 'OK',
-        type: 'button-royal',
-        onTap: function() {
-          IonPopup.close();
-        }
-      }]
-    });
-
+    if(Meteor.isCordova){
+      window.plugins.toast.showShortCenter("Cancelled");
+    }else{
+      IonPopup.show({
+        title: 'CANCELLED',
+        template: '<div class="title_prompt">Nothing was sent.</div>',
+        buttons: [{
+          text: 'OK',
+          type: 'button-royal',
+          onTap: function() {
+            IonPopup.close();
+          }
+        }]
+      });
+    }
   },
   "click .btn_send": function(event){
     event.preventDefault();
@@ -29,7 +34,7 @@ Template.adminDashboardPost.events({
     if(title == "" || content == "" || (student == false && teacher == false)){
 
       title = "ERROR!";
-      template = "<div class='title_prompt'>Title and content should not be empty.</div>";
+      template = "<div class='title_prompt'>Title, content and recipients should not be empty.</div>";
       button = "button-assertive";
       Meteor.Messages.dialog(title, template, button);
 
@@ -55,6 +60,8 @@ Template.adminDashboardPost.events({
               });
               $('.txtTitle').val('');
               $('.txtContent').val('');
+              $('.chkStud').prop('checked', false);
+              $('.chkTeach').prop('checked', false);
             }
           });
         },

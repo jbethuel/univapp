@@ -1,68 +1,65 @@
 <template name="adminDashboardPost">
   {{#if isInRole 'admin'}}
 
-      {{#contentFor "headerButtonLeft"}}
-        <button class="button button-clear pull-left" data-ion-menu-toggle="left">
-          {{> ionIcon icon='navicon'}}
-        </button>
-      {{/contentFor}}
+    {{#contentFor "headerButtonLeft"}}
+      <button class="button button-clear pull-left" data-ion-menu-toggle="left">
+        {{> ionIcon icon='navicon'}}
+      </button>
+    {{/contentFor}}
 
-      {{#contentFor "headerTitle"}}
-        <h1 class="title" style="text-align:center;"> Post News</h1>
-      {{/contentFor}}
+    {{#contentFor "headerTitle"}}
+      <h1 class="title" style="text-align:center;"> Post News</h1>
+    {{/contentFor}}
 
-      {{#ionView}}
-        {{#ionContent}}
-          <div class="padding">
+    {{#ionView}}
+      {{#ionContent}}
+      <div class="row"></div>
+        <div class="list">
 
-            <div class="list card">
-              <a href="#" class="item item-icon-right">
-                <div class="item-text-wrap">
-                  <p>Sends news to teachers & students.</p>
-                </div>
-                {{> ionIcon icon="android-alert" class="energized"}}
-              </a>
+          <div class="item item-divider item-icon-right">
+            <div class="item-text-wrap">
+              Sends news to teachers & students.
             </div>
-
-            <div class="list">
-              <label class="item item-input">
-                <input type="text" class="txtTitle" placeholder="News Title">
-              </label>
-              <label class="item item-input">
-                <textarea class="txtContent" placeholder="Content"></textarea>
-              </label>
-
-              <div class="item item-divider">
-                Send announcement to:
-              </div>
-
-              <li class="item item-checkbox">
-                 <label class="checkbox">
-                   <input type="checkbox" class="chkStud">
-                 </label>
-                 Student
-              </li>
-              <li class="item item-checkbox">
-                 <label class="checkbox">
-                   <input type="checkbox" class="chkTeach">
-                 </label>
-                 Teacher
-              </li>
-            </div>
-
-            <div class="row">
-              <div class="col col-50">
-                <a class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</a>
-              </div>
-
-              <div class="col col-50">
-                <a class="button button-block icon-right ion-android-send button-balanced btn_send">Send</a>
-              </div>
-            </div>
-
+            {{> ionIcon icon="android-alert" class="energized"}}
           </div>
-        {{/ionContent}}
-      {{/ionView}}
+
+          <label class="item item-input">
+            <input type="text" class="txtTitle" placeholder="News Title">
+          </label>
+          <label class="item item-input">
+            <textarea class="txtContent" placeholder="Content"></textarea>
+          </label>
+
+          <div class="item item-divider">
+            Send announcement to:
+          </div>
+
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" class="chkStud">
+             </label>
+             Student
+          </li>
+          <li class="item item-checkbox">
+             <label class="checkbox">
+               <input type="checkbox" class="chkTeach">
+             </label>
+             Teacher
+          </li>
+
+          <div class="row">
+            <div class="col">
+              <button class="button button-block icon-right ion-android-cancel button-stable btn_cancel">Cancel</button>
+            </div>
+
+            <div class="col">
+              <button class="button button-block icon-right ion-android-send button-balanced btn_send">Send</button>
+            </div>
+          </div>
+
+        </div>
+      {{/ionContent}}
+    {{/ionView}}
 
   {{else}}
     {{>dashboard}}

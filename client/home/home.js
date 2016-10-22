@@ -49,7 +49,6 @@ Template.login.events({
 
       Meteor.loginWithPassword(id, pw, function(error){
         if(error){
-
           if(error.reason = "User not found"){
 							IonPopup.show({
 								title: "ERROR",
@@ -67,7 +66,6 @@ Template.login.events({
           Router.go('dashboard');
         }
       });
-
     }
   }
 });
