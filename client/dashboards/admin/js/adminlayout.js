@@ -42,7 +42,9 @@ Template.adminDashboardLayout.events({
   "click #sideLogout": function(event){
     event.preventDefault();
     Meteor.logout();
-    window.plugins.toast.showShortCenter("Logged out");
     Router.go('login');
+    if(Meteor.isCordova){
+      window.plugins.toast.showShortCenter("Logged out");
+    }
   }
 });

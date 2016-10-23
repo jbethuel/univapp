@@ -7,13 +7,12 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title" style="text-align:center;"> Student Home</h1>
+    <h1 class="title" style="text-align:center;">BukSU Home</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-        <h4><strong>ADMIN ANNOUNCEMENTS:</strong></h4>
 
         {{#if Template.subscriptionsReady}}
           {{#each news}}
@@ -21,12 +20,13 @@
               <div class="list">
                 <a class="item item-thumbnail-left" href="#">
                   <img src="../admin.png">
-                  <h3>What: {{title}}</h3>
-                  <h3>By: {{author}}</h3>
-                  <div class="item-text=wrap">{{content}}</div>
+                  <p><div class="item-text-wrap"><i class="fa fa-info" aria-hidden="true"></i> {{title}}</div></p>
+                  <p><div class="item-text-wrap"><i class="fa fa-user" aria-hidden="true"></i> {{author}}</div></p>
+                  <p><div class="item-text-wrap"><i class="fa fa-calendar" aria-hidden="true"></i> {{day}}</div></p>
+                  <p><div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{time}}, {{livestamp createdAt}}</div></p>
                 </a>
-                <div class="item item-text-wrap">
-                  <p>{{livestamp createdAt}}</p>
+                <div class="item item-body">
+                  <div class="item-text-wrap">{{content}}</div>
                 </div>
               </div>
             </div>

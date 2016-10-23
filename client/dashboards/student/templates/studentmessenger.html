@@ -12,8 +12,8 @@
   {{#ionView}}
     {{#ionContent}}
 
-      <div class="list">
-        {{#if Template.subscriptionsReady}}
+      {{#if Template.subscriptionsReady}}
+        <div class="list">
           {{#each thread}}
             <a class="item item-avatar" href="#">
               {{#if image.count}}
@@ -21,17 +21,18 @@
                   <img src="{{file.link}}" alt="">
                 {{/each}}
               {{/if}}
-              <h2>{{#each name teach_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+              <h2>{{#each name teach_id}}{{profile.lastname}}, {{profile.firstname}}{{/each}}</h2>
               <span class="item-note">
                 {{livestamp createdAt}}
               </span>
-              <p>{{message}}</p>
+              <p><b>{{message}}</b></p>
             </a>
           {{/each}}
-        {{else}}
-          {{>spinner}}
-        {{/if}}
-      </div>
+        </div>
+      {{else}}
+        {{>spinner}}
+      {{/if}}
+
 
     {{/ionContent}}
   {{/ionView}}

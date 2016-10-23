@@ -1,4 +1,7 @@
 Meteor.methods({
+  unreadMessage: function(){
+    messages.update({stud_id : this.userId, seenByStudent: false}, {$set:{seenByStudent: true}});
+  },
   studentSendMessage: function(stud_id, teach_id, message){
     messages.insert({
       stud_id: stud_id,

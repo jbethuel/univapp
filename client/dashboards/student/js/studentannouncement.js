@@ -18,5 +18,11 @@ Template.studentDashboardClassAnnouncement.helpers({
   classinfo: function(classId){
     Meteor.subscribe("studentClassInfo", classId);
     return classindex.find({}).fetch();
+  },
+  day: function(){
+    return moment(this.createdAt).format('MMMM Do YYYY');
+  },
+  time: function(){
+    return moment(this.createdAt).format('h:mm a');
   }
 });

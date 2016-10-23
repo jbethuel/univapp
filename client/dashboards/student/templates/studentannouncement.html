@@ -12,7 +12,6 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-        <h4><strong>CLASS ANNOUNCEMENTS:</strong></h4>
 
         {{#if Template.subscriptionsReady}}
           {{#each classid}}
@@ -20,16 +19,17 @@
               <div class="list card">
                 <div class="list">
                   <a class="item" href="#">
+                    <p><div class="item-text-wrap"><i class="fa fa-info" aria-hidden="true"></i> {{title}}</div></p>
+                    <p><div class="item-text-wrap"><i class="fa fa-user" aria-hidden="true"></i> {{#each teacherName senderId}}Prof. {{profile.lastname}} {{profile.firstname}}{{/each}}</div></p>
                     {{#each classinfo classId}}
-                      <h3>Description: {{description}}</h3>
-                      <h3>Section Code: {{sec_code}}</h3>
+                      <p><div class="item-text-wrap"><i class="fa fa-info-circle" aria-hidden="true"></i> {{description}}</div></p>
+                      <p><div class="item-text-wrap"><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}}</div></p>
                     {{/each}}
-                    <h3>WHAT: {{title}}</h3>
-                    <h3>BY: {{#each teacherName senderId}}Prof. {{profile.lastname}} {{profile.firstname}}{{/each}}</h3>
-                    <div class="item-text-wrap">{{content}}</div>
+                      <p><div class="item-text-wrap"><i class="fa fa-calendar" aria-hidden="true"></i> {{day}}</div></p>
+                      <p><div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{time}}, {{livestamp createdAt}}</div></p>
                   </a>
                   <div class="item item-text-wrap">
-                    <p>{{livestamp createdAt}}</p>
+                    <div class="item-text-wrap">{{content}}</div>
                   </div>
                 </div>
               </div>

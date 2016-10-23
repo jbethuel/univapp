@@ -37,9 +37,14 @@ Template.register.events({
           onOk: function(error, result){
             token = result;
             Meteor.call('registerStudent', token, stud_id, firstname, middlename, lastname, pw, function(error){
-              if(error && error.error === 'invalid'){
+              if(error){
+                if(error === 'invalid'){
+                  error_message = "<h4>ERROR</h4><p>Invalid token. Try again.</p>";
+                }else{
+                  error_message = error.reason;
+                }
                 IonLoading.show({
-                  customTemplate: '<h4>ERROR</h4><p>Invalid token. Try again.</p>',
+                  customTemplate: error_message,
                   duration: 2500
                 });
               }else{
@@ -92,9 +97,14 @@ Template.register.events({
           onOk: function(error, result){
             token = result;
             Meteor.call('registerTeacher', token, teach_id, firstname, middlename, lastname, pw, function(error){
-              if(error && error.error === 'invalid'){
+              if(error){
+                if(error === 'invalid'){
+                  error_message = "<h4>ERROR</h4><p>Invalid token. Try again.</p>";
+                }else{
+                  error_message = error.reason;
+                }
                 IonLoading.show({
-                  customTemplate: '<h4>ERROR</h4><p>Invalid token. Try again.</p>',
+                  customTemplate: error_message,
                   duration: 2500
                 });
               }else{
