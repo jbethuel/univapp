@@ -1,3 +1,7 @@
+Meteor.publish('userImage', function (userId) {
+  return Images.find({userId: userId}).cursor;
+});
+
 Meteor.publish("tokens", function(){
   return tokens.find({});
 });

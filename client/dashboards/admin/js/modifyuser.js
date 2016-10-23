@@ -30,10 +30,14 @@ Template._modifyuser.events({
         if(error){
           console.log(error.reason);
         }else{
-          title = "SUCCESS";
-          button = "button button-balanced";
-          template = "<div class='title_prompt'>Succesfully Modified.</div>";
-          Meteor.Messages.dialog(title, template, button);
+          if(Meteor.isCordova){
+            window.plugins.toast.showShortCenter("Succesfully updated");
+          }else{
+            title = "SUCCESS";
+            button = "button button-balanced";
+            template = "<div class='title_prompt'>Succesfully Modified.</div>";
+            Meteor.Messages.dialog(title, template, button);
+          }
         }
       });
     }

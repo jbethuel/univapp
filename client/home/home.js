@@ -34,22 +34,30 @@ Template.login.events({
     var pw = $('.home_pw').val();
 
     if(id == "" || pw == ""){
-      IonPopup.show({
-        title: "ERROR",
-        template: "<div class='title_prompt'>ID or password is empty.<br>Please Try Again.</div>",
-        buttons: [{
-          text: 'OK',
-          type: 'button-assertive',
-          onTap: function() {
-            IonPopup.close();
-          }
-        }]
-      });
+
+			if(Meteor.isCordova){
+				navigator.notification.alert('ID or password is empty.',function(){},'ERROR','OK');
+			}else{
+				IonPopup.show({
+					title: "ERROR",
+					template: "<div class='title_prompt'>ID or password is empty.<br>Please Try Again.</div>",
+					buttons: [{
+						text: 'OK',
+						type: 'button-assertive',
+						onTap: function() {
+							IonPopup.close();
+						}
+					}]
+				});
+			}
     }else{
 
       Meteor.loginWithPassword(id, pw, function(error){
         if(error){
           if(error.reason = "User not found"){
+						if(Meteor.isCordova){
+							navigator.notification.alert("The ID you've entered doesn't match any account. Sign up for an account.",function(){},'ERROR','OK');
+						}else{
 							IonPopup.show({
 								title: "ERROR",
 								template: "<div class='title_prompt'>Incorrect username or password.</div>",
@@ -61,6 +69,7 @@ Template.login.events({
 									}
 								}]
 							});
+						}
           }
         }else{
           Router.go('dashboard');
@@ -75,7 +84,7 @@ Template.body.helpers({
 		status = Session.get('status');
 		if(status == "connected"){
 			if(Meteor.isCordova){
-				window.plugins.toast.showShortCenter("CONNECTED");
+				window.plugins.toast.showWithOptions({message: "CONNECTED", duration: "short", position: "bottom", addPixelsY: -80});
 				SpinnerPlugin.activityStop();
 			}else{
 				toastr.success("", "connected").css("width","140px");

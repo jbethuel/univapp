@@ -1,5 +1,6 @@
 Template.adminDashboardLoginUser.onCreated(function(){
   this.subscribe("adminSearchUser");
+  this.subscribe('files.images.all');
 });
 
 Template.adminDashboardLoginUser.onDestroyed(function(){
@@ -16,6 +17,12 @@ Template.adminDashboardLoginUser.events({
     event.preventDefault();
     $(".searchuser").val("");
     Session.set("searchuser","");
+  },
+  "click .icon": function(event){
+    event.preventDefault();
+    if(Meteor.isCordova){
+      window.plugins.toast.showShortCenter("logged in as " + this.username);
+    }
   }
 });
 
@@ -39,5 +46,8 @@ Template.adminDashboardLoginUser.helpers({
     return Meteor.users.find({
       "username": {'$regex' : '.*' + keyword + '.*' , $options: 'i'}
     }).count() === 1;
+  },
+  uploadedFiles: function () {
+    return Images.find({userId:this._id});
   }
 });

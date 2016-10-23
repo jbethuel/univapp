@@ -35,7 +35,7 @@
 
                 <div class="list">
                   <a class="item item-thumbnail-left item-icon-right" href="#">
-                    <img src="../../user.png">
+                    <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
                     <h2>{{username}}</h2>
                     <p><strong>{{roles}}</strong></p>
                     <p>{{profile.lastname}}</p>

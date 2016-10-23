@@ -23,6 +23,20 @@ $loading-font-size: 22px;
   color: #FAFAFA;
 }
 
+@font-face {
+  font-family: 'Lobster';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/Lobster-regular/Lobster-regular.eot');
+  src: url('/fonts/Lobster-regular/Lobster-regular.eot?#iefix') format('embedded-opentype'),
+       local('/Lobster'),
+       local('/Lobster-regular'),
+       url('/fonts/Lobster-regular/Lobster-regular.woff2') format('woff2'),
+       url('/fonts/Lobster-regular/Lobster-regular.woff') format('woff'),
+       url('/fonts/Lobster-regular/Lobster-regular.ttf') format('truetype'),
+       url('/fonts/Lobster-regular/Lobster-regular.svg#Lobster') format('svg');
+}
+
 .home-form{
   margin-left: 16px;
   margin-right: 16px;

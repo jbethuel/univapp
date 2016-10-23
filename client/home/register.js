@@ -1,7 +1,7 @@
 Template.register.events({
   "click .btn_student_reg": function(event){
-
     event.preventDefault();
+
     stud_id = $('.reg_id').val();
     firstname = $('.reg_firstname').val();
     middlename = $('.reg_middlename').val();
@@ -10,15 +10,23 @@ Template.register.events({
     conf_pw = $('.reg_conf_pw').val();
 
     if(Meteor.Validation.CheckBlankSpace(stud_id) || Meteor.Validation.CheckBlankSpace(firstname) || Meteor.Validation.CheckBlankSpace(middlename) || Meteor.Validation.CheckBlankSpace(lastname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Please complete all the fields.</div>";
-      Meteor.Messages.dialog(title, template, button);
+      if(Meteor.isCordova){
+        navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Please complete all the fields.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else if(pw != conf_pw){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Password does not match.</div>";
-      Meteor.Messages.dialog(title, template, button);
+      if(Meteor.isCordova){
+        navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Password does not match.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else{
       IonPopup.prompt({
         title: 'Security Token',
@@ -31,8 +39,8 @@ Template.register.events({
             Meteor.call('registerStudent', token, stud_id, firstname, middlename, lastname, pw, function(error){
               if(error && error.error === 'invalid'){
                 IonLoading.show({
-                  customTemplate: '<h4>ERROR</h4><p>Invalid Token. Try Again.</p>',
-                  duration: 3000
+                  customTemplate: '<h4>ERROR</h4><p>Invalid token. Try again.</p>',
+                  duration: 2500
                 });
               }else{
                 IonLoading.show({
@@ -57,17 +65,23 @@ Template.register.events({
     conf_pw = $('.reg_conf_pw').val();
 
     if(Meteor.Validation.CheckBlankSpace(teach_id) || Meteor.Validation.CheckBlankSpace(firstname) || Meteor.Validation.CheckBlankSpace(middlename) || Meteor.Validation.CheckBlankSpace(lastname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Please complete all the fields.</div>";
-      Meteor.Messages.dialog(title, template, button);
-
+      if(Meteor.isCordova){
+        navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Please complete all the fields.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else if(pw != conf_pw){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Password does not match.</div>";
-      Meteor.Messages.dialog(title, template, button);
-
+      if(Meteor.isCordova){
+        navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Password does not match.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else{
       IonPopup.prompt({
         title: 'Security Token',
@@ -80,8 +94,8 @@ Template.register.events({
             Meteor.call('registerTeacher', token, teach_id, firstname, middlename, lastname, pw, function(error){
               if(error && error.error === 'invalid'){
                 IonLoading.show({
-                  customTemplate: '<h4>ERROR</h4><p>Invalid Token. Try Again.</p>',
-                  duration: 3000
+                  customTemplate: '<h4>ERROR</h4><p>Invalid token. Try again.</p>',
+                  duration: 2500
                 });
               }else{
                 IonLoading.show({
