@@ -1,5 +1,6 @@
 Template.studentDashboardLayout.onCreated(function(){
   Meteor.subscribe('files.images.all');
+  this.subscribe("studentThreads");
 });
 
 Template.studentDashboardLayout.onRendered(function(){
@@ -48,6 +49,6 @@ Template.studentDashboardLayout.helpers({
   },
   unread: function(){
     Meteor.subscribe("studentMessages");
-    return messages.find({seenByStudent: false}).count();
+    return threads.find({seenByStudent: false}).count();
   }
 });

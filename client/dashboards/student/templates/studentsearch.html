@@ -23,24 +23,24 @@
       <div class="padding has-subheader">
         {{#if Template.subscriptionsReady}}
 
+
           {{#each searchresult}}
             {{#if notInclass}}
-              <a class="item item-thumbnail-left" href="#" id="btnenterclass">
-                <img src="../class.png">
-                <h3><strong>{{description}}</strong></h3>
-                <h3><strong>{{sec_code}} - {{subj_code}}</strong></h3>
-                <h3>
-                  <strong>
-                  {{#each TeacherInfo teachId}}
-                    Prof. {{profile.firstname}} {{profile.lastname}}
-                  {{/each}}
-                  </strong>
-                </h3>
-                <h3>{{sched}} - [{{time_start}} - {{time_end}}]</h3>
-                <h3>{{sem}} - [{{school_yr}}]</h3>
-              </a>
-              {{/if}}
-            {{else}}
+              <div class="list card">
+                <a class="item" href="#" id="btnenterclass">
+                  <p><i class="fa fa-info-circle" aria-hidden="true"></i> {{description}}</p>
+                  <p><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}} - {{subj_code}}</p>
+                  <p>
+                    {{#each TeacherInfo teachId}}
+                    <i class="fa fa-user" aria-hidden="true"></i>  Prof. {{profile.firstname}} {{profile.lastname}}
+                    {{/each}}
+                  </p>
+                  <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{sched}} - [{{time_start}} - {{time_end}}]</p>
+                  <p><i class="fa fa-calendar" aria-hidden="true"></i> {{sem}} - [{{school_yr}}]</p>
+                </a>
+              </div>
+            {{/if}}
+          {{else}}
             No results found.
           {{/each}}
 

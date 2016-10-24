@@ -2,6 +2,7 @@ Template.studentDashboardSearch.onCreated(function(){
   this.subscribe("classindex");
   this.subscribe("students");
   this.subscribe("appusers");
+  this.subscribe("classSearch");
   Session.setDefault("manageSearchClass","");
   Session.setDefault("filterSemester","");
   Session.setDefault("filterYear","");
@@ -88,6 +89,11 @@ Template.studentDashboardSearch.helpers({
        return Meteor.users.find({_id:teachId},{username:1}).fetch();
     },
     notInclass:function(){
-      return students.find({classId:this._id,studId:Meteor.userId()}).count() === 0;
+      check = students.find({classId:this._id,studId:Meteor.userId()}).count();
+      if(check == 0){
+        return true;
+      }else{
+        return false;
+      }
     }
 });

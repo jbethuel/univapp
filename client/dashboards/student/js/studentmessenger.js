@@ -1,5 +1,5 @@
 Template.studentDashboardMessenger.onCreated(function(){
-  this.subscribe("studentMessages");
+  this.subscribe("studentThreads");
 });
 
 Template.studentDashboardMessenger.events({
@@ -10,36 +10,22 @@ Template.studentDashboardMessenger.events({
     });
     id = this.teach_id;
     Router.go('studentDashboardConversation',{
-      teach_id: id
+      teach_id: id,
+      class_id: this.class_id
     });
   }
 });
 
 Template.studentDashboardMessenger.helpers({
   thread: function(){
-    id = Meteor.userId();
-    return _.uniq(messages.find({stud_id: id},{sort: {
-       createdAt: -1}
-    }).fetch(), true, doc => {
-      return doc.teach_id;// https://forums.meteor.com/t/mongo-distinct-query/1748/9
-    });
+    return threads.find({}).fetch();
   },
-  unreadMessage: function(){
-    id = Meteor.userId();
-    messages.find({stud_id: id, seenByStudent: false}).fetch();
-  },
-  seen: function(){
-    if(this.seenByStudent == false){
-      return false;
-      console.log("false");
-    }else{
-      return true;
-      console.log("true");
-    }
+  equals: function(v1, v2) {
+    return (v1 === v2);
   },
   image: function (){
     Meteor.subscribe("studentMessagesImage", this.teach_id);
-    return Images.find({userId:this.teach_id});
+    return Images.find({userId: this.teach_id});
   },
   name: function(teach_id){
     Meteor.subscribe("studentMessengerName", teach_id);

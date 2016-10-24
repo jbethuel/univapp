@@ -15,17 +15,15 @@
       {{#if Template.subscriptionsReady}}
         <div class="list">
           {{#each thread}}
-            <a class="item item-avatar" href="#">
+            <a class="item item-avatar" href="#" style="{{#unless seenByStudent}}font-weight:bold;{{/unless}}">
               {{#if image.count}}
                 {{#each file in image.each}}
                   <img src="{{file.link}}" alt="">
                 {{/each}}
               {{/if}}
-              <h2>{{#each name teach_id}}{{profile.lastname}}, {{profile.firstname}}{{/each}}</h2>
-              <span class="item-note">
-                {{livestamp createdAt}}
-              </span>
-              <p><b>{{message}}</b></p>
+              <p>{{#each name teach_id}}{{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
+              <span class="item-note">{{livestamp lastMessageDate}}</span>
+              <p>{{#if equals lastMessageBy currentUser._id}}You:{{/if}} {{lastMessage}}</p>
             </a>
           {{/each}}
         </div>

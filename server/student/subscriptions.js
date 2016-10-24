@@ -15,8 +15,8 @@ Meteor.publish("teacherName", function(id){
   return Meteor.users.find({_id: id});
 });
 // studentDashboardMessenger
-Meteor.publish("studentMessages", function(){
-  return messages.find({stud_id:this.userId});
+Meteor.publish("studentThreads", function(){
+  return threads.find({stud_id: this.userId});
 });
 
 Meteor.publish("studentMessagesImage", function(teach_id){
@@ -33,6 +33,10 @@ Meteor.publish("studentConversationTeachInfo", function(id){
 
 Meteor.publish("studentConversationMessages", function(stud_id, teach_id){
   return messages.find({stud_id: stud_id, teach_id: teach_id});
+});
+// studentDashboardSearch
+Meteor.publish("classSearch", function(){
+  return students.find({studId: this.userId});
 });
 // studentDashboardViewClass
 Meteor.publish("studentClassInfo", function(id){

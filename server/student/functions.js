@@ -1,14 +1,28 @@
 Meteor.methods({
   unreadMessage: function(){
-    messages.update({stud_id : this.userId, seenByStudent: false}, {$set:{seenByStudent: true}});
+    threads.update({stud_id: this.userId}, {$set:{seenByStudent: true}});
   },
-  studentSendMessage: function(stud_id, teach_id, message){
+  studentSendMessage: function(class_id, stud_id, teach_id, message){
+    checkThread = threads.find({class_id: class_id}).count();
+    if(checkThread == 0){
+      threads.insert({
+        class_id: class_id,
+        stud_id: stud_id,
+        teach_id: teach_id,
+        seenByStudent: false,
+        seenByTeacher: false,
+        lastMessage: message,
+        lastMessageBy: stud_id,
+        lastMessageDate: new Date()
+      });
+    }
+    threads.update({class_id: class_id}, {$set:{seenByTeacher: false}});
     messages.insert({
+      class_id: class_id,
       stud_id: stud_id,
       teach_id: teach_id,
       message: message,
       sentBy: stud_id,
-      seenByTeacher: false,
       createdAt: new Date()
     });
   },
