@@ -5,7 +5,6 @@ Template.teacherDashboardConversation.onRendered(function(){
 Template.teacherDashboardConversation.onCreated(function(){
   teach_id = Meteor.userId();
   stud_id = Router.current().params.stud_id;
-  id = stud_id;
   this.subscribe("teacherMessengerName", stud_id);
   this.subscribe("subTeacherMessages", stud_id, teach_id);
 });
@@ -16,14 +15,25 @@ Template.teacherDashboardConversation.events({
 
     teach_id = Meteor.userId();
     stud_id = Router.current().params.stud_id;
+    class_id = Router.current().params.class_id;
     message = $('.txtArea').val();
-    Meteor.call("teacherSendMessage", stud_id, teach_id, message, function(error){
-      if(error){
-        console.log(error.reason);
-      }else{
-        console.log("ok");
+
+    if(message == ""){
+      if(Meteor.isCordova){
+        window.plugins.toast.showWithOptions({message: "Type something", duration: "short", position: "bottom", addPixelsY: -80});
       }
-    });
+    }else{
+      Meteor.call("teacherSendMessage", class_id, stud_id, teach_id, message, function(error){
+        if(error){
+          console.log(error.reason);
+        }else{
+          if(Meteor.isCordova){
+            window.plugins.toast.showWithOptions({message: "Message sent", duration: "short", position: "bottom", addPixelsY: -80});
+            $('.txtArea').val("");
+          }
+        }
+      });
+    }
   }
 });
 

@@ -1,6 +1,6 @@
 Meteor.methods({
-  unreadMessage: function(){
-    threads.update({stud_id: this.userId}, {$set:{seenByStudent: true}});
+  unreadSMessages: function(class_id){
+    threads.update({class_id: class_id, stud_id: this.userId}, {$set:{seenByStudent: true}});
   },
   studentSendMessage: function(class_id, stud_id, teach_id, message){
     checkThread = threads.find({class_id: class_id}).count();
@@ -16,7 +16,7 @@ Meteor.methods({
         lastMessageDate: new Date()
       });
     }
-    threads.update({class_id: class_id}, {$set:{seenByTeacher: false}});
+    threads.update({class_id: class_id, stud_id: this.userId, teach_id: teach_id}, {$set:{seenByTeacher: false}});
     messages.insert({
       class_id: class_id,
       stud_id: stud_id,

@@ -21,9 +21,9 @@
                   <img src="{{file.link}}" alt="">
                 {{/each}}
               {{/if}}
-              <h2>{{#each name stud_id}}{{profile.firstname}}{{profile.lastname}}{{/each}}</h2>
+              <h2>{{#each name stud_id}}{{profile.firstname}} {{profile.lastname}}{{/each}}</h2>
               <span class="item-note">
-                {{livestamp createdAt}}
+                {{livestamp lastMessageDate}}
               </span>
               <p>{{message}}</p>
             </a>

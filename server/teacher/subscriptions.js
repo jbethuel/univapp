@@ -3,6 +3,10 @@ Meteor.publish("teacherNews", function(){
   return news.find({$or: [{sendTo: "teacher"},{sendTo: "both"}]});
 });
 // teacherDashboardMessenger
+Meteor.publish("teacherThreads", function(){
+  return threads.find({teach_id: this.userId});
+});
+
 Meteor.publish("teacherMessages", function(id){
   return messages.find({teach_id:id});
 });

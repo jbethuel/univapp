@@ -5,7 +5,7 @@ Template.studentDashboardMessenger.onCreated(function(){
 Template.studentDashboardMessenger.events({
   "click .item": function(event){
     event.preventDefault();
-    Meteor.call("unreadMessage", function(error){
+    Meteor.call("unreadSMessages", this.class_id, function(error){
       console.log(error.reason);
     });
     id = this.teach_id;

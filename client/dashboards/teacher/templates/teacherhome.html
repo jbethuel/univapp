@@ -20,14 +20,12 @@
             <div class="list card">
               <div class="list">
                   <a class="item item-thumbnail-left" href="#">
-                    <img src="../admin.png">
-                    <h3>What: {{title}}</h3>
-                    <h3>By: {{author}}</h3>
-                    <p>{{content}}</p>
+                    <img src="../buksu_logo.png">
+                    <p><div class="item-text-wrap"><i class="fa fa-info-circle" aria-hidden="true"></i> What: {{title}}</div></p>
+                    <p><div class="item-text-wrap"><i class="fa fa-user" aria-hidden="true"></i> By: {{author}}</div></p>
+                    <p><div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{livestamp createdAt}}</div></p>
+                    <p><div class="item-text-wrap"> {{content}}</div></p>
                   </a>
-                  <div class="item item-text-wrap">
-                    <p>{{livestamp createdAt}}</p>
-                  </div>
               </div>
             </div>
           {{/each}}
