@@ -41,9 +41,7 @@
           {{#if fileRef.count}}
             <h2>Reference File(s): </h2>
             {{#each file in fileRef.each}}
-               <a href="#" onclick="window.open('{{file.link}}', '_system', 'location=yes');">
-                {{file.name}}
-              </a>
+              <a href="#" onclick="window.open('{{file.link}}', '_system', 'location=yes');">Download: {{file.name}}</a>
               <br>
             {{/each}}
             <br>
@@ -66,7 +64,7 @@
           {{#if notDue}}
             {{#if myFile.count}}
             {{else}}
-              <a class="button button-full icon-right ion-android-send button-balanced" data-ion-modal="studentSubmitFile">Submit Files</a>
+              <a class="button button-full icon-right ion-android-send button-balanced" data-ion-modal="studentSubmitFile">Submit Work</a>
             {{/if}}
           {{/if}}
         </div>

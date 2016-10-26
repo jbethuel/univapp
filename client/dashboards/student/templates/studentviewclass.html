@@ -10,18 +10,18 @@
     {{#ionContent}}
 
       {{#if Template.subscriptionsReady}}
-        <ul class="list title_prompt" style="margin-bottom: 0px;">
+        <ul class="list" style="margin-bottom: 0px;">
           <li class="item">
             {{#each classinfo}}
-              <p>{{description}}</p>
-              <p>{{sec_code}} - {{subj_code}}</p>
-              <p>{{time_start}} - {{time_end}}</p>
-              <p>{{sem}} - {{school_yr}}</p>
-              <p>{{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
+              <p><i class="fa fa-info-circle" aria-hidden="true"></i> {{description}}</p>
+              <p><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}} - {{subj_code}}</p>
+              <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{time_start}} - {{time_end}}</p>
+              <p><i class="fa fa-calendar" aria-hidden="true"></i> {{sem}} - {{school_yr}}</p>
+              <p><i class="fa fa-user" aria-hidden="true"></i> {{#each teachername teachId}}Prof. {{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
               <div class="teachId" hidden>{{teachId}}</div>
             {{/each}}
           </li>
-          <div class="item-divider">
+          <div class="item-divider title_prompt">
             Main Menu
           </div>
         </ul>
@@ -30,27 +30,26 @@
           <a class="item item-icon-left item-icon-right" id="classStanding">
             <i class="icon ion-document-text energized"></i>
             Class Standing
-            <i class="icon ion-chevron-right"></i>
+            <i class="icon ion-chevron-right royal"></i>
           </a>
           <a class="item item-icon-left item-icon-right" id="classActivity">
             <i class="icon ion-edit energized"></i>
             Class Activities
-            <i class="icon ion-chevron-right"></i>
+            <i class="icon ion-chevron-right royal"></i>
           </a>
           <a class="item item-icon-left item-icon-right" id="classRoom">
             <i class="icon ion-grid energized"></i>
             Visit Class Room
-            <i class="icon ion-chevron-right"></i>
+            <i class="icon ion-chevron-right royal"></i>
           </a>
           <a class="item item-icon-left item-icon-right" id="classMessage">
             <i class="icon ion-chatbox-working energized"></i>
             Message Board
-            <i class="icon ion-chevron-right"></i>
+            <i class="icon ion-chevron-right royal"></i>
           </a>
-          <a class="item item-icon-left item-icon-right" id="classTeacherMessage" data-ion-modal="compose">
+          <a class="item item-icon-left" id="classTeacherMessage" data-ion-modal="compose">
             <i class="icon ion-ios-chatboxes energized"></i>
             Message Instructor
-            <i class="icon ion-chevron-right"></i>
           </a>
         </div>
 

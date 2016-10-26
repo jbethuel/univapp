@@ -26,3 +26,13 @@ Template.studentDashboardClassAnnouncement.helpers({
     return moment(this.createdAt).format('h:mm a');
   }
 });
+
+Template.studentDashboardClassAnnouncement.events({
+  "click .assertive": function(event){
+    event.preventDefault();
+    id = this.classId;
+    Router.go('studentDashboardViewClass',{
+      class_id: id
+    });
+  }
+});

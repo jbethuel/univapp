@@ -26,8 +26,8 @@
       <div class="list card viewActivity">
         <div style="position:relative" class="item item-avatar">
           <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">
-          <h2>{{title}}</h2>
-          <p>Due Time: {{dateformat}}</p>
+          <div class="item-text-wrap"><i class="fa fa-info-circle" aria-hidden="true"></i> {{title}}</div>
+          <div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{dateformat}}</div>
           <div style="position:absolute;right:5px;top:5px">
             {{#if statusActiveCheck}}
               {{#if checkfile.count}}
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-      <div class="item item-body">
+      <div class="item item-text-wrap item-body">
         <div style="max-height:55px;overflow-y:hidden">
         <p>
           {{description}}

@@ -6,12 +6,17 @@ Template.compose.events({
     stud_id = Meteor.userId();
     teach_id = Session.get("teachId");
 
-    Meteor.call("studentSendMessage", class_id, stud_id, teach_id, message, function(error){
-      if(error){
-        console.log(error.reason);
-      }else{
-        console.log("ok");
-      }
-    });
+    if(message == ""){
+      window.plugins.toast.showShortCenter("Type something..");
+    }else{
+      Meteor.call("studentSendMessage", class_id, stud_id, teach_id, message, function(error){
+        if(error){
+          console.log(error.reason);
+        }else{
+          window.plugins.toast.showShortCenter("Message sent, check your messenger");
+        }
+      });
+    }
+
   }
 });

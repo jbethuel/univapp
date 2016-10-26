@@ -9,6 +9,10 @@ Template.studentSubmitFile.helpers({
 });
 
 Template.studentSubmitFile.events({
+  "click .button-outline": function(event){
+    event.preventDefault();
+    $('.file').click();
+  },
   "click #btnSubmit":function(e, template){
     e.preventDefault();
     var errors = false,

@@ -23,7 +23,6 @@
               {{/if}}
               <p>{{#each name teach_id}}{{profile.lastname}}, {{profile.firstname}}{{/each}}</p>
               <span class="item-note">{{livestamp lastMessageDate}}</span>
-              <p>{{#if equals lastMessageBy currentUser._id}}You:{{/if}} {{lastMessage}}</p>
             </a>
           {{/each}}
         </div>

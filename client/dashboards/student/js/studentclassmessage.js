@@ -28,12 +28,19 @@ Template.studentDashboardClassMessage.events({
     event.preventDefault();
     classId = Router.current().params.class_id;
     message = $('.txtArea').val();
-    Meteor.call("studentMessageBoardInsert", classId, message, function(error){
-      if(error){
-        console.log(error.reason);
-      }else{
-        console.log("ok");
-      }
-    });
+    if(message == ""){
+      window.plugins.toast.showShortCenter("Type something..");
+    }else{
+      Meteor.call("studentMessageBoardInsert", classId, message, function(error){
+        if(error){
+          console.log(error.reason);
+        }else{
+          $('.txtArea').val("");
+          if(Meteor.isCordova){
+            window.plugins.toast.showShortCenter("Message Sent");
+          }
+        }
+      });
+    }
   }
 });

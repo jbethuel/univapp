@@ -8,11 +8,14 @@
              {{#with currentUpload}}
                {{>spinner}}UPLOADING ..
             {{else}}
-             <input class="file" id="fileinput" type="file">
+             <input class="file" id="fileinput" type="file" hidden>
              {{/with}}
+             <button class="button button-outline button-energized">
+               Upload File
+             </button>
            </div>
          </div>
-         <button class="button button-block button-dark"  id="btnSubmit">
+         <button class="button button-block button-dark" id="btnSubmit">
            Submit
          </button>
        </div>
