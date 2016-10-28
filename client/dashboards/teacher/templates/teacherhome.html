@@ -6,14 +6,12 @@
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
-    <h1 class="title" style="text-align:center;">Home</h1>
+    <h1 class="title" style="text-align:center;">BukSU Home</h1>
   {{/contentFor}}
 
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-
-        <h4><strong>ANNOUNCEMENTS:</strong></h4>
 
         {{#if Template.subscriptionsReady}}
           {{#each news}}
@@ -23,7 +21,8 @@
                     <img src="../buksu_logo.png">
                     <p><div class="item-text-wrap"><i class="fa fa-info-circle" aria-hidden="true"></i> What: {{title}}</div></p>
                     <p><div class="item-text-wrap"><i class="fa fa-user" aria-hidden="true"></i> By: {{author}}</div></p>
-                    <p><div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{livestamp createdAt}}</div></p>
+                    <p><div class="item-text-wrap"><i class="fa fa-calendar" aria-hidden="true"></i> {{day}}</div></p>
+                    <p><div class="item-text-wrap"><i class="fa fa-clock-o" aria-hidden="true"></i> {{time}}, {{livestamp createdAt}}</div></p>
                     <p><div class="item-text-wrap"> {{content}}</div></p>
                   </a>
               </div>

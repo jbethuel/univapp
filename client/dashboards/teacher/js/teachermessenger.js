@@ -30,4 +30,11 @@ Template.teacherDashboardMessenger.helpers({
     Meteor.subscribe("studentMessagesImage", this.stud_id);
     return Images.find({userId:this.stud_id});
   },
+  seenByTeacher: function(){
+    if(this.seenByTeacher == false){
+      return false;
+    }else{
+      return true;
+    }
+  }
 });

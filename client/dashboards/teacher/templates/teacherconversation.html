@@ -6,6 +6,12 @@
     <h1 class="title">Back</h1>
   {{/contentFor}}
 
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear" data-ion-popover="teacherPopover">
+    {{> ionIcon icon='android-more-vertical'}}
+    </button>
+  {{/contentFor}}
+
   {{#ionView}}
     {{#ionContent class="padding has-header"}}
 

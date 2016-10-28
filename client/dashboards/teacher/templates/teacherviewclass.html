@@ -10,17 +10,17 @@
     {{#ionContent}}
 
       {{#if Template.subscriptionsReady}}
-        <ul class="list title_prompt" style="margin-bottom:0px;">
+        <ul class="list" style="margin-bottom:0px;">
           <li class="item">
             {{#each classinfo classid}}
-              <p>{{description}} - {{studentCount _id}}</p>
-              <p>{{sec_code}} - {{subj_code}}</p>
-              <p>{{time_start}} - {{time_end}}</p>
-              <p>{{sem}} - {{school_yr}}</p>
-              <p>Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
+              <p><i class="fa fa-info-circle" aria-hidden="true"></i> {{description}} - {{studentCount _id}}</p>
+              <p><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}} - {{subj_code}}</p>
+              <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{time_start}} - {{time_end}}</p>
+              <p><i class="fa fa-calendar" aria-hidden="true"></i> {{sem}} - {{school_yr}}</p>
+              <p><i class="fa fa-lock" aria-hidden="true"></i> Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
             {{/each}}
           </li>
-          <div class="item-divider">
+          <div class="item-divider title_prompt">
             Main Menu
           </div>
         </ul>

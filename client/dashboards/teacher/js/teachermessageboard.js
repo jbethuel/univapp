@@ -28,12 +28,20 @@ Template.teacherDashboardMessageboard.events({
     event.preventDefault();
     classId = Router.current().params.class_id;
     message = $('.txtArea').val();
-    Meteor.call("teacherMessageBoardInsert", classId, message, function(error){
-      if(error){
-        console.log(error.reason);
-      }else{
-        console.log("ok");
+
+    if(message == ""){
+      if(Meteor.isCordova){
+        window.plugins.toast.showWithOptions({message: "Type something", duration: "short", position: "bottom", addPixelsY: -80});
       }
-    });
+    }else{
+      Meteor.call("teacherMessageBoardInsert", classId, message, function(error){
+        if(error){
+          console.log(error.reason);
+        }else{
+          window.plugins.toast.showWithOptions({message: "Message sent", duration: "short", position: "bottom", addPixelsY: -80});
+          $('.txtArea').val("");
+        }
+      });
+    }
   }
 });

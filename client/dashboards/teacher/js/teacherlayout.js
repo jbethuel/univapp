@@ -1,6 +1,6 @@
 Template.teacherDashboardLayout.onCreated(function(){
-
-    Meteor.subscribe('files.images.all');
+  this.subscribe("teacherThreads");
+  Meteor.subscribe('files.images.all');
 });
 
 Template.teacherDashboardLayout.onRendered(function(){
@@ -37,5 +37,9 @@ Template.teacherDashboardLayout.events({
 Template.teacherDashboardLayout.helpers({
   uploadedFiles: function () {
     return Images.find({userId:Meteor.userId()});
+  },
+  unread: function(){
+    Meteor.subscribe("studentMessages");
+    return threads.find({seenByTeacher: false}).count();
   }
 });

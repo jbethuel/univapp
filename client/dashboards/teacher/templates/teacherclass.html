@@ -27,14 +27,17 @@
 
         {{#each classes}}
           <div class="list card">
-            <li class="item item-icon-right class">
+            <li class="item item-icon-right">
                 <h3>{{description}} - {{studentCount _id}} students</h3>
                 <p>{{sec_code}} - {{subj_code}}</p>
                 <p>{{time_start}} - {{time_end}}</p>
                 <p>{{sem}} - {{school_yr}}</p>
                 <p>Passkey: {{passkey}} <a class="copy" href="#" data-clipboard-text="{{passkey}}">Copy Key</a></p>
-              <i class="icon ion-chevron-right"></i>
             </li>
+            <a class="item item-icon-right assertive class">
+              <i class="icon ion-chevron-right"></i>
+              <span style="float:right">View Class</span>
+            </a>
           </div>
         {{/each}}
       {{else}}

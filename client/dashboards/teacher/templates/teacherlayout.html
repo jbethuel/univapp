@@ -14,53 +14,33 @@
                 <h2 class="sidebar_name">{{currentUser.profile.lastname}}</h2>
                 <h2 class="sidebar_name">{{currentUser.profile.middlename}}</h2>
                 <h2 class="sidebar_name">{{currentUser.profile.firstname}}</h2>
-                <h2 class="sidebar_name">TEACHER</h2>
               </a>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Main Menu
               </div>
               <div class="item item-icon-left" id="sideHome" style="{{#if isActiveRoute 'teacherDashboardHome'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Home
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-home" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-home" class="positive"}}
-                {{/if}}
+                {{> ionIcon icon="android-home" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideMessenger" style="{{#if isActiveRoute 'teacherDashboardMessenger'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Messenger
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-mail" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-email" class="positive"}}
-                {{/if}}
+                {{> ionIcon icon="android-mail" class="energized"}}
+                <span class="badge badge-assertive">{{unread}}</span>
               </div>
               <div class="item item-icon-left" id="sideClass" style="{{#if isActiveRoute 'teacherDashboardClass'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 My Class
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-list" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-list" class="positive"}}
-                {{/if}}
+                {{> ionIcon icon="android-list" class="energized"}}
               </div>
               <div class="item item-icon-left" id="sideSettings" style="{{#if isActiveRoute 'teacherDashboardSettings'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 Settings
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-settings" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="ios-settings" class="positive"}}
-                {{/if}}
+                {{> ionIcon icon="android-settings" class="energized"}}
               </div>
               <div class="item item-divider sidebar_subtitle sidebar-item-divider">
                 Application
               </div>
               <div class="item item-icon-left" id="sideAbout" style="{{#if isActiveRoute 'teacherDashboardAbout'}}background-color:#E0E0E0;{{/if}}" data-ion-menu-close>
                 About
-                {{#if isAndroid}}
-                  {{> ionIcon icon="android-alert" class="energized"}}
-                {{else}}
-                  {{> ionIcon icon="android-alert" class="positive"}}
-                {{/if}}
+                {{> ionIcon icon="android-alert" class="energized"}}
               </div>
               {{#if isImpersonating}}
               <div class="item item-icon-left" data-unimpersonate data-ion-menu-close>

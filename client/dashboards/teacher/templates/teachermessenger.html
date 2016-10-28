@@ -15,7 +15,7 @@
 
         {{#if Template.subscriptionsReady}}
           {{#each thread}}
-            <a class="item item-avatar" href="#">
+            <a class="item item-avatar" href="#" style="{{#if seenByTeacher}}background-color:#E0E0E0;{{/if}}">
               {{#if image.count}}
                 {{#each file in image.each}}
                   <img src="{{file.link}}" alt="">

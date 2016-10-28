@@ -77,11 +77,13 @@ Template.teacherDashboardViewClass.events({
     event.preventDefault();
     if(Meteor.isCordova){
       cordova.plugins.clipboard.copy(this.passkey);
+      window.plugins.toast.showWithOptions({message: "Passkey copied", duration: "short", position: "bottom", addPixelsY: -80});
+    }else{
+      title = "COPIED";
+      button = "button button-balanced";
+      template = "<div class='title_prompt'>Token copied to clipboard: "+this.passkey+"</div>";
+      Meteor.Messages.dialog(title, template, button);
     }
-    title = "COPIED";
-    button = "button button-balanced";
-    template = "<div class='title_prompt'>Token copied to clipboard: "+this.passkey+"</div>";
-    Meteor.Messages.dialog(title, template, button);
   },
   "click .delete-class": function(event){
     event.preventDefault();

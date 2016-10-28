@@ -6,7 +6,6 @@
         {{#ionSideMenu}}
 
           <div class="content">
-            {{notification}}
             <div class="list">
               <a class="item item-thumbnail-left sidebar_avatar" href="#">
                 <img src="{{#if uploadedFiles.count}} {{#each file in uploadedFiles.each}} {{file.link}} {{/each}} {{else}} ../camera.png {{/if}}">

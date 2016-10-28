@@ -30,5 +30,12 @@ Template.studentDashboardMessenger.helpers({
   name: function(teach_id){
     Meteor.subscribe("studentMessengerName", teach_id);
     return Meteor.users.find({_id:teach_id}).fetch();
+  },
+  seenByStudent: function(){
+    if(this.seenByStudent == false){
+      return false;
+    }else{
+      return true;
+    }
   }
 });
