@@ -16,6 +16,7 @@ caching-html-compiler@1.0.7
 callback-hook@1.0.9
 check@1.2.3
 chrismbeckett:toastr@2.1.2_1
+clinical:csv@0.1.0
 coffeescript@1.2.4_2
 copleykj:livestamp@1.1.7
 ddp@1.2.5
@@ -30,12 +31,15 @@ ecmascript-runtime@0.3.14_1
 ejson@1.0.12
 email@1.1.17_1
 es5-shim@4.6.14_1
+evaisse:csv@0.1.4
 fastclick@1.0.12
 fortawesome:fontawesome@4.6.3
 fourseven:scss@3.10.0
 geojson-utils@1.0.9
 gwendall:body-events@0.1.6
 gwendall:impersonate@0.2.2
+harrison:babyparse@1.0.1
+harrison:papa-parse@1.0.19
 hitchcott:app-dump@0.4.2
 hot-code-push@1.0.4
 html-tools@1.0.11
@@ -53,7 +57,6 @@ iron:url@1.0.11
 jquery@1.11.9
 launch-screen@1.0.12
 less@2.5.7
-lfergon:exportcsv@0.0.8
 livedata@1.0.18
 localstorage@1.0.11
 logging@1.1.15_1

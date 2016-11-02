@@ -24,16 +24,31 @@ Template.adminDashboardHome.helpers({
 
 Template.adminDashboardHome.events({
   'click .download': function(event) {
-    var nameFile = 'fileDownloaded.csv';
-    Meteor.call('download', function(err, fileContent) {
-      if(fileContent){
-        var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
-        fileURL = URL.createObjectURL(blob);
-        saveAs(blob, nameFile);
-        // window.open(saveAs(blob, nameFile), '_system', 'location=yes');
-        // fileURL = URL.createObjectURL(blob);
-        // fileTransfer.download(uri, fileURL);
-      }
-    });
+    id = Meteor.userId();
+    var csvContent = CSV.unparse(Meteor.users.find({_id:id}).fetch());
+    // window.open('data:text/csv;charset=utf-8,' + encodeURI(csvContent), '_system', 'location=yes');
+
+    var fileTransfer = new FileTransfer();
+    var uri = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    var fileURL =  "///sdcard/BukSu/file";
+
+    fileTransfer.download(
+     uri, fileURL, function(entry) {
+        console.log("download complete: " + entry.toURL());
+     },
+
+     function(error) {
+        console.log("download error source " + error.source);
+        console.log("download error target " + error.target);
+        console.log("download error code" + error.code);
+     },
+
+     false, {
+        headers: {
+           "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+        }
+     }
+    )
+
   }
 });
