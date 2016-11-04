@@ -44,7 +44,9 @@ Template.adminDashboardLayout.events({
     Meteor.logout();
     Router.go('login');
     if(Meteor.isCordova){
-      window.plugins.toast.showShortCenter("Logged out");
+      Meteor.startup(function(){
+        window.plugins.toast.showShortCenter("Logged out");
+      });
     }
   }
 });

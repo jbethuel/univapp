@@ -21,6 +21,7 @@ Meteor.methods({
       class_id: class_id,
       stud_id: stud_id,
       teach_id: teach_id,
+      senderName: Meteor.user({_id:this.userId}).username,
       message: message,
       sentBy: stud_id,
       createdAt: new Date()

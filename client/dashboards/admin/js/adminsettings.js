@@ -8,7 +8,10 @@ Template.adminDashboardSettings.events({
     Accounts.changePassword(old_pw, new_pw, function(error){
       if(error){
         if(Meteor.isCordova){
-          navigator.notification.alert(error.reason,function(){},'ERROR','OK');
+          error = error.reason;
+          Meteor.startup(function(){
+            navigator.notification.alert(error,function(){},'ERROR','OK');
+          });
         }else{
           title = "ERROR!";
           template = "<div class='title_prompt'>"+ error.reason +"</div>";
@@ -17,7 +20,9 @@ Template.adminDashboardSettings.events({
         }
       }else{
         if(Meteor.isCordova){
-          window.plugins.toast.showShortCenter("Succesfully updated");
+          Meteor.startup(function(){
+            window.plugins.toast.showShortCenter("Succesfully updated");
+          });
         }else{
           title = "SUCCESS!";
           template = "<div class='title_prompt'>Password Updated!</div>";

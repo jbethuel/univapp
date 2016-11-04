@@ -8,7 +8,9 @@ Template.adminDashboardPost.events({
     $('.chkTeach').prop('checked', false);
 
     if(Meteor.isCordova){
-      window.plugins.toast.showShortCenter("Cancelled");
+      Meteor.startup(function(){
+        window.plugins.toast.showShortCenter("Cancelled");
+      });
     }else{
       IonPopup.show({
         title: 'CANCELLED',
@@ -34,7 +36,9 @@ Template.adminDashboardPost.events({
     if(title == "" || content == "" || (student == false && teacher == false)){
 
       if(Meteor.isCordova){
-        navigator.notification.alert('Title, content and recipients should not be empty.',function(){},'ERROR','OK');
+        Meteor.startup(function(){
+          navigator.notification.alert('Title, content and recipients should not be empty.',function(){},'ERROR','OK');
+        });
       }else{
         title = "ERROR!";
         template = "<div class='title_prompt'>Title, content and recipients should not be empty.</div>";
@@ -51,30 +55,32 @@ Template.adminDashboardPost.events({
       }
 
       if(Meteor.isCordova){
-        navigator.notification.confirm(
-            'Ths news will be sent to the recipients selected.',
-             onConfirm,
-            'Please confirm',
-            ['OK','CANCEL']
-        );
-        function onConfirm(buttonIndex) {
-          if(buttonIndex == 1){
-            Meteor.call('adminpost', title, content, sendTo, function(error){
-              if(!error){
-                IonLoading.show({
-                  customTemplate: '<h4>SUCCESS</h4><p>News posted!</p>',
-                  duration: 5000
-                });
-                $('.txtTitle').val('');
-                $('.txtContent').val('');
-                $('.chkStud').prop('checked', false);
-                $('.chkTeach').prop('checked', false);
-              }
-            });
-          }else if(buttonIndex == 2){
-            window.plugins.toast.showShortCenter("Cancelled");
+        Meteor.startup(function(){
+          navigator.notification.confirm(
+              'Ths news will be sent to the recipients selected.',
+               onConfirm,
+              'CONFIRM',
+              ['OK','CANCEL']
+          );
+          function onConfirm(buttonIndex) {
+            if(buttonIndex == 1){
+              Meteor.call('adminpost', title, content, sendTo, function(error){
+                if(!error){
+                  IonLoading.show({
+                    customTemplate: '<h4>SUCCESS</h4><p>News posted!</p>',
+                    duration: 5000
+                  });
+                  $('.txtTitle').val('');
+                  $('.txtContent').val('');
+                  $('.chkStud').prop('checked', false);
+                  $('.chkTeach').prop('checked', false);
+                }
+              });
+            }else if(buttonIndex == 2){
+              window.plugins.toast.showShortCenter("Cancelled");
+            }
           }
-        }
+        });
       }else{
         IonPopup.confirm({
           title: 'The news will be sent',

@@ -12,13 +12,19 @@ Template.adminDashboardTokenStudent.events({
   "click .btn_token": function(event){
     event.preventDefault();
     Meteor.call('addTokensStudent');
-    window.plugins.toast.showShortCenter("1 student token generated");
+    if(Meteor.isCordova){
+      Meteor.startup(function(){
+        window.plugins.toast.showShortCenter("1 student token generated");
+      });
+    }
   },
   "click .btn_copy": function(event){
     token = this.token;
     if(Meteor.isCordova){
-      cordova.plugins.clipboard.copy(token);
-      window.plugins.toast.showShortCenter("token "+ token +" copied to clipboard");
+      Meteor.startup(function(){
+        cordova.plugins.clipboard.copy(token);
+        window.plugins.toast.showShortCenter("token "+ token +" copied to clipboard");
+      });
     }else{
       title = "COPIED";
       button = "button button-royal";
@@ -30,7 +36,9 @@ Template.adminDashboardTokenStudent.events({
     event.preventDefault();
     Meteor.call("deleteTokens", this._id);
     if(Meteor.isCordova){
-      window.plugins.toast.showShortCenter("Token deleted");
+      Meteor.startup(function(){
+        window.plugins.toast.showShortCenter("Token deleted");
+      });
     }
   },
   "click input[type='checkbox']": function(event){

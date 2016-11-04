@@ -11,7 +11,9 @@ Template.register.events({
 
     if(Meteor.Validation.CheckBlankSpace(stud_id) || Meteor.Validation.CheckBlankSpace(firstname) || Meteor.Validation.CheckBlankSpace(middlename) || Meteor.Validation.CheckBlankSpace(lastname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
       if(Meteor.isCordova){
-        navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+        Meteor.startup(function(){
+          navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+        });
       }else{
         title = "ERROR";
         button = "button button-assertive";
@@ -20,7 +22,9 @@ Template.register.events({
       }
     }else if(pw != conf_pw){
       if(Meteor.isCordova){
-        navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+        Meteor.startup(function(){
+          navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+        });
       }else{
         title = "ERROR";
         button = "button button-assertive";
@@ -71,7 +75,9 @@ Template.register.events({
 
     if(Meteor.Validation.CheckBlankSpace(teach_id) || Meteor.Validation.CheckBlankSpace(firstname) || Meteor.Validation.CheckBlankSpace(middlename) || Meteor.Validation.CheckBlankSpace(lastname) || Meteor.Validation.CheckBlankSpace(pw) || Meteor.Validation.CheckBlankSpace(conf_pw)){
       if(Meteor.isCordova){
-        navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+        Meteor.startup(function(){
+          navigator.notification.alert('Please complete all the fields.',function(){},'ERROR','OK');
+        });
       }else{
         title = "ERROR";
         button = "button button-assertive";
@@ -80,7 +86,9 @@ Template.register.events({
       }
     }else if(pw != conf_pw){
       if(Meteor.isCordova){
-        navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+        Meteor.startup(function(){
+          navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+        });
       }else{
         title = "ERROR";
         button = "button button-assertive";

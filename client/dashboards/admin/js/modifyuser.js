@@ -31,7 +31,9 @@ Template._modifyuser.events({
           console.log(error.reason);
         }else{
           if(Meteor.isCordova){
-            window.plugins.toast.showShortCenter("Succesfully updated");
+            Meteor.startup(function(){
+              window.plugins.toast.showShortCenter("Succesfully updated");
+            });
           }else{
             title = "SUCCESS";
             button = "button button-balanced";
@@ -50,24 +52,42 @@ Template._modifyuser.events({
     conf_pw = $(".reg_conf_pw").val();
 
     if(password == "" || conf_pw == ""){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Complete the password fields.</div>";
-      Meteor.Messages.dialog(title, template, button);
+      if(Meteor.isCordova){
+        Meteor.startup(function(){
+          navigator.notification.alert('Complete the password fields',function(){},'ERROR','OK');
+        });
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Complete the password fields.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else if(password != conf_pw){
-      title = "ERROR";
-      button = "button button-assertive";
-      template = "<div class='title_prompt'>Password does not match.</div>";
-      Meteor.Messages.dialog(title, template, button);
+      if(Meteor.isCordova){
+        Meteor.startup(function(){
+          navigator.notification.alert('Password does not match.',function(){},'ERROR','OK');
+        });
+      }else{
+        title = "ERROR";
+        button = "button button-assertive";
+        template = "<div class='title_prompt'>Password does not match.</div>";
+        Meteor.Messages.dialog(title, template, button);
+      }
     }else{
       Meteor.call("updatePassword", userId, password, function(error){
         if(error){
           console.log(error.reason);
         }else{
-          title = "SUCCESS";
-          button = "button button-balanced";
-          template = "<div class='title_prompt'>Password updated.</div>";
-          Meteor.Messages.dialog(title, template, button);
+          if(Meteor.isCordova){
+            Meteor.startup(function(){
+              window.plugins.toast.showShortCenter("Password updated.");
+            });
+          }else{
+            title = "SUCCESS";
+            button = "button button-balanced";
+            template = "<div class='title_prompt'>Password updated.</div>";
+            Meteor.Messages.dialog(title, template, button);
+          }
         }
       });
     }

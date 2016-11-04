@@ -20,8 +20,11 @@ Template.adminDashboardLoginUser.events({
   },
   "click .icon": function(event){
     event.preventDefault();
+    var username = this.username;
     if(Meteor.isCordova){
-      window.plugins.toast.showShortCenter("logged in as " + this.username);
+      Meteor.startup(function(){
+        window.plugins.toast.showShortCenter("logged in as " + username);
+      });
     }
   }
 });

@@ -6,23 +6,31 @@ if(Meteor.isCordova){
 		var route_name = Router.current().route.getName();
 
 		if(route_name == "login" || route_name == "register" || route_name == "dashboard"){
-			navigator.app.exitApp();
+			Meteor.startup(function(){
+				navigator.notification.confirm(
+					'Close the application?', // message
+					 function(buttonIndex){
+						 if(buttonIndex == 3){
+							 navigator.app.exitApp();
+						 }
+					 },            // callback to invoke with index of button pressed
+					'EXIT',           // title
+					['No', '','Yes']     // buttonLabels
+				);
+			});
 		}else{
 			navigator.app.backHistory();
 		}
 	}
 }
 
-Meteor.autorun(function () {
+Meteor.autorun(function(){
     var stat;
-    if (Meteor.status().status === "connected") {
+    if (Meteor.status().connected == true) {
         stat = 'connected'
     }
-    else if (Meteor.status().status === "connecting") {
-        stat = 'connecting'
-    }
-    else {
-        stat = 'disconnected';
+    else if (Meteor.status().connected == false) {
+        stat = 'waiting'
     }
     Session.set('status',stat);
 });
@@ -36,7 +44,9 @@ Template.login.events({
     if(id == "" || pw == ""){
 
 			if(Meteor.isCordova){
-				navigator.notification.alert('ID or password is empty.',function(){},'ERROR','OK');
+				Meteor.startup(function(){
+					navigator.notification.alert('ID or password is empty.\nPlease try again.',function(){},'ERROR','OK');
+				});
 			}else{
 				IonPopup.show({
 					title: "ERROR",
@@ -56,11 +66,13 @@ Template.login.events({
         if(error){
           if(error.reason = "User not found"){
 						if(Meteor.isCordova){
-							navigator.notification.alert("The ID you've entered doesn't match any account. Sign up for an account.",function(){},'ERROR','OK');
+							Meteor.startup(function(){
+								navigator.notification.alert("The ID you've entered doesn't match any account. Sign up for an account.",function(){},'ERROR','OK');
+							});
 						}else{
 							IonPopup.show({
 								title: "ERROR",
-								template: "<div class='title_prompt'>Incorrect username or password.</div>",
+								template: "<div class='title_prompt'>The ID you've entered doesn't match any account. Sign up for an account.</div>",
 								buttons: [{
 									text: 'OK',
 									type: "button button-assertive",
@@ -73,6 +85,11 @@ Template.login.events({
           }
         }else{
           Router.go('dashboard');
+					if(Meteor.isCordova){
+						Meteor.startup(function(){
+							window.plugins.toast.showShortCenter("Logged in");
+						});
+					}
         }
       });
     }
@@ -80,19 +97,24 @@ Template.login.events({
 });
 
 Template.body.helpers({
-	connected: function(){
+	status: function(){
 		status = Session.get('status');
 		if(status == "connected"){
 			if(Meteor.isCordova){
-				window.plugins.toast.showWithOptions({message: "CONNECTED", duration: "short", position: "bottom", addPixelsY: -80});
-				SpinnerPlugin.activityStop();
+				Meteor.startup(function(){
+					window.plugins.toast.showWithOptions({message: "Connected", duration: "short", position: "bottom", addPixelsY: -80});
+					SpinnerPlugin.activityStop();
+				});
 			}else{
 				toastr.success("", "connected").css("width","140px");
 			}
-		}else{
+		}else if(status == "waiting"){
 			if(Meteor.isCordova){
-				var options = { dimBackground: true };
-				SpinnerPlugin.activityStart("connecting..", options);
+				Meteor.startup(function(){
+					var options = { dimBackground: true };
+					var text = "LOADING...\nWaiting for network connection.";
+					SpinnerPlugin.activityStart(text, options);
+				});
 			}else{
 				toastr.warning("", "connecting").css("width","140px");
 			}
