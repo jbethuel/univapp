@@ -6,11 +6,13 @@ Template.teacherDashboardMessenger.events({
   "click .item": function(event){
     event.preventDefault();
     id = this.stud_id;
-    Meteor.call("unreadTMessages", this.class_id, function(error){
-      if(error){
-        console.log(error.reason);
-      }
-    });
+    if(this.seenByTeacher == false){
+      Meteor.call("unreadTMessages", this.class_id, function(error){
+        if(error){
+          console.log(error.reason);
+        }
+      });
+    }
     Router.go('teacherDashboardConversation',{
       stud_id: id,
       class_id: this.class_id
@@ -20,7 +22,7 @@ Template.teacherDashboardMessenger.events({
 
 Template.teacherDashboardMessenger.helpers({
   thread: function(){
-    return threads.find({}).fetch();
+    return threads.find({}, {sort:{lastMessageDate: -1}}).fetch();
   },
   name: function(stud_id){
     Meteor.subscribe("teacherMessengerName", stud_id);

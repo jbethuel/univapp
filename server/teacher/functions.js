@@ -3,7 +3,7 @@ Meteor.methods({
     threads.update({class_id: class_id, teach_id: this.userId}, {$set:{seenByTeacher: true}});
   },
   teacherSendMessage: function(class_id, stud_id, teach_id, message){
-    threads.update({class_id: class_id, stud_id: stud_id, teach_id: this.userId}, {$set:{seenByStudent: false}});
+    threads.update({class_id: class_id, stud_id: stud_id, teach_id: this.userId}, {$set:{lastMessageDate: new Date(), seenByStudent: false}});
     messages.insert({
       class_id, class_id,
       stud_id: stud_id,

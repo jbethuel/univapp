@@ -17,7 +17,9 @@
               <p><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}} - {{subj_code}}</p>
               <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{time_start}} - {{time_end}}</p>
               <p><i class="fa fa-calendar" aria-hidden="true"></i> {{sem}} - {{school_yr}}</p>
-              <p><i class="fa fa-lock" aria-hidden="true"></i> Passkey: {{passkey}} <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a> </p>
+              <p><i class="fa fa-lock" aria-hidden="true"></i> Passkey: {{passkey}}</p>
+              <p><button class="button button-stable button-small clipboard" data-clipboard-text="{{passkey}}"><i class="fa fa-clipboard" aria-hidden="true"></i> copy passkey</button></p>
+                <!-- <a href="#" class="clipboard" data-clipboard-text="{{passkey}}">Copy</a>  -->
             {{/each}}
           </li>
           <div class="item-divider title_prompt">

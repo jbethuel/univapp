@@ -12,9 +12,8 @@
   {{#ionView}}
     {{#ionContent}}
       <div class="padding">
-           {{>uploadForm}}
+        {{>uploadForm}}
       </div>
-
       {{>uploadedFiles}}
     {{/ionContent}}
   {{/ionView}}
@@ -29,11 +28,11 @@
     {{/if}}
     <h2>TEACHER</h2>
     <p>Upload/Change your avatar</p>
-    <p><button class="button button-small button-balanced" id="btnUpload">Upload Image</button></p>
+    <p><button class="button button-small button-balanced" id="btnUpload">{{#with currentUpload}}Uploading{{else}}Select Image{{/with}}</button></p>
   </a>
   <input type="file" id="fileInput" hidden="true">
   {{#with currentUpload}}
-    {{>spinner}}UPLOADING ..
+    {{>spinner}}
   {{else}}
   {{/with}}
 </template>

@@ -5,9 +5,11 @@ Template.studentDashboardMessenger.onCreated(function(){
 Template.studentDashboardMessenger.events({
   "click .item": function(event){
     event.preventDefault();
-    Meteor.call("unreadSMessages", this.class_id, function(error){
-      console.log(error.reason);
-    });
+    if(this.seenByStudent == false){
+      Meteor.call("unreadSMessages", this.class_id, function(error){
+        console.log(error.reason);
+      });
+    }
     id = this.teach_id;
     Router.go('studentDashboardConversation',{
       teach_id: id,
@@ -18,7 +20,7 @@ Template.studentDashboardMessenger.events({
 
 Template.studentDashboardMessenger.helpers({
   thread: function(){
-    return threads.find({}).fetch();
+    return threads.find({}, {sort:{lastMessageDate: -1}}).fetch();
   },
   equals: function(v1, v2) {
     return (v1 === v2);

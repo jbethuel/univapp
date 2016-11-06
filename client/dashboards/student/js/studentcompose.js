@@ -7,13 +7,22 @@ Template.compose.events({
     teach_id = Session.get("teachId");
 
     if(message == ""){
-      window.plugins.toast.showShortCenter("Type something..");
+      if(Meteor.isCordova){
+        Meteor.startup(function(){
+          window.plugins.toast.showShortCenter("Type something..");
+        });
+      }
     }else{
       Meteor.call("studentSendMessage", class_id, stud_id, teach_id, message, function(error){
         if(error){
           console.log(error.reason);
         }else{
-          window.plugins.toast.showShortCenter("Message sent, check your messenger");
+          if(Meteor.isCordova){
+            Meteor.startup(function(){
+              window.plugins.toast.showShortCenter("Message sent, check your messenger");
+              $('.txtContent').val("");
+            });
+          }
         }
       });
     }

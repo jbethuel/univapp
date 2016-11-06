@@ -50,8 +50,10 @@ Template.teacherDashboardClass.events({
     event.preventDefault();
     passkey = this.passkey;
     if(Meteor.isCordova){
-      cordova.plugins.clipboard.copy(passkey);
-      window.plugins.toast.showWithOptions({message: "Passkey copied", duration: "short", position: "bottom", addPixelsY: -80});
+      Meteor.startup(function(){
+        cordova.plugins.clipboard.copy(passkey);
+        window.plugins.toast.showWithOptions({message: "Passkey copied", duration: "short", position: "bottom", addPixelsY: -80});
+      });
     }else{
       title = "COPIED";
       button = "button button-balanced";
@@ -65,5 +67,13 @@ Template.teacherDashboardClass.events({
     Router.go('teacherDashboardViewClass',{
       class_id: classIndexId
     });
+  },
+  "click .btn_clear": function(event){
+    event.preventDefault();
+    $('.searchuser').val("");
+    Session.set("manageSearchClass", "");
+    Session.set("filterSemester", "");
+    Session.set("filterYear", "");
+    Session.set("filterDay", "");
   }
 });

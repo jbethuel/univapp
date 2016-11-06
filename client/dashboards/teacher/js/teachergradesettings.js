@@ -22,16 +22,26 @@ Template.teacherDashboardGradeSettings.events({
 
           Meteor.call('gradepercent',classe,midtermCS, midtermPRJ, midtermEXAM, finaltermCS, finaltermPRJ, finaltermEXAM);
             console.log(this.class_id);
-            title = "success";
-            template = "Successfully Updated";
-            button = "button button-balanced";
-            Meteor.Messages.dialog(title, template, button);
+            if(Meteor.isCordova){
+              Meteor.startup(function(){
+                window.plugins.toast.showShortCenter("Successfully Updated");
+              });
+            }else{
+              title = "success";
+              template = "Successfully Updated";
+              button = "button button-balanced";
+              Meteor.Messages.dialog(title, template, button);
+            }
           }else {
-            title = "ERROR";
-            button = "button button-assertive";
-            template = "<div class='title_prompt'>Please check the percentage</div>";
-            Meteor.Messages.dialog(title, template, button);
-            console.log(totalpercentMidterm + " " + totalpercentFinalterm);
+            if(Meteor.isCordova){
+              window.plugins.toast.showShortCenter("Please check the percentage.");
+            }else{
+              title = "ERROR";
+              button = "button button-assertive";
+              template = "<div class='title_prompt'>Please check the percentage</div>";
+              Meteor.Messages.dialog(title, template, button);
+              console.log(totalpercentMidterm + " " + totalpercentFinalterm);
+            }
           }
   },
 

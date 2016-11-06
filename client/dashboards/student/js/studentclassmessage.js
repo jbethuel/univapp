@@ -29,7 +29,11 @@ Template.studentDashboardClassMessage.events({
     classId = Router.current().params.class_id;
     message = $('.txtArea').val();
     if(message == ""){
-      window.plugins.toast.showShortCenter("Type something..");
+      if(Meteor.isCordova){
+        Meteor.startup(function(){
+          window.plugins.toast.showWithOptions({message: "Type something", duration: "short", position: "bottom", addPixelsY: -80});
+        });
+      }
     }else{
       Meteor.call("studentMessageBoardInsert", classId, message, function(error){
         if(error){
@@ -37,7 +41,9 @@ Template.studentDashboardClassMessage.events({
         }else{
           $('.txtArea').val("");
           if(Meteor.isCordova){
-            window.plugins.toast.showShortCenter("Message Sent");
+            Meteor.startup(function(){
+              window.plugins.toast.showWithOptions({message: "Message sent", duration: "short", position: "bottom", addPixelsY: -80});
+            });
           }
         }
       });

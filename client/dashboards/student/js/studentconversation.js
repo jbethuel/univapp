@@ -17,14 +17,20 @@ Template.studentDashboardConversation.events({
 
     if(message == ""){
       if(Meteor.isCordova){
-        window.plugins.toast.showWithOptions({message: "Type something", duration: "short", position: "bottom", addPixelsY: -80});
+        Meteor.startup(function(){
+          window.plugins.toast.showWithOptions({message: "Type something", duration: "short", position: "bottom", addPixelsY: -80});
+        });
       }
     }else{
       Meteor.call("studentSendMessage", class_id, stud_id, teach_id, message, function(error){
         if(error){
           console.log(error.reason);
         }else{
-          window.plugins.toast.showWithOptions({message: "Message sent", duration: "short", position: "bottom", addPixelsY: -80});
+          if(Meteor.isCordova){
+            Meteor.startup(function(){
+              window.plugins.toast.showWithOptions({message: "Message sent", duration: "short", position: "bottom", addPixelsY: -80});
+            });
+          }
           message = $('.txtArea').val("");
         }
       });

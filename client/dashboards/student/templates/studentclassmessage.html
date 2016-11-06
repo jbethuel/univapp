@@ -24,8 +24,8 @@
                   {{/each}}
                 {{/if}}
                 <div style="text-align:right; margin-right:20px;">
-                  <h2>YOU</h2>
-                  <p>{{message}}</p>
+                  <h2>You</h2>
+                  <div class="item-text-wrap"><p>{{message}}</p></div>
                   <p><small>{{livestamp createdAt}}</small></p>
                 </div>
               </a>
@@ -39,7 +39,7 @@
                   {{/each}}
                 {{/if}}
                 <h2>{{#each name senderId}}{{profile.lastname}}{{/each}}</h2>
-                <p>{{message}}</p>
+                <div class="item-text-wrap"><p>{{message}}</p></div>
                 <p><small>{{livestamp createdAt}}</small></p>
               </a>
             </div>
@@ -56,7 +56,7 @@
         <input type="text" class="txtArea" placeholder="Type something">
       </label>
       <button class="button button-small button-clear button-dark btn_send">
-        Send
+        send
       </button>
     {{/ionFooterBar}}
 

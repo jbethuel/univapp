@@ -8,7 +8,7 @@ Template.studentDashboardClassAnnouncement.helpers({
   },
   announcement: function(classId){
     Meteor.subscribe("studentAnnouncement", classId);
-    return announcement.find({}, {sort:{createdAt: -1}}).fetch();
+    return announcement.find({}, {sort:{createdAt: -1}, limit: 10}).fetch();
   },
   teacherName: function(senderId){
     id = senderId;

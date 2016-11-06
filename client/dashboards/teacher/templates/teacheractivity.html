@@ -10,6 +10,12 @@
     <h2 class="title">Class Activity</h2>
   {{/ionSubheaderBar}}
 
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear" data-ion-modal="teacheraddactivity">
+    {{> ionIcon icon='plus-round'}}
+    </button>
+  {{/contentFor}}
+
   {{#ionView}}
     {{#ionContent}}
     <p hidden>{{classinfo}}</p>
@@ -58,9 +64,9 @@
       </div>
     </div>
       {{/each}}
-      <a class="triangle-btn " data-ion-modal="teacheraddactivity">
+      <!-- <a class="triangle-btn " data-ion-modal="teacheraddactivity">
         <p>+</p>
-      </a>
+      </a> -->
     {{/ionContent}}
   {{/ionView}}
 </template>

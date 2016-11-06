@@ -53,7 +53,7 @@ Template.studentDashboardSearch.events({
                 Meteor.call('joinClass', studDetails,roomId, function(error){
                   if(!error){
                     IonLoading.show({
-                      customTemplate: '<h4>SUCCESS</h4><p>Succesfully enrolled to the class.</p>',
+                      customTemplate: '<p>Succesfully enrolled</p><p>to the class.</p>',
                       duration: 3000
                     });
                   }

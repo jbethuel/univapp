@@ -9,7 +9,13 @@
     <h1 class="title" style="text-align:center;">My Class</h1>
   {{/contentFor}}
 
-  {{#ionSubheaderBar class="list item item-input-inset"}}
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear" data-ion-modal="teacherDashboardCreate">
+    {{> ionIcon icon='plus-round'}}
+    </button>
+  {{/contentFor}}
+
+  <!-- {{#ionSubheaderBar class="list item item-input-inset"}}
 
     <label class="item-input-wrapper">
       <input type="text" class="searchuser" placeholder="Search ID">
@@ -18,7 +24,7 @@
       clear
     </button>
 
-  {{/ionSubheaderBar}}
+  {{/ionSubheaderBar}} -->
 
   {{#ionView}}
     {{#ionContent}}
@@ -28,24 +34,30 @@
         {{#each classes}}
           <div class="list card">
             <li class="item item-icon-right">
-                <h3>{{description}} - {{studentCount _id}} students</h3>
-                <p>{{sec_code}} - {{subj_code}}</p>
-                <p>{{time_start}} - {{time_end}}</p>
-                <p>{{sem}} - {{school_yr}}</p>
-                <p>Passkey: {{passkey}} <a class="copy" href="#" data-clipboard-text="{{passkey}}">Copy Key</a></p>
+                <p><i class="fa fa-info-circle" aria-hidden="true"></i> {{description}} - {{studentCount _id}} students</p>
+                <p><i class="fa fa-users" aria-hidden="true"></i> {{sec_code}} - {{subj_code}}</p>
+                <p><i class="fa fa-clock-o" aria-hidden="true"></i> {{time_start}} - {{time_end}}</p>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> {{sem}} - {{school_yr}}</p>
+                <p><i class="fa fa-lock" aria-hidden="true"></i> Passkey: {{passkey}}</p>
             </li>
-            <a class="item item-icon-right assertive class">
-              <i class="icon ion-chevron-right"></i>
-              <span style="float:right">View Class</span>
+            <a class="item item-icon-right assertive">
+              <div class="class">
+                <i class="icon ion-chevron-right"></i>
+                <span style="float:right">View Class</span>
+              </div>
+              <a href="#" class="subdued copy" data-clipboard-text="{{passkey}}">
+                <i class="fa fa-clipboard" aria-hidden="true"></i> copy passkey
+              </a>
             </a>
           </div>
         {{/each}}
       {{else}}
         {{>spinner}}
       {{/if}}
-      <a class="triangle-btn " data-ion-modal="teacherDashboardCreate">
+      <!-- <a class="triangle-btn " data-ion-modal="teacherDashboardCreate">
         <p>+</p>
-      </a>
+      </a> -->
+
     </div>
     {{/ionContent}}
   {{/ionView}}
