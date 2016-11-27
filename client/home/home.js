@@ -8,14 +8,14 @@ if(Meteor.isCordova){
 		if(route_name == "login" || route_name == "register" || route_name == "dashboard"){
 			Meteor.startup(function(){
 				navigator.notification.confirm(
-					'Close the application?', // message
+					'Close the application?',
 					 function(buttonIndex){
 						 if(buttonIndex == 3){
 							 navigator.app.exitApp();
 						 }
-					 },            // callback to invoke with index of button pressed
-					'EXIT',           // title
-					['No', '','Yes']     // buttonLabels
+					 },
+					'EXIT',
+					['No', '','Yes']
 				);
 			});
 		}else{
@@ -64,25 +64,32 @@ Template.login.events({
 
       Meteor.loginWithPassword(id, pw, function(error){
         if(error){
-          if(error.reason = "User not found"){
-						if(Meteor.isCordova){
-							Meteor.startup(function(){
-								navigator.notification.alert("The ID you've entered doesn't match any account. Sign up for an account.",function(){},'ERROR','OK');
-							});
+					if(Meteor.isCordova){
+						Meteor.startup(function(){
+							if(error.reason == "Incorrect password"){
+								navigator.notification.alert("Incorrect password.", function(){},'ERROR','OK');
+							}else{
+								navigator.notification.alert("The ID you've entered doesn't match any account. Sign up for an account.", function(){},'ERROR','OK');
+							}
+						});
+					}else{
+						if(error.reason == "Incorrect password"){
+							error_message = "Incorrect password.";
 						}else{
-							IonPopup.show({
-								title: "ERROR",
-								template: "<div class='title_prompt'>The ID you've entered doesn't match any account. Sign up for an account.</div>",
-								buttons: [{
-									text: 'OK',
-									type: "button button-assertive",
-									onTap: function() {
-										IonPopup.close();
-									}
-								}]
-							});
+							error_message = "The ID you've entered doesn't match any account. Sign up for an account.";
 						}
-          }
+						IonPopup.show({
+							title: "ERROR",
+							template: "<div class='title_prompt'>" + error_message + "</div>",
+							buttons: [{
+								text: 'OK',
+								type: "button button-assertive",
+								onTap: function() {
+									IonPopup.close();
+								}
+							}]
+						});
+					}
         }else{
           Router.go('dashboard');
 					if(Meteor.isCordova){
@@ -92,6 +99,7 @@ Template.login.events({
 					}
         }
       });
+
     }
   }
 });
@@ -112,7 +120,7 @@ Template.body.helpers({
 			if(Meteor.isCordova){
 				Meteor.startup(function(){
 					var options = { dimBackground: true };
-					var text = "LOADING...\nWaiting for network connection.";
+					var text = "No internet connection.\nMake sure WI-FI or cellular data is turned on.";
 					SpinnerPlugin.activityStart(text, options);
 				});
 			}else{

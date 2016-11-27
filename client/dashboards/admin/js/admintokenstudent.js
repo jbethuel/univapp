@@ -9,7 +9,7 @@ Template.adminDashboardTokenStudent.onDestroyed(function(){
 });
 
 Template.adminDashboardTokenStudent.events({
-  "click .btn_token": function(event){
+  "click .btn_token": function(){
     event.preventDefault();
     Meteor.call('addTokensStudent');
     if(Meteor.isCordova){
