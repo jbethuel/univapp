@@ -168,7 +168,29 @@ Template.teacherDashboardRecords.helpers({
 Template.teacherDashboardRecords.events({
   "click #btn-downloadtable": function(){
     console.log("table2csv");
-    $('#datatable').table2csv();
+
+    var fileTransfer = new FileTransfer();
+    var uri = 'data:text/csv;charset=utf-8,' + encodeURI($('#datatable').table2csv);
+    var fileURL =  "///sdcard/BukSu/file";
+
+    fileTransfer.download(
+     uri, fileURL, function(entry) {
+        console.log("download complete: " + entry.toURL());
+     },
+
+     function(error) {
+        console.log("download error source " + error.source);
+        console.log("download error target " + error.target);
+        console.log("download error code" + error.code);
+     },
+
+     false, {
+        headers: {
+           "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+        }
+     }
+    )
+
   },
   "click #btn-midtermRecord":function(){
     Session.set("term","midterm");
