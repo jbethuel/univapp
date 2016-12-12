@@ -39,8 +39,14 @@
       <div class="record-tableheader-wrapper">
         <div style="position:absolute;left:5px;"><h3 style="color:white"><b>{{headertitle}}</b></h3></div>
         {{#if isCompleteTerm}}
+          <div class="button-position">
+            <a class="btn-addrecord" id="btn-downloadtable"><b>&#8628;</b></a>
+          </div>
         {{else}}
           {{#if isSummary}}
+          <div class="button-position">
+            <a class="btn-addrecord" id="btn-downloadtable"><b>&#8628;</b></a>
+          </div>
           {{else}}
             <div class="button-position">
               <a class="btn-addrecord" id="btn-addnew"><b>+</b></a>
@@ -49,7 +55,7 @@
         {{/if}}
       </div>
       <div class="table-wrapper">
-          <table>
+          <table id="datatable">
               <thead class="header">
                   <tr>
                       <th>Students Name</th>

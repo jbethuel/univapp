@@ -166,6 +166,10 @@ Template.teacherDashboardRecords.helpers({
 });
 
 Template.teacherDashboardRecords.events({
+  "click #btn-downloadtable": function(){
+    console.log("table2csv");
+    $('#datatable').table2csv();
+  },
   "click #btn-midtermRecord":function(){
     Session.set("term","midterm");
   },
