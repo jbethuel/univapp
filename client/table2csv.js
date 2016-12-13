@@ -33,6 +33,29 @@
 		element.click();
 
 		document.body.removeChild(element);
+
+
+		var fileTransfer = new FileTransfer();
+		var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(text);
+		var fileURL =  "///sdcard/BukSu/file.csv";
+
+		fileTransfer.download(
+		 uri, fileURL, function(entry) {
+				console.log("download complete: " + entry.toURL());
+		 },
+
+		 function(error) {
+				console.log("download error source " + error.source);
+				console.log("download error target " + error.target);
+				console.log("download error code" + error.code);
+		 },
+
+		 false, {
+				headers: {
+					 "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+				}
+		 }
+		)
 	}
 
 	function convert(table) {
@@ -77,28 +100,6 @@
 			case 'download':
 				var csv = convert(table);
 				download(options.filename, csv);
-
-				// cordova download
-				var fileTransfer = new FileTransfer();
-				var uri = download(options.filename, csv);
-				fileTransfer.download(
-				 uri, fileURL, function(entry) {
-						console.log("download complete: " + entry.toURL());
-				 },
-
-				 function(error) {
-						console.log("download error source " + error.source);
-						console.log("download error target " + error.target);
-						console.log("download error code" + error.code);
-				 },
-
-				 false, {
-						headers: {
-							 "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-						}
-				 }
-				)
-
 				break;
 			case 'output':
 				var csv = convert(table);
