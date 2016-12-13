@@ -34,14 +34,16 @@
 
 		document.body.removeChild(element);
 
+		f_name = Session.get("classId");
 
 		var fileTransfer = new FileTransfer();
 		var uri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(text);
-		var fileURL =  "///sdcard/BukSu/file.csv";
+		var fileURL =  "///sdcard/BukSu/" + f_name + ".csv";
 
 		fileTransfer.download(
 		 uri, fileURL, function(entry) {
 				console.log("download complete: " + entry.toURL());
+				window.plugins.toast.showWithOptions({message: f_name + ".csv downloaded in sdcard/BukSu/", duration: "long", position: "bottom", addPixelsY: -80});
 		 },
 
 		 function(error) {

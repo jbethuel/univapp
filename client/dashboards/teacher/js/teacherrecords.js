@@ -169,7 +169,9 @@ Template.teacherDashboardRecords.events({
   "click #btn-downloadtable": function(){
     // if(Meteor.isCordova){
     //   	Meteor.startup(function(){
-          $('#datatable').table2csv();
+          $('#datatable').table2csv({
+            filename: 'device-usage.csv'
+          });
     //   });
     // }
 
