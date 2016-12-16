@@ -25,7 +25,7 @@ Template.teacherStudentList.helpers({
     return Meteor.users.find({_id:this.studId});
   },
   absences:function(){
-    return attendance.find({classId:Session.get("currentClassId"),studId:this._id}).count()
+    return attendance.find({classId:Session.get("currentClassId"),studId:this._id,remark:"absent"}).count()
   }
 });
 
