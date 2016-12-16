@@ -24,6 +24,7 @@
           {{#each studentProfile}}
             <h2><strong>{{profile.lastname}}, {{profile.firstname}}</strong></h2>
             <p>Absences: <span style="color:red">{{absences}}</span></p>
+            <p>Late: <span style="color:red">{{lates}}</span></p>
           {{/each}}
           <i class="icon ion-gear-b" data-ion-popover="_EditStudent" id="btnEditStudent"></i>
         </a>
