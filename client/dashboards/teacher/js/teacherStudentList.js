@@ -26,6 +26,9 @@ Template.teacherStudentList.helpers({
   },
   absences:function(){
     return attendance.find({classId:Session.get("currentClassId"),studId:this._id,remark:"absent"}).count()
+  },
+  lates:function(){
+    return attendance.find({classId:Session.get("currentClassId"),studId:this._id,remark:"late"}).count()
   }
 });
 
